@@ -1,0 +1,117 @@
+// To view the default settings, hold "alt" while clicking on the "Settings" button.
+// For documentation on these settings, see: https://aka.ms/terminal-documentation
+{
+  "$schema": "https://aka.ms/terminal-profiles-schema",
+  "defaultProfile": "{2c4de342-38b7-51cf-b940-2309a097f518}",
+  "profiles": [
+    {
+      // Make changes here to the powershell.exe profile
+      "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+      "name": "Windows PowerShell",
+      "commandline": "powershell.exe",
+      "hidden": false,
+      "colorScheme": "Campbell Powershell"
+    },
+    {
+      // Make changes here to the cmd.exe profile
+      "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+      "name": "cmd",
+      "commandline": "cmd.exe",
+      "hidden": false
+    },
+    {
+      "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
+      "hidden": false,
+      "name": "Ubuntu",
+      "source": "Windows.Terminal.Wsl",
+      "useAcrylic": true,
+      "acrylicOpacity": 0.5,
+      "colorScheme": "Ubuntu",
+      "fontSize": 18,
+      "closeOnExit": "graceful",
+      "fontFace": "Ricty Diminished"
+    },
+    {
+      "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+      "hidden": true,
+      "name": "Azure Cloud Shell",
+      "source": "Windows.Terminal.Azure",
+      "acrylicOpacity": 0.5,
+      "useAcrylic": true
+    },
+    {
+      "acrylicOpacity": 0.5,
+      "closeOnExit": "graceful",
+      "colorScheme": "shades-of-purple",
+      "commandline": "C:\\Program Files\\Git\\bin\\bash.exe",
+      "fontFace": "Ricty Diminished",
+      "fontSize": 16,
+      "guid": "{e635c1d7-d15f-f81e-4665-c60b3f27a3f6}",
+      "icon": "C:\\Program Files\\Git\\mingw64\\share\\git\\git-for-windows.ico",
+      "name": "Bash",
+      "startingDirectory": "%USERPROFILE%",
+      "tabTitle": "Bash"
+    },
+    {
+      "acrylicOpacity": 0.5,
+      "closeOnExit": "graceful",
+      "colorScheme": "Campbell",
+      "commandline": "C:\\Program Files\\nodejs\\node.exe",
+      "fontFace": "consolas",
+      "fontSize": 14,
+      "guid": "{3093784E-1B56-4927-8473-9DBE231C528A}",
+      "name": "Node.js",
+      "startingDirectory": "%USERPROFILE%",
+      "tabTitle": "Node.js",
+      "useAcrylic": true
+    }
+  ],
+  // Add custom color schemes to this array
+  "schemes": [
+    {
+      "name": "Ubuntu",
+      "black": "#2e3436",
+      "red": "#cc0000",
+      "green": "#4e9a06",
+      "yellow": "#c4a000",
+      "blue": "#3465a4",
+      "purple": "#75507b",
+      "cyan": "#06989a",
+      "white": "#d3d7cf",
+      "brightBlack": "#555753",
+      "brightRed": "#ef2929",
+      "brightGreen": "#8ae234",
+      "brightYellow": "#fce94f",
+      "brightBlue": "#729fcf",
+      "brightPurple": "#ad7fa8",
+      "brightCyan": "#34e2e2",
+      "brightWhite": "#eeeeec",
+      "background": "#300a24",
+      "foreground": "#eeeeec"
+    },
+    {
+      "name": "shades-of-purple",
+      "black": "#000000",
+      "red": "#d90429",
+      "green": "#3ad900",
+      "yellow": "#ffe700",
+      "blue": "#6943ff",
+      "purple": "#ff2c70",
+      "cyan": "#00c5c7",
+      "white": "#c7c7c7",
+      "brightBlack": "#686868",
+      "brightRed": "#f92a1c",
+      "brightGreen": "#43d426",
+      "brightYellow": "#f1d000",
+      "brightBlue": "#6871ff",
+      "brightPurple": "#ff77ff",
+      "brightCyan": "#79e8fb",
+      "brightWhite": "#ffffff",
+      "background": "#1e1d40",
+      "foreground": "#ffffff"
+    }
+  ],
+  // Add any keybinding overrides to this array.
+  // To unbind a default keybinding, set the command to "unbound"
+  "keybindings": []
+}
