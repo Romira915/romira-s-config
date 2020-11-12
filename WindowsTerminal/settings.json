@@ -43,18 +43,32 @@
       "acrylicOpacity": 0.5,
       "closeOnExit": "graceful",
       "colorScheme": "shades-of-purple",
-      "commandline": "C:\\Program Files\\Git\\bin\\bash.exe",
+      "commandline": "C:\\Program Files\\Git\\bin\\bash.exe --login",
       "fontFace": "Ricty Diminished",
       "fontSize": 16,
       "guid": "{e635c1d7-d15f-f81e-4665-c60b3f27a3f6}",
       "icon": "C:\\Program Files\\Git\\mingw64\\share\\git\\git-for-windows.ico",
       "name": "Bash",
       "startingDirectory": "%USERPROFILE%",
+      "tabTitle": "Bash",
+      "hidden": true
+    },
+    {
+      "acrylicOpacity": 0.5,
+      "closeOnExit": "graceful",
+      "colorScheme": "shades-of-purple",
+      "commandline": "C:\\Program Files\\git-sdk-64\\usr\\bin\\bash.exe --login -i",
+      "fontFace": "Ricty Diminished",
+      "fontSize": 16,
+      "guid": "{498422dd-2254-4b8d-875f-a433bebae1d7}",
+      "icon": "C:\\Program Files\\git-sdk-64\\msys2.ico",
+      "name": "Bash",
+      "startingDirectory": "%USERPROFILE%",
       "tabTitle": "Bash"
     },
     {
       "guid": "{574c89a7-7622-4494-b75c-2bf303960f48}",
-      "hidden": false,
+      "hidden": true,
       "name": "MSYS2",
       "commandline": "cmd.exe /c \"set MSYSTEM=MINGW64&& set MSYS=winsymlinks:nativestrict&& C:/msys64/usr/bin/bash.exe --login\"",
       "icon": "C:/msys64/msys2.ico",
@@ -64,7 +78,7 @@
       "fontSize": 18,
       "closeOnExit": "graceful",
       "fontFace": "Ricty Diminished",
-      "tabTitle": "MSYS2",
+      "tabTitle": "MSYS2"
     },
     {
       "acrylicOpacity": 0.5,
