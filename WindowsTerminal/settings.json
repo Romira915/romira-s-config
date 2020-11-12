@@ -53,10 +53,25 @@
       "tabTitle": "Bash"
     },
     {
+      "guid": "{574c89a7-7622-4494-b75c-2bf303960f48}",
+      "hidden": false,
+      "name": "MSYS2",
+      "commandline": "cmd.exe /c \"set MSYSTEM=MINGW64&& set MSYS=winsymlinks:nativestrict&& C:/msys64/usr/bin/bash.exe --login\"",
+      "icon": "C:/msys64/msys2.ico",
+      "useAcrylic": true,
+      "acrylicOpacity": 0.5,
+      "colorScheme": "shades-of-purple",
+      "fontSize": 18,
+      "closeOnExit": "graceful",
+      "fontFace": "Ricty Diminished",
+      "tabTitle": "MSYS2",
+    },
+    {
       "acrylicOpacity": 0.5,
       "closeOnExit": "graceful",
       "colorScheme": "Campbell",
       "commandline": "C:\\Program Files\\nodejs\\node.exe",
+      "icon": "C:\\Program Files\\nodejs\\nodejs.ico",
       "fontFace": "consolas",
       "fontSize": 14,
       "guid": "{3093784E-1B56-4927-8473-9DBE231C528A}",
@@ -64,6 +79,18 @@
       "startingDirectory": "%USERPROFILE%",
       "tabTitle": "Node.js",
       "useAcrylic": true
+    },
+    {
+      "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
+      "hidden": false,
+      "name": "Ubuntu-20.04",
+      "source": "Windows.Terminal.Wsl",
+      "useAcrylic": true,
+      "acrylicOpacity": 0.5,
+      "colorScheme": "Ubuntu",
+      "fontSize": 18,
+      "closeOnExit": "graceful",
+      "fontFace": "Ricty Diminished"
     }
   ],
   // Add custom color schemes to this array
