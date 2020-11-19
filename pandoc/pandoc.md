@@ -5,10 +5,11 @@ author: "Author"
 date: "Date"
 subject: "Markdown"
 fontsize: 10.5pt
+listingTitle: "コード"
 figPrefix: "図"
 tblPrefix: "表"
 eqnPrefix: "式"
-lstPrefix: "Listing"
+lstPrefix: "コード"
 header-includes:
   - \usepackage{longtable}
   - \usepackage{booktabs}
