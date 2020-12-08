@@ -15,7 +15,7 @@ try {
 } 
 catch [Exception] {
   # Scoopのインストール
-  Set-ExecutionPolicy RemoteSigned -scope CurrentUser
+  # Set-ExecutionPolicy RemoteSigned -scope CurrentUser
   Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
 }
 
@@ -38,7 +38,6 @@ scoop install firefox
 scoop install vscode
 reg import $SCOOP_ROOT\apps\vscode\current\vscode-install-context.reg  # add context menu
 scoop install slack
-scoop install vcredist2019
 scoop install windows-terminal
 scoop install openvpn
 scoop install jetbrains-toolbox
