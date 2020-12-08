@@ -32,7 +32,8 @@ scoop bucket add jp https://github.com/rkbk60/scoop-for-jp
 scoop bucket add java
 
 # Scoopのインストールディレクトリの取得
-$SCOOP_ROOT = if ($env:SCOOP) {$env:SCOOP} else {"$home\scoop"}
+# $SCOOP_ROOT = if ($env:SCOOP) {$env:SCOOP} else {"$home\scoop"}
+$SCOOP_ROOT = "${home}\scoop"
 
 scoop install googlechrome
 scoop install firefox
@@ -61,7 +62,7 @@ scoop install openjdk
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 Invoke-WebRequest -UseBasicParsing -Uri http://aka.ms/wsl2kernelmsix64 -OutFile wsl_update_x64.msi
-wsl_update_x64.msi
+.\wsl_update_x64.msi
 wsl --set-default-version 2
 
 # Reference https://qiita.com/rhene/items/d8a0c0c7d637904e14da#%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88
