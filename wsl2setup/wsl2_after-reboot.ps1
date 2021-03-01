@@ -1,3 +1,4 @@
+Set-Location (Split-Path $script:myInvocation.MyCommand.path -parent)
 Invoke-WebRequest -UseBasicParsing -Uri http://aka.ms/wsl2kernelmsix64 -OutFile wsl_update_x64.msi
 .\wsl_update_x64.msi
 rm .\wsl_update_x64.msi
