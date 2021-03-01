@@ -58,6 +58,7 @@ scoop install ricty-diminished
 scoop install docker
 scoop install msys2
 scoop install openjdk
+scoop install vivaldi
 
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
