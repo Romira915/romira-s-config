@@ -4,4 +4,8 @@ setting file
 ## Using
 
 ### scoop
-`Set-ExecutionPolicy -Scope Process -ExecutionPolicy Unrestricted -Force`
+Install
+```cmd
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Unrestricted -Force
+scoop\scoop._install.ps1
+```

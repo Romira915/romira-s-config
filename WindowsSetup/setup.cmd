@@ -1,0 +1,1 @@
+powershell -ExecutionPolicy Unrestricted -File ..\scoop\scoop._install.ps1
