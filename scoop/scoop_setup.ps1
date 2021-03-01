@@ -15,7 +15,7 @@ try {
 } 
 catch [Exception] {
   # Scoopのインストール
-  # Set-ExecutionPolicy RemoteSigned -scope CurrentUser
+  Set-ExecutionPolicy RemoteSigned -scope CurrentUser
   Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
 }
 
@@ -30,6 +30,7 @@ scoop bucket add extras
 scoop bucket add versions
 scoop bucket add jp https://github.com/rkbk60/scoop-for-jp
 scoop bucket add java
+scoop bucket add nonportable
 
 # Scoopのインストールディレクトリの取得
 # $SCOOP_ROOT = if ($env:SCOOP) {$env:SCOOP} else {"$home\scoop"}
@@ -60,5 +61,10 @@ scoop install msys2
 scoop install openjdk
 scoop install vivaldi
 scoop install gh
+scoop install authy
+scoop install obs-studio
+scoop install audacity
+scoop install discord
+scoop install google-japanese-input-np
 
 # Reference https://qiita.com/rhene/items/d8a0c0c7d637904e14da#%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88
