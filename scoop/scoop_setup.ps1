@@ -1,6 +1,3 @@
-##################################################
-# install Scoop
-##################################################
 # インストールディレクトリの設定 (user)
 #$env:SCOOP='D:\Applications\Scoop'
 #[Environment]::SetEnvironmentVariable('SCOOP', $env:SCOOP, 'User')

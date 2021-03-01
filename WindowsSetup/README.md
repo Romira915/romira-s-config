@@ -1,7 +1,9 @@
-# Windows Settings Setup
+# Windows Setup
 
+## What this
+This is a script to reproduce the author's development environment.
 ## Using
 Run as administrator
 ```
-setup.cmd
+./windows_setup.cmd
 ```
