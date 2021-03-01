@@ -61,8 +61,8 @@ scoop install openjdk
 scoop install vivaldi
 scoop install gh
 
-dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
-dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+sudo dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+sudo dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 Invoke-WebRequest -UseBasicParsing -Uri http://aka.ms/wsl2kernelmsix64 -OutFile wsl_update_x64.msi
 Restart-Computer
 .\wsl_update_x64.msi
