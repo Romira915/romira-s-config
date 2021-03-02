@@ -47,9 +47,10 @@ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
 rm -f Miniconda3-latest-Linux-x86_64.sh
 ~/miniconda3/bin/conda init fish
+conda config --set auto_activate_base false
 
 # Setting vim
-cp -r ../vim/.* ~/
+cp -r ../vim/. ~/
 
 # Install other 
 sudo apt install build-essential
