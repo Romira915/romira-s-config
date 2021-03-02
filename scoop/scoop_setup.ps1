@@ -20,6 +20,7 @@ Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.
 
 # install basic module
 scoop install aria2
+scoop config aria2-enabled true
 scoop install git
 scoop install 7zip
 scoop install sudo
