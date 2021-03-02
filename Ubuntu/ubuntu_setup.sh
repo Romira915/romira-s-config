@@ -20,8 +20,7 @@ git config --global init.defaultBranch main
 sudo apt-add-repository ppa:fish-shell/release-3
 sudo apt update
 sudo apt install -y fish
-echo /usr/local/bin/fish | sudo tee -a /etc/shells
-chsh -s /usr/local/bin/fish
+chsh -s $(which fish)
 
 # Setting fisher
 fish -c "curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher"
