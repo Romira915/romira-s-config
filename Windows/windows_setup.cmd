@@ -10,5 +10,5 @@ git config --global user.email 40430090+Romira915@users.noreply.github.com
 git config --global alias.tree "log --graph --all --format=\"%x09%C(cyan bold)%an%Creset%x09%C(yellow)%h%Creset %C(magenta reverse)%d%Creset %s\""
 git config --global init.defaultBranch main
 
-copy ..\WindowsTerminal\settings.json "%LOCALAPPDATA%\Microsoft\Windows Terminal"
+xcopy ..\WindowsTerminal\settings.json "%LOCALAPPDATA%\Microsoft\Windows Terminal\"
 powershell -ExecutionPolicy Unrestricted -File ..\wsl2\wsl2_setup.ps1
