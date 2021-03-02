@@ -6,6 +6,8 @@
 #$env:SCOOP_GLOBAL='D:\GlobalScoopApps'
 #[Environment]::SetEnvironmentVariable('SCOOP_GLOBAL', $env:SCOOP_GLOBAL, 'Machine')
 
+Param([switch]$desktop)
+
 try {
   # Scoopのインストール確認
   get-command scoop -ErrorAction Stop
@@ -59,9 +61,16 @@ scoop install openjdk
 scoop install vivaldi
 scoop install gh
 scoop install authy
-scoop install obs-studio
-scoop install audacity
-scoop install discord
 scoop install google-japanese-input-np
+
+if ($desktop) {
+  scoop install steam
+  scoop install musicbee
+  scoop install ubisoftconnect
+  scoop install obs-studio
+  scoop install audacity
+  scoop install discord
+  scoop install blender
+}
 
 # Reference https://qiita.com/rhene/items/d8a0c0c7d637904e14da#%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88

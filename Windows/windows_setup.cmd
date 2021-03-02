@@ -1,6 +1,6 @@
 cd /d %~dp0
 
-powershell -ExecutionPolicy Unrestricted -File ..\scoop\scoop_setup.ps1
+powershell -ExecutionPolicy Unrestricted -File ..\scoop\scoop_setup.ps1 
 
 @REM Setting git config.
 @REM Change your user name.
