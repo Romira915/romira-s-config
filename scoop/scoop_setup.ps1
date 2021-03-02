@@ -8,15 +8,15 @@
 
 Param([switch]$desktop)
 
-try {
-  # Scoopのインストール確認
-  get-command scoop -ErrorAction Stop
-} 
-catch [Exception] {
+# try {
+#   # Scoopのインストール確認
+#   get-command scoop -ErrorAction Stop
+# } 
+# catch [Exception] {
   # Scoopのインストール
-  Set-ExecutionPolicy RemoteSigned -scope CurrentUser
-  Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
-}
+Set-ExecutionPolicy RemoteSigned -scope CurrentUser 
+Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+# }
 
 # install basic module
 scoop install aria2
