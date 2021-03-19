@@ -63,6 +63,7 @@ scoop install vivaldi
 scoop install gh
 scoop install authy
 scoop install google-japanese-input-np
+scoop install maven
 
 if ($desktop) {
   scoop install steam
