@@ -63,6 +63,7 @@ scoop install gh
 scoop install authy
 scoop install google-japanese-input-np
 scoop install maven
+scoop install vim
 
 if ($desktop) {
   scoop install steam
