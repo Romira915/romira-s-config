@@ -19,8 +19,6 @@ Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.
 # }
 
 # install basic module
-scoop install aria2
-scoop config aria2-enabled true
 scoop install git
 scoop install 7zip
 scoop install sudo
@@ -31,6 +29,7 @@ scoop bucket add versions
 scoop bucket add jp https://github.com/rkbk60/scoop-for-jp
 scoop bucket add java
 scoop bucket add nonportable
+scoop bucket nerd-fonts
 
 # Scoopのインストールディレクトリの取得
 # $SCOOP_ROOT = if ($env:SCOOP) {$env:SCOOP} else {"$home\scoop"}
