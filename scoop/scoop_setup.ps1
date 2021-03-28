@@ -29,7 +29,8 @@ scoop bucket add versions
 scoop bucket add jp https://github.com/rkbk60/scoop-for-jp
 scoop bucket add java
 scoop bucket add nonportable
-scoop bucket nerd-fonts
+scoop bucket add nerd-fonts
+scoop bucket add versions
 
 # Scoopのインストールディレクトリの取得
 # $SCOOP_ROOT = if ($env:SCOOP) {$env:SCOOP} else {"$home\scoop"}
