@@ -42,7 +42,7 @@ scoop install vscode
 reg import $SCOOP_ROOT\apps\vscode\current\vscode-install-context.reg  # add context menu
 scoop install slack
 scoop install windows-terminal
-scoop install openvpn
+sudo scoop install openvpn
 scoop install jetbrains-toolbox
 scoop install nodejs-lts
 scoop install rustup
