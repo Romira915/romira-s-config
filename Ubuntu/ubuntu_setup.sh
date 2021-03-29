@@ -11,6 +11,7 @@ echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> /home/romira/.pro
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 # Setting git config.
+brew install git
 git config --global user.name "Romira915" # Change your user name.
 git config --global user.email 40430090+Romira915@users.noreply.github.com # Change your user email.
 git config --global alias.tree "log --graph --all --format=\"%x09%C(cyan bold)%an%Creset%x09%C(yellow)%h%Creset %C(magenta reverse)%d%Creset %s\""
@@ -53,3 +54,13 @@ cp -r ../vim/. ~/
 
 # Install other 
 sudo apt install build-essential
+
+# Setting zsh
+sudo apt install zsh
+git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+setopt EXTENDED_GLOB
+for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+done
+chsh -s $(which zsh)
+echo "zstyle ':prezto:module:prompt' theme 'powerline'" >> .zpreztorc

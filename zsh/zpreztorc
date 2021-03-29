@@ -8,6 +8,7 @@
 #
 # General
 #
+
 zstyle ':prezto:module:syntax-highlighting' color 'yes'
 
 # Set case-sensitivity for completion, history lookup, etc.
@@ -39,12 +40,11 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
-  'history-substring-search' \
-  'autosuggestions' \
-  'syntax-highlighting' \
   'git' \
   'ssh' \
-  'python' \
+  'syntax-highlighting' \
+  'command-not-found' \
+  'autosuggestions' \
   'prompt'
 
 #
@@ -123,7 +123,7 @@ zstyle ':prezto:module:editor' key-bindings 'emacs'
 # Set the prompt theme to load.
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
-zstyle ':prezto:module:prompt' theme 'powerline'
+zstyle ':prezto:module:prompt' theme 'sorin'
 
 # Set the working directory prompt display length.
 # By default, it is set to 'short'. Set it to 'long' (without '~' expansion)
@@ -232,3 +232,4 @@ zstyle ':prezto:module:prompt' theme 'powerline'
 # before deleting or overwriting files. Set to 'no' to disable this safer
 # behavior.
 # zstyle ':prezto:module:utility' safe-ops 'yes'
+zstyle ':prezto:module:prompt' theme 'powerline'
