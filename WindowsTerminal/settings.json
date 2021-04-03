@@ -29,7 +29,7 @@
       "colorScheme": "Ubuntu",
       "fontSize": 18,
       "closeOnExit": "graceful",
-      "fontFace": "Ricty Diminished"
+      "fontFace": "Cascadia Code PL"
     },
     {
       "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
@@ -40,11 +40,25 @@
       "useAcrylic": true
     },
     {
+      "guid": "{ca450803-5de7-4507-a8d7-71ecb6eab16a}",
+      "name": "msys2",
+      "tabTitle": "msys2",
+      "commandline": "cmd.exe /c \"%USERPROFILE%/scoop/shims/mingw64.cmd\"",
+      "useAcrylic": true,
+      "acrylicOpacity": 0.9,
+      "fontSize": 16,
+      "closeOnExit": "graceful",
+      "fontFace": "Cascadia Code PL",
+      "startingDirectory": "%USERPROFILE%",
+      "icon": "%USERPROFILE%/scoop/apps/msys2/current/mingw64.ico",
+      "colorScheme": "shades-of-purple"
+    },
+    {
       "acrylicOpacity": 0.5,
       "closeOnExit": "graceful",
       "colorScheme": "shades-of-purple",
       "commandline": "C:\\Program Files\\Git\\bin\\bash.exe --login",
-      "fontFace": "Ricty Diminished",
+      "fontFace": "Cascadia Code PL",
       "fontSize": 16,
       "guid": "{e635c1d7-d15f-f81e-4665-c60b3f27a3f6}",
       "icon": "C:\\Program Files\\Git\\mingw64\\share\\git\\git-for-windows.ico",
@@ -58,13 +72,14 @@
       "closeOnExit": "graceful",
       "colorScheme": "shades-of-purple",
       "commandline": "cmd.exe /c \"set MSYSTEM=MINGW64&& set MSYS=winsymlinks:nativestrict&& D:\\Application\\git-sdk-64\\usr\\bin\\bash.exe --login -i\"",
-      "fontFace": "Ricty Diminished",
+      "fontFace": "Cascadia Code PL",
       "fontSize": 16,
       "guid": "{498422dd-2254-4b8d-875f-a433bebae1d7}",
       "icon": "D:\\Application\\git-sdk-64\\msys2.ico",
       "name": "bash",
       "startingDirectory": "%USERPROFILE%",
-      "tabTitle": "bash"
+      "tabTitle": "bash",
+      "hidden": true
     },
     {
       "guid": "{574c89a7-7622-4494-b75c-2bf303960f48}",

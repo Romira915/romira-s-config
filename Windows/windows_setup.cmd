@@ -2,18 +2,11 @@ cd /d %~dp0
 
 powershell -ExecutionPolicy Unrestricted -File ..\scoop\scoop_setup.ps1 
 
-mingw64 -c "echo '# Begin /etc/nsswitch.conf
-
-passwd: files db
-group: files db
-
-db_enum: cache builtin
-
-db_home: windows
-db_shell: cygwin desc
-db_gecos: cygwin desc
-
-# End /etc/nsswitch.conf' > /etc/nsswitch.conf"
+@REM Setting mingw64
+mingw64 -c "pacman -Syuu --noconfirm"
+mingw64 -c "pacman -S --noconfirm zsh fish"
+mingw64 -c "sed -i -e '/db_home/d' /etc/nsswitch.conf"
+mingw64 -c "echo db_home: windows >> /etc/nsswitch.conf"
 
 @REM Setting git config.
 @REM Change your user name.
