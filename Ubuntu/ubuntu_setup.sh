@@ -31,8 +31,8 @@ echo "function fish_user_key_bindings
   bind \cr 'peco_select_history (commandline -b)'
 end" >> ~/.config/fish/config.fish
 brew install ghq
-ghq get git@github.com:cm-wada-yusuke/angular-websocket-chat.git
-ghq get git@github.com:cm-wada-yusuke/chatserver-play-websocket-akka-stream.git
+ghq get https://github.com/cm-wada-yusuke/angular-websocket-chat.git
+ghq get https://github.com/cm-wada-yusuke/chatserver-play-websocket-akka-stream.git
 echo "function fish_user_key_bindings
   bind \cr 'peco_select_history (commandline -b)'
   bind \c] peco_select_ghq_repository
