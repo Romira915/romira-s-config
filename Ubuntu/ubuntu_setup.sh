@@ -47,20 +47,15 @@ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
 rm -f Miniconda3-latest-Linux-x86_64.sh
 ~/miniconda3/bin/conda init fish
+~/miniconda3/bin/conda init zsh
 conda config --set auto_activate_base false
 
 # Setting vim
 cp -r ../vim/. ~/
 
 # Install other 
-sudo apt install build-essential
+sudo apt install -y build-essential
 
 # Setting zsh
-sudo apt install zsh
-git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-zsh -c "setopt EXTENDED_GLOB"
-zsh -c "for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-done"
-chsh -s $(which zsh)
-echo "zstyle ':prezto:module:prompt' theme 'powerline'" >> .zpreztorc
+sudo apt install -y zsh
+zsh ../zsh/preztoinit.sh
