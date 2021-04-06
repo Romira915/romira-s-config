@@ -5,6 +5,14 @@ cd `dirname $0`
 sudo apt update
 sudo apt upgrade -y
 
+# Setting zsh
+sudo apt install -y zsh
+zsh ../zsh/preztoinit.sh
+
+# Install cargo
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+bass source $HOME/.cargo/env
+
 # Install Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> /home/romira/.profile
@@ -38,9 +46,6 @@ echo "function fish_user_key_bindings
   bind \c] peco_select_ghq_repository
 end" >> ~/.config/fish/config.fish
 
-# Install cargo
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-bass source $HOME/.cargo/env
 
 # Install Miniconda
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
@@ -55,7 +60,3 @@ cp -r ../vim/. ~/
 
 # Install other 
 sudo apt install -y build-essential
-
-# Setting zsh
-sudo apt install -y zsh
-zsh ../zsh/preztoinit.sh

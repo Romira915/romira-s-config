@@ -19,10 +19,11 @@
       "commandline": "cmd.exe",
       "hidden": false
     },
+
     {
-      "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
+      "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
       "hidden": false,
-      "name": "Ubuntu",
+      "name": "Ubuntu-20.04",
       "source": "Windows.Terminal.Wsl",
       "useAcrylic": true,
       "acrylicOpacity": 0.5,
@@ -43,7 +44,7 @@
       "guid": "{ca450803-5de7-4507-a8d7-71ecb6eab16a}",
       "name": "msys2",
       "tabTitle": "msys2",
-      "commandline": "cmd.exe /c \"%USERPROFILE%/scoop/shims/mingw64.cmd\"",
+      "commandline": "mingw64.cmd",
       "useAcrylic": true,
       "acrylicOpacity": 0.9,
       "fontSize": 16,
@@ -56,52 +57,10 @@
     {
       "acrylicOpacity": 0.5,
       "closeOnExit": "graceful",
-      "colorScheme": "shades-of-purple",
-      "commandline": "C:\\Program Files\\Git\\bin\\bash.exe --login",
-      "fontFace": "Cascadia Code PL",
-      "fontSize": 16,
-      "guid": "{e635c1d7-d15f-f81e-4665-c60b3f27a3f6}",
-      "icon": "C:\\Program Files\\Git\\mingw64\\share\\git\\git-for-windows.ico",
-      "name": "Bash",
-      "startingDirectory": "%USERPROFILE%",
-      "tabTitle": "Bash",
-      "hidden": true
-    },
-    {
-      "acrylicOpacity": 0.5,
-      "closeOnExit": "graceful",
-      "colorScheme": "shades-of-purple",
-      "commandline": "cmd.exe /c \"set MSYSTEM=MINGW64&& set MSYS=winsymlinks:nativestrict&& D:\\Application\\git-sdk-64\\usr\\bin\\bash.exe --login -i\"",
-      "fontFace": "Cascadia Code PL",
-      "fontSize": 16,
-      "guid": "{498422dd-2254-4b8d-875f-a433bebae1d7}",
-      "icon": "D:\\Application\\git-sdk-64\\msys2.ico",
-      "name": "bash",
-      "startingDirectory": "%USERPROFILE%",
-      "tabTitle": "bash",
-      "hidden": true
-    },
-    {
-      "guid": "{574c89a7-7622-4494-b75c-2bf303960f48}",
-      "hidden": true,
-      "name": "MSYS2",
-      "commandline": "cmd.exe /c \"set MSYSTEM=MINGW64&& set MSYS=winsymlinks:nativestrict&& C:/msys64/usr/bin/bash.exe --login\"",
-      "icon": "C:/msys64/msys2.ico",
-      "useAcrylic": true,
-      "acrylicOpacity": 0.5,
-      "colorScheme": "shades-of-purple",
-      "fontSize": 18,
-      "closeOnExit": "graceful",
-      "fontFace": "Ricty Diminished",
-      "tabTitle": "MSYS2"
-    },
-    {
-      "acrylicOpacity": 0.5,
-      "closeOnExit": "graceful",
       "colorScheme": "Campbell",
-      "commandline": "D:\\Program Files (x86)\\Nodist\\node.exe",
+      "commandline": "node.exe",
       "icon": "D:\\Program Files (x86)\\Nodist\\nodejs.ico",
-      "fontFace": "consolas",
+      "fontFace": "Consolas",
       "fontSize": 14,
       "guid": "{3093784E-1B56-4927-8473-9DBE231C528A}",
       "name": "Node.js",
@@ -110,16 +69,16 @@
       "useAcrylic": true
     },
     {
-      "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
-      "hidden": false,
-      "name": "Ubuntu-20.04",
+      "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
+      "hidden": true,
+      "name": "Ubuntu",
       "source": "Windows.Terminal.Wsl",
       "useAcrylic": true,
       "acrylicOpacity": 0.5,
       "colorScheme": "Ubuntu",
       "fontSize": 18,
       "closeOnExit": "graceful",
-      "fontFace": "Ricty Diminished"
+      "fontFace": "Cascadia Code PL"
     }
   ],
   // Add custom color schemes to this array
