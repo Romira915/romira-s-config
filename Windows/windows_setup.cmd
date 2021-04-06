@@ -7,6 +7,7 @@ mingw64 -c "pacman -Syuu --noconfirm"
 mingw64 -c "pacman -S --noconfirm zsh fish"
 mingw64 -c "sed -i -e '/db_home/d' /etc/nsswitch.conf"
 mingw64 -c "echo db_home: windows >> /etc/nsswitch.conf"
+mingw64 -c "echo export PATH=$(cygpath -p -u $ORIGINAL_PATH):$PATH >> /etc/profile"
 
 @REM Setting git config.
 @REM Change your user name.
