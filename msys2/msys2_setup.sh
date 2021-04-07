@@ -1,6 +1,5 @@
 # Update pacman
-pacman -Syuu --noconfirm
-pacman -Sy --noconfirm
+cd `dirname $0`
 
 # Setting msys2
 pacman -S --noconfirm zsh fish
