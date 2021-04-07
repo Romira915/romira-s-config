@@ -1,9 +1,6 @@
 # Update pacman
 cd `dirname $0`
 
-# Setting pacman
-./pacman_update.sh
-
 # Setting msys2
 pacman -S --noconfirm zsh fish
 sed -i -e '/db_home/c db_home: windows' /etc/nsswitch.conf

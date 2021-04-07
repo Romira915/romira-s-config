@@ -3,6 +3,7 @@ cd /d %~dp0
 powershell -ExecutionPolicy Unrestricted -File ..\scoop\scoop_setup.ps1 
 
 @REM Setting msys2
+mingw64 ../msys2/pacman_update.sh
 mingw64 ../msys2/msys2_setup.sh
 @REM mingw64 -c "pacman -S --noconfirm zsh fish"
 @REM mingw64 -c "sed -i -e '/db_home/c db_home: windows' /etc/nsswitch.conf"
