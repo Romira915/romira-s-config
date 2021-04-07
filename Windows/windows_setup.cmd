@@ -2,12 +2,17 @@ cd /d %~dp0
 
 powershell -ExecutionPolicy Unrestricted -File ..\scoop\scoop_setup.ps1 
 
-@REM Setting mingw64
-mingw64 -c "pacman -Syuu --noconfirm"
-mingw64 -c "pacman -S --noconfirm zsh fish"
-mingw64 -c "sed -i -e '/db_home/d' /etc/nsswitch.conf"
-mingw64 -c "echo db_home: windows >> /etc/nsswitch.conf"
-mingw64 -c "echo export PATH=$(cygpath -p -u $ORIGINAL_PATH):$PATH >> /etc/profile"
+@REM Setting msys2
+mingw64 ../msys2/msys2_setup.sh
+@REM mingw64 -c "pacman -Syuu --noconfirm"
+@REM mingw64 -c "pacman -Sy --noconfirm"
+@REM mingw64 -c "pacman -S --noconfirm zsh fish"
+@REM mingw64 -c "sed -i -e '/db_home/c db_home: windows' /etc/nsswitch.conf"
+@REM mingw64 -c "sed -i -e '/LOGINSHELL/c set "LOGINSHELL=fish"' /msys2_shell.cmd"
+@REM mingw64 -c "echo -e 'export PATH=$(cygpath -p -u $ORIGINAL_PATH):$PATH' >> /etc/profile"
+@REM @REM Setting fisher
+@REM mingw64 -c "echo set -g theme_color_scheme brgrey >> ~/.config/fish/config.fish"
+@REM mingw64 -c "echo set -g theme_display_date no >> ~/.config/fish/config.fish"
 
 @REM Setting git config.
 @REM Change your user name.

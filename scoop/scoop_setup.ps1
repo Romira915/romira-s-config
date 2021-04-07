@@ -66,6 +66,7 @@ scoop install google-japanese-input-np
 scoop install maven
 scoop install vim
 scoop install gradle
+scoop install ghq
 
 if ($desktop) {
   scoop install steam

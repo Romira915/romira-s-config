@@ -35,6 +35,8 @@ chsh -s $(which fish)
 fish -c "curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher"
 sudo apt install -y fonts-powerline
 fish -c "fisher install oh-my-fish/theme-bobthefish jethrokuan/z 0rax/fish-bd oh-my-fish/plugin-balias edc/bass"
+echo "set -g theme_color_scheme brgrey" >> ~/.config/fish/config.fish
+echo "set -g theme_display_date no" >> ~/.config/fish/config.fish
 echo "function fish_user_key_bindings
   bind \cr 'peco_select_history (commandline -b)'
 end" >> ~/.config/fish/config.fish
