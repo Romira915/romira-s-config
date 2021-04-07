@@ -13,7 +13,3 @@ git config --global init.defaultBranch main
 xcopy ..\WindowsTerminal\settings.json "%LOCALAPPDATA%\Microsoft\Windows Terminal\"
 powershell -ExecutionPolicy Unrestricted -File .\fonts_setup.ps1
 powershell -ExecutionPolicy Unrestricted -File ..\wsl2\wsl2_setup.ps1
-
-@REM Setting msys2
-mingw64 -c "sed -i -e '/db_home/c db_home: windows' /etc/nsswitch.conf"
-mingw64

@@ -7,3 +7,6 @@ Add-AppxPackage -Path Ubuntu2004.appx
 rm Ubuntu2004.appx
 pause
 rm .\wsl_update_x64.msi
+
+# Setting msys2
+mingw64 -c "sed -i -e '/db_home/c db_home: windows' /etc/nsswitch.conf"
