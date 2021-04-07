@@ -32,22 +32,8 @@ sudo apt install -y fish
 chsh -s $(which fish)
 
 # Setting fisher
-fish -c "curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisher"
-sudo apt install -y fonts-powerline
-fish -c "fisher install oh-my-fish/theme-bobthefish jethrokuan/z 0rax/fish-bd oh-my-fish/plugin-balias edc/bass"
-echo "set -g theme_color_scheme brgrey" >> ~/.config/fish/config.fish
-echo "set -g theme_display_date no" >> ~/.config/fish/config.fish
-echo "function fish_user_key_bindings
-  bind \cr 'peco_select_history (commandline -b)'
-end" >> ~/.config/fish/config.fish
 brew install ghq
-ghq get https://github.com/cm-wada-yusuke/angular-websocket-chat.git
-ghq get https://github.com/cm-wada-yusuke/chatserver-play-websocket-akka-stream.git
-echo "function fish_user_key_bindings
-  bind \cr 'peco_select_history (commandline -b)'
-  bind \c] peco_select_ghq_repository
-end" >> ~/.config/fish/config.fish
-
+fish ../fish/fish_setup.fish
 
 # Install Miniconda
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
