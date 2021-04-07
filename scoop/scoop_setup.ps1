@@ -55,7 +55,6 @@ scoop install pandoc-crossref
 scoop install teamviewer
 scoop install sumatrapdf
 scoop install wireshark
-scoop install ricty-diminished
 scoop install docker
 scoop install msys2
 scoop install openjdk
