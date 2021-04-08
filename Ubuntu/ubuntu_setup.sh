@@ -41,7 +41,7 @@ bash Miniconda3-latest-Linux-x86_64.sh
 rm -f Miniconda3-latest-Linux-x86_64.sh
 ~/miniconda3/bin/conda init fish
 ~/miniconda3/bin/conda init zsh
-conda config --set auto_activate_base false
+echo "auto_activate_base: false" >> .condarc
 
 # Setting vim
 cp -r ../vim/. ~/
