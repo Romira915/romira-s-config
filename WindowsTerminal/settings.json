@@ -2,7 +2,7 @@
 // For documentation on these settings, see: https://aka.ms/terminal-documentation
 {
   "$schema": "https://aka.ms/terminal-profiles-schema",
-  "defaultProfile": "{2c4de342-38b7-51cf-b940-2309a097f518}",
+  "defaultProfile": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
   "profiles": [
     {
       // Make changes here to the powershell.exe profile
@@ -19,7 +19,6 @@
       "commandline": "cmd.exe",
       "hidden": false
     },
-
     {
       "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
       "hidden": false,
@@ -55,6 +54,18 @@
       "colorScheme": "shades-of-purple"
     },
     {
+      "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
+      "hidden": false,
+      "name": "Ubuntu",
+      "source": "Windows.Terminal.Wsl",
+      "useAcrylic": true,
+      "acrylicOpacity": 0.5,
+      "colorScheme": "Ubuntu",
+      "fontSize": 18,
+      "closeOnExit": "graceful",
+      "fontFace": "Cascadia Code PL"
+    },
+    {
       "acrylicOpacity": 0.5,
       "closeOnExit": "graceful",
       "colorScheme": "Campbell",
@@ -66,19 +77,8 @@
       "name": "Node.js",
       "startingDirectory": "%USERPROFILE%",
       "tabTitle": "Node.js",
-      "useAcrylic": true
-    },
-    {
-      "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
-      "hidden": true,
-      "name": "Ubuntu",
-      "source": "Windows.Terminal.Wsl",
       "useAcrylic": true,
-      "acrylicOpacity": 0.5,
-      "colorScheme": "Ubuntu",
-      "fontSize": 18,
-      "closeOnExit": "graceful",
-      "fontFace": "Cascadia Code PL"
+      "hidden": true
     }
   ],
   // Add custom color schemes to this array

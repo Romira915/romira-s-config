@@ -1,6 +1,7 @@
 Set-Location (Split-Path $script:myInvocation.MyCommand.path -parent)
 
 git clone https://github.com/mzyy94/RictyDiminished-for-Powerline.git
-git clone https://github.com/microsoft/cascadia-code.git
+Invoke-WebRequest -UseBasicParsing -Uri https://github.com/microsoft/cascadia-code/releases/download/v2102.25/CascadiaCode-2102.25.zip -OutFile CascadiaCode-2102.25.zip
+
 
 # Fonts install
