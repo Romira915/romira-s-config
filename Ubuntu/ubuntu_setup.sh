@@ -5,6 +5,9 @@ cd `dirname $0`
 sudo apt update
 sudo apt upgrade -y
 
+# Install basic module
+sudo apt install -y build-essential procps curl file git
+
 # Setting zsh
 sudo apt install -y zsh
 zsh ../zsh/preztoinit.sh
@@ -47,6 +50,5 @@ echo "auto_activate_base: false" >> .condarc
 cp -r ../vim/. ~/
 
 # Install other 
-sudo apt install -y build-essential
 brew install gradle
 brew install java
