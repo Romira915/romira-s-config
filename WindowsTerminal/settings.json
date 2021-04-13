@@ -41,16 +41,16 @@
     },
     {
       "guid": "{ca450803-5de7-4507-a8d7-71ecb6eab16a}",
-      "name": "msys2",
-      "tabTitle": "msys2",
-      "commandline": "mingw64.cmd",
+      "name": "bash",
+      "tabTitle": "bash",
+      "commandline": "%USERPROFILE%/scoop/apps/git/current/bin/bash.exe",
       "useAcrylic": true,
       "acrylicOpacity": 0.9,
       "fontSize": 16,
       "closeOnExit": "graceful",
       "fontFace": "Cascadia Code PL",
       "startingDirectory": "%USERPROFILE%",
-      "icon": "%USERPROFILE%/scoop/apps/msys2/current/mingw64.ico",
+      "icon": "https://gitforwindows.org/img/gwindows_logo.png",
       "colorScheme": "shades-of-purple"
     },
     {
