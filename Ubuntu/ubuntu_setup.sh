@@ -48,5 +48,5 @@ cp -r ../vim/. ~/
 
 # Install other 
 sudo apt install -y build-essential
-sudo apt install -y gradle
+brew install gradle
 brew install java
