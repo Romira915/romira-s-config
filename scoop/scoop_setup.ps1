@@ -75,6 +75,12 @@ if ($desktop) {
   scoop install audacity
   scoop install discord
   scoop install blender
+  scoop install crystaldiskinfo
+  scoop install crystaldiskmark
+  scoop install gimp
+  scoop install mp3tag
+  scoop install makemkv
+  scoop install eartrumpet
 }
 
 # Reference https://qiita.com/rhene/items/d8a0c0c7d637904e14da#%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88
