@@ -1,0 +1,32 @@
+{
+	"$schema": "https://aka.ms/winget-packages.schema.1.0.json",
+	"CreationDate": "2021-05-02T23:48:47.757-00:00",
+	"Sources": [
+		{
+			"Packages": [
+				{
+					"Id": "Google.Chrome"
+				},
+				{
+					"Id": "File-New-Project.EarTrumpet"
+				},
+				{
+					"Id": "Discord.Discord"
+				},
+				{
+					"Id": "VivaldiTechnologies.Vivaldi"
+				},
+				{
+					"Id": "VideoLAN.VLC"
+				}
+			],
+			"SourceDetails": {
+				"Argument": "https://winget.azureedge.net/cache",
+				"Identifier": "Microsoft.Winget.Source_8wekyb3d8bbwe",
+				"Name": "winget",
+				"Type": "Microsoft.PreIndexed.Package"
+			}
+		}
+	],
+	"WinGetVersion": "0.3.11102"
+}
