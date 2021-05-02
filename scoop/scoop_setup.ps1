@@ -6,7 +6,8 @@
 #$env:SCOOP_GLOBAL='D:\GlobalScoopApps'
 #[Environment]::SetEnvironmentVariable('SCOOP_GLOBAL', $env:SCOOP_GLOBAL, 'Machine')
 
-Param([switch]$desktop)
+# Param([switch]$desktop)
+$desktop = True
 
 # try {
 #   # Scoopのインストール確認
