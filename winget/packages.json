@@ -18,6 +18,24 @@
 				},
 				{
 					"Id": "VideoLAN.VLC"
+				},
+				{
+					"Id": "Microsoft.Teams"
+				},
+				{
+					"Id": "Microsoft.Office"
+				},
+				{
+					"Id": "BlueStack.BlueStacks"
+				},
+				{
+					"Id": "VB-Audio.VoiceMeeterBanana"
+				},
+				{
+					"Id": "Microsoft.VisualStudio.Enterprise"
+				},
+				{
+					"Id": "UnityTechnologies.UnityHub"
 				}
 			],
 			"SourceDetails": {
