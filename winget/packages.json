@@ -36,6 +36,9 @@
 				},
 				{
 					"Id": "UnityTechnologies.UnityHub"
+				},
+				{
+					"Id": "LINE.LINE"
 				}
 			],
 			"SourceDetails": {

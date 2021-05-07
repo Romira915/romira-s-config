@@ -26,6 +26,7 @@ brew install git
 git config --global user.name "Romira915" # Change your user name.
 git config --global user.email 40430090+Romira915@users.noreply.github.com # Change your user email.
 git config --global alias.tree "log --graph --all --format=\"%x09%C(cyan bold)%an%Creset%x09%C(yellow)%h%Creset %C(magenta reverse)%d%Creset %s\""
+git config --global alias.ignore '!gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}; gi'
 git config --global init.defaultBranch main
 
 # Install fish
