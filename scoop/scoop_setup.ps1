@@ -53,7 +53,6 @@ scoop install miniconda3
 scoop install hwinfo
 scoop install pandoc
 scoop install pandoc-crossref
-scoop install teamviewer
 scoop install sumatrapdf
 scoop install wireshark
 scoop install docker

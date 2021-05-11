@@ -39,6 +39,9 @@
 				},
 				{
 					"Id": "LINE.LINE"
+				},
+				{
+					"Id": "TeamViewer.TeamViewer"
 				}
 			],
 			"SourceDetails": {
