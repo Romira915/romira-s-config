@@ -1,15 +1,16 @@
 cd /d %~dp0
 
+powershell -ExecutionPolicy Unrestricted -File ..\chocolatey\chocolatey_setup.ps1
 powershell -ExecutionPolicy Unrestricted -File ..\scoop\scoop_setup.ps1 
 
 @REM Setting git config.
 @REM Change your user name.
-git config --global user.name "Romira915"
+@REM git config --global user.name "Romira915"
 @REM Change your user email.
-git config --global user.email 40430090+Romira915@users.noreply.github.com
-git config --global alias.tree "log --graph --all --format=\"%x09%C(cyan bold)%an%Creset%x09%C(yellow)%h%Creset %C(magenta reverse)%d%Creset %s\""
-git config --global alias.ignore '!gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}; gi'
-git config --global init.defaultBranch main
+@REM git config --global user.email 40430090+Romira915@users.noreply.github.com
+@REM git config --global alias.tree "log --graph --all --format=\"%x09%C(cyan bold)%an%Creset%x09%C(yellow)%h%Creset %C(magenta reverse)%d%Creset %s\""
+@REM git config --global alias.ignore '!gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}; gi'
+@REM git config --global init.defaultBranch main
 
 xcopy ..\WindowsTerminal\settings.json "%LOCALAPPDATA%\Microsoft\Windows Terminal\"
 powershell -ExecutionPolicy Unrestricted -File .\fonts_setup.ps1

@@ -7,7 +7,7 @@
 #[Environment]::SetEnvironmentVariable('SCOOP_GLOBAL', $env:SCOOP_GLOBAL, 'Machine')
 
 # Param([switch]$desktop)
-$desktop = True
+$desktop=True
 
 # try {
 #   # Scoopのインストール確認
@@ -20,9 +20,9 @@ Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.
 # }
 
 # install basic module
-scoop install git
-scoop install 7zip
-scoop install sudo
+# scoop install git
+# scoop install 7zip
+# scoop install sudo
 
 # add bucket
 scoop bucket add extras
@@ -37,47 +37,46 @@ scoop bucket add versions
 # $SCOOP_ROOT = if ($env:SCOOP) {$env:SCOOP} else {"$home\scoop"}
 $SCOOP_ROOT = "${home}\scoop"
 
-scoop install googlechrome
-scoop install firefox
-scoop install vscode
-reg import $SCOOP_ROOT\apps\vscode\current\vscode-install-context.reg  # add context menu
-scoop install slack
-scoop install windows-terminal
-sudo scoop install openvpn
-scoop install jetbrains-toolbox
-scoop install nodejs-lts
-scoop install rustup
-scoop install vlc
-scoop install deepl
-scoop install miniconda3
-scoop install hwinfo
-scoop install pandoc
-scoop install pandoc-crossref
-scoop install sumatrapdf
-scoop install wireshark
-scoop install docker
-scoop install msys2
-scoop install openjdk
-scoop install gh
-scoop install authy
-scoop install google-japanese-input-np
-scoop install maven
-scoop install vim
-scoop install gradle
+# scoop install googlechrome
+# scoop install firefox
+# scoop install vscode
+# reg import $SCOOP_ROOT\apps\vscode\current\vscode-install-context.reg  # add context menu
+# scoop install slack
+# scoop install windows-terminal
+# sudo scoop install openvpn
+# scoop install jetbrains-toolbox
+# scoop install nodejs-lts
+# scoop install rustup
+# scoop install vlc
+# scoop install deepl
+# scoop install miniconda3
+# scoop install hwinfo
+# scoop install pandoc
+# scoop install pandoc-crossref
+# scoop install wireshark
+# scoop install docker
+# scoop install msys2
+# scoop install openjdk
+# scoop install gh
+# scoop install authy
+# scoop install google-japanese-input-np
+# scoop install maven
+# scoop install vim
+# scoop install gradle
 scoop install ghq
 
 if ($desktop) {
-  scoop install steam
-  scoop install musicbee
-  scoop install ubisoftconnect
-  scoop install obs-studio
-  scoop install audacity
-  scoop install blender
-  scoop install crystaldiskinfo
-  scoop install crystaldiskmark
-  scoop install gimp
-  scoop install mp3tag
-  scoop install makemkv
+  # scoop install steam
+  # scoop install musicbee
+  # scoop install ubisoftconnect
+  # scoop install obs-studio
+  # scoop install audacity
+  # scoop install blender
+  # scoop install crystaldiskinfo
+  # scoop install crystaldiskmark
+  # scoop install gimp
+  # scoop install mp3tag
+  # scoop install makemkv
 }
 
 # Reference https://qiita.com/rhene/items/d8a0c0c7d637904e14da#%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88

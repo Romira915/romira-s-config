@@ -4,27 +4,27 @@
 	"Sources": [
 		{
 			"Packages": [
-				{
-					"Id": "Google.Chrome"
-				},
-				{
-					"Id": "File-New-Project.EarTrumpet"
-				},
-				{
-					"Id": "Discord.Discord"
-				},
-				{
-					"Id": "VivaldiTechnologies.Vivaldi"
-				},
-				{
-					"Id": "VideoLAN.VLC"
-				},
-				{
-					"Id": "Microsoft.Teams"
-				},
-				{
-					"Id": "Microsoft.Office"
-				},
+				// {
+				// 	"Id": "Google.Chrome"
+				// },
+				// {
+				// 	"Id": "File-New-Project.EarTrumpet"
+				// },
+				// {
+				// 	"Id": "Discord.Discord"
+				// },
+				// {
+				// 	"Id": "VivaldiTechnologies.Vivaldi"
+				// },
+				// {
+				// 	"Id": "VideoLAN.VLC"
+				// },
+				// {
+				// 	"Id": "Microsoft.Teams"
+				// },
+				// {
+				// 	"Id": "Microsoft.Office"
+				// },
 				{
 					"Id": "BlueStack.BlueStacks"
 				},
@@ -33,16 +33,16 @@
 				},
 				{
 					"Id": "Microsoft.VisualStudio.Enterprise"
-				},
-				{
-					"Id": "UnityTechnologies.UnityHub"
-				},
-				{
-					"Id": "LINE.LINE"
-				},
-				{
-					"Id": "TeamViewer.TeamViewer"
 				}
+				// {
+				// 	"Id": "UnityTechnologies.UnityHub"
+				// },
+				// {
+				// 	"Id": "LINE.LINE"
+				// },
+				// {
+				// 	"Id": "TeamViewer.TeamViewer"
+				// }
 			],
 			"SourceDetails": {
 				"Argument": "https://winget.azureedge.net/cache",
