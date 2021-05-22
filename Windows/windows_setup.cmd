@@ -5,12 +5,12 @@ powershell -ExecutionPolicy Unrestricted -File ..\scoop\scoop_setup.ps1
 
 @REM Setting git config.
 @REM Change your user name.
-@REM git config --global user.name "Romira915"
+git config --global user.name "Romira915"
 @REM Change your user email.
-@REM git config --global user.email 40430090+Romira915@users.noreply.github.com
-@REM git config --global alias.tree "log --graph --all --format=\"%x09%C(cyan bold)%an%Creset%x09%C(yellow)%h%Creset %C(magenta reverse)%d%Creset %s\""
-@REM git config --global alias.ignore '!gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}; gi'
-@REM git config --global init.defaultBranch main
+%USERPROFILE%\scoop\shims\git.exe config --global user.email 40430090+Romira915@users.noreply.github.com
+%USERPROFILE%\scoop\shims\git.exe config --global alias.tree "log --graph --all --format=\"%x09%C(cyan bold)%an%Creset%x09%C(yellow)%h%Creset %C(magenta reverse)%d%Creset %s\""
+%USERPROFILE%\scoop\shims\git.exe config --global alias.ignore '!gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}; gi'
+%USERPROFILE%\scoop\shims\git.exe config --global init.defaultBranch main
 
 @REM xcopy ..\WindowsTerminal\settings.json "%LOCALAPPDATA%\Microsoft\Windows Terminal\"
 xcopy ..\WindowsTerminal\settings.json "%LOCALAPPDATA%\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\"

@@ -7,6 +7,3 @@ echo -e 'export PATH=$(cygpath -p -u $ORIGINAL_PATH):$PATH' >> /etc/profile
 
 # Setting fish
 fish ../fish/fish_setup.fish
-
-# Setting vim
-cp -r ../vim/. ~/
