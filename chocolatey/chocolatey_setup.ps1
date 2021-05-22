@@ -13,7 +13,7 @@ choco install -y deepl
 choco install -y hwinfo
 choco install -y sumatrapdf
 choco install -y wireshark
-choco install -y docker
+choco install -y docker-desktop
 choco install -y authy-desktop
 choco install -y googlejapaneseinput
 choco install -y eartrumpet

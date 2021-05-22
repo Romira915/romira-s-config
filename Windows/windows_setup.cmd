@@ -1,11 +1,13 @@
 cd /d %~dp0
 
+@REM Install package manager
 powershell -ExecutionPolicy Unrestricted -File ..\chocolatey\chocolatey_setup.ps1
-powershell -ExecutionPolicy Unrestricted -File ..\scoop\scoop_setup.ps1 
+powershell -ExecutionPolicy Unrestricted -File ..\scoop\scoop_setup.ps1
+start https://github.com/microsoft/winget-cli/releases
 
 @REM Setting git config.
 @REM Change your user name.
-git config --global user.name "Romira915"
+%USERPROFILE%\scoop\shims\git.exe config --global user.name "Romira915"
 @REM Change your user email.
 %USERPROFILE%\scoop\shims\git.exe config --global user.email 40430090+Romira915@users.noreply.github.com
 %USERPROFILE%\scoop\shims\git.exe config --global alias.tree "log --graph --all --format=\"%x09%C(cyan bold)%an%Creset%x09%C(yellow)%h%Creset %C(magenta reverse)%d%Creset %s\""
