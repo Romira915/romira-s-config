@@ -2,9 +2,6 @@ $desktop=$TRUE
 
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
-choco install -y git
-choco install -y 7zip
-choco install -y sudo
 choco install -y googlechrome
 choco install -y firefox
 choco install -y vscode
@@ -12,25 +9,14 @@ choco install -y slack
 choco install -y microsoft-windows-terminal
 choco install -y openvpn
 choco install -y jetbrainstoolbox
-choco install -y nodejs-lts
-choco install -y rustup.install
 choco install -y vlc
 choco install -y deepl
-choco install -y miniconda3
 choco install -y hwinfo
-choco install -y pandoc
-choco install -y pandoc-crossref
 choco install -y sumatrapdf
 choco install -y wireshark
 choco install -y docker
-choco install -y msys2
-choco install -y openjdk
-choco install -y gh
 choco install -y authy-desktop
 choco install -y googlejapaneseinput
-choco install -y maven
-choco install -y vim
-choco install -y gradle
 choco install -y eartrumpet
 choco install -y vivaldi
 choco install -y microsoft-teams

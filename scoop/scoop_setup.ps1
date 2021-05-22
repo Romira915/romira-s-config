@@ -20,9 +20,9 @@ Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.
 # }
 
 # install basic module
-# scoop install git
-# scoop install 7zip
-# scoop install sudo
+scoop install git
+scoop install 7zip
+scoop install sudo
 
 # add bucket
 scoop bucket add extras
@@ -37,32 +37,17 @@ scoop bucket add versions
 # $SCOOP_ROOT = if ($env:SCOOP) {$env:SCOOP} else {"$home\scoop"}
 $SCOOP_ROOT = "${home}\scoop"
 
-# scoop install googlechrome
-# scoop install firefox
-# scoop install vscode
-# reg import $SCOOP_ROOT\apps\vscode\current\vscode-install-context.reg  # add context menu
-# scoop install slack
-# scoop install windows-terminal
-# sudo scoop install openvpn
-# scoop install jetbrains-toolbox
-# scoop install nodejs-lts
-# scoop install rustup
-# scoop install vlc
-# scoop install deepl
-# scoop install miniconda3
-# scoop install hwinfo
-# scoop install pandoc
-# scoop install pandoc-crossref
-# scoop install wireshark
-# scoop install docker
-# scoop install msys2
-# scoop install openjdk
-# scoop install gh
-# scoop install authy
-# scoop install google-japanese-input-np
-# scoop install maven
-# scoop install vim
-# scoop install gradle
+scoop install nodejs-lts
+scoop install rustup
+scoop install miniconda3
+scoop install pandoc
+scoop install pandoc-crossref
+scoop install msys2
+scoop install openjdk
+scoop install gh
+scoop install maven
+scoop install vim
+scoop install gradle
 scoop install ghq
 
 if ($desktop) {

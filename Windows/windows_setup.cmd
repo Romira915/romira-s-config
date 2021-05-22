@@ -12,6 +12,7 @@ powershell -ExecutionPolicy Unrestricted -File ..\scoop\scoop_setup.ps1
 @REM git config --global alias.ignore '!gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}; gi'
 @REM git config --global init.defaultBranch main
 
-xcopy ..\WindowsTerminal\settings.json "%LOCALAPPDATA%\Microsoft\Windows Terminal\"
+@REM xcopy ..\WindowsTerminal\settings.json "%LOCALAPPDATA%\Microsoft\Windows Terminal\"
+xcopy ..\WindowsTerminal\settings.json "%LOCALAPPDATA%\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\"
 powershell -ExecutionPolicy Unrestricted -File .\fonts_setup.ps1
 powershell -ExecutionPolicy Unrestricted -File ..\wsl2\wsl2_setup.ps1
