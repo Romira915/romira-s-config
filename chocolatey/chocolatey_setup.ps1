@@ -1,56 +1,56 @@
-$desktop=True
+$desktop=$TRUE
 
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
-choco install git
-choco install 7zip
-choco install sudo
-choco install googlechrome
-choco install firefox
-choco install vscode
-choco install slack
-choco install microsoft-windows-terminal
-choco install openvpn
-choco install jetbrainstoolbox
-choco install nodejs-lts
-choco install rustup.install
-choco install vlc
-choco install deepl
-choco install miniconda3
-choco install hwinfo
-choco install pandoc
-choco install pandoc-crossref
-choco install sumatrapdf
-choco install wireshark
-choco install docker
-choco install msys2
-choco install openjdk
-choco install gh
-choco install authy-desktop
-choco install googlejapaneseinput
-choco install maven
-choco install vim
-choco install gradle
-choco install eartrumpet
-choco install vivaldi
-choco install microsoft-teams
-choco install office-tool
-choco install unity-hub
-choco install line
-choco install teamviewer
+choco install -y git
+choco install -y 7zip
+choco install -y sudo
+choco install -y googlechrome
+choco install -y firefox
+choco install -y vscode
+choco install -y slack
+choco install -y microsoft-windows-terminal
+choco install -y openvpn
+choco install -y jetbrainstoolbox
+choco install -y nodejs-lts
+choco install -y rustup.install
+choco install -y vlc
+choco install -y deepl
+choco install -y miniconda3
+choco install -y hwinfo
+choco install -y pandoc
+choco install -y pandoc-crossref
+choco install -y sumatrapdf
+choco install -y wireshark
+choco install -y docker
+choco install -y msys2
+choco install -y openjdk
+choco install -y gh
+choco install -y authy-desktop
+choco install -y googlejapaneseinput
+choco install -y maven
+choco install -y vim
+choco install -y gradle
+choco install -y eartrumpet
+choco install -y vivaldi
+choco install -y microsoft-teams
+choco install -y office-tool
+choco install -y unity-hub
+choco install -y line
+choco install -y teamviewer
 
 if ($desktop) {
-    choco install steam
-    choco install musicbee
-    choco install ubisoft-connect
-    choco install uplay
-    choco install obs
-    choco install audacity
-    choco install blender
-    choco install crystaldiskinfo
-    choco install crystaldiskmark
-    choco install gimp
-    choco install mp3tag
-    choco install makemkv
-    choco install discord
+    choco install -y steam
+    choco install -y musicbee
+    choco install -y ubisoft-connect
+    choco install -y uplay
+    choco install -y obs
+    choco install -y audacity
+    choco install -y blender
+    choco install -y crystaldiskinfo
+    choco install -y crystaldiskmark
+    choco install -y gimp
+    choco install -y mp3tag
+    choco install -y makemkv
+    choco install -y discord
 }
