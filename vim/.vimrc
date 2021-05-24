@@ -55,3 +55,13 @@ set smartindent
 set laststatus=2
 set wildmenu
 set backspace=indent,eol,start
+syntax enable
+
+colorscheme tender
+if (has("termguicolors"))
+ set termguicolors
+endif
+" set lighline theme inside lightline config
+let g:lightline = { 'colorscheme': 'tender' }
+" set airline theme
+let g:airline_theme = 'tender'

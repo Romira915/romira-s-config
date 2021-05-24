@@ -1,8 +1,8 @@
 [[plugins]]
-repo = 'junegunn/fzf'
 build_on = '''
 ./install -all
 '''
+repo = 'junegunn/fzf'
 
 [[plugins]]
 repo = 'junegunn/fzf.vim'
@@ -15,3 +15,6 @@ repo = 'vim-jp/vimdoc-ja'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
+
+[[plugins]]
+repo = 'jacoborus/tender.vim'

@@ -40,6 +40,8 @@ $SCOOP_ROOT = "${home}\scoop"
 scoop install nodejs-lts
 scoop install rustup
 scoop install miniconda3
+echo "auto_activate_base: false" >> ~/.condarc
+echo "changeps1: false" >> ~/.condarc
 scoop install pandoc
 scoop install pandoc-crossref
 scoop install msys2
