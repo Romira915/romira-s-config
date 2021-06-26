@@ -14,7 +14,7 @@ zsh ../zsh/preztoinit.sh
 
 # Install cargo
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-bass source $HOME/.cargo/env
+source $HOME/.cargo/env
 
 # Install Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
