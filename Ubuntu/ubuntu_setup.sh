@@ -51,6 +51,18 @@ echo "auto_activate_base: false" >> ~/.condarc
 # Setting vim
 cp -r ../vim/. ~/
 
+# Install Tex Live
+wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+tar -xvf install-tl-unx.tar.gz
+sudo ./install-tl*/install-tl
+sudo /usr/local/texlive/????/bin/*/tlmgr path add
+
+# Install pandoc
+brew install pandoc
+
+# Install font
+sudo apt install -y ttf-mscorefonts-installer
+
 # Install other
 brew install maven 
 brew install gradle
