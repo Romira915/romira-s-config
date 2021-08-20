@@ -23,6 +23,7 @@ choco install -y office-tool
 choco install -y unity-hub
 choco install -y line
 choco install -y teamviewer
+choco install -y google-drive-file-stream
 
 if ($desktop) {
     choco install -y steam
