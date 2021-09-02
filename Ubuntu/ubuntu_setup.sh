@@ -50,6 +50,7 @@ echo "auto_activate_base: false" >> ~/.condarc
 
 # Setting vim
 cp -r ../vim/. ~/
+echo "export EDITOR=vim" >> ~/.profile
 
 # Install Tex Live
 wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
