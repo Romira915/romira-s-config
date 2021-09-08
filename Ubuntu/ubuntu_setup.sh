@@ -17,12 +17,9 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source $HOME/.cargo/env
 
 # Install Homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> ~/.profile
-eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+./homebrew_setup.sh
 
 # Setting git config.
-brew install git
 git config --global user.name "Romira915" # Change your user name.
 git config --global user.email 40430090+Romira915@users.noreply.github.com # Change your user email.
 git config --global alias.tree "log --graph --all --format=\"%x09%C(cyan bold)%an%Creset%x09%C(yellow)%h%Creset %C(magenta reverse)%d%Creset %s\""
@@ -37,7 +34,6 @@ sudo apt install -y fish
 chsh -s $(which fish)
 
 # Setting fisher
-brew install ghq
 fish ../fish/fish_setup.fish
 
 # Install Miniconda
@@ -58,14 +54,5 @@ tar -xvf install-tl-unx.tar.gz
 sudo ./install-tl*/install-tl
 sudo /usr/local/texlive/????/bin/*/tlmgr path add
 
-# Install pandoc
-brew install pandoc
-
 # Install font
 sudo apt install -y ttf-mscorefonts-installer
-
-# Install other
-brew install maven 
-brew install gradle
-brew install java
-brew install gh
