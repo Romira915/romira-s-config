@@ -56,3 +56,6 @@ sudo /usr/local/texlive/????/bin/*/tlmgr path add
 
 # Install font
 sudo apt install -y ttf-mscorefonts-installer
+
+# Install azure cli
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash

@@ -16,3 +16,4 @@ brew install gh
 brew install terraform
 brew install node
 brew install sqlite
+brew install oci-cli
