@@ -24,6 +24,7 @@ choco install -y unity-hub
 choco install -y line
 choco install -y teamviewer
 choco install -y google-drive-file-stream
+choco install -y virtualbox
 
 if ($desktop) {
     choco install -y steam

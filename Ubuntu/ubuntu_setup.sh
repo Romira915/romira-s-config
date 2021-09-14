@@ -59,3 +59,11 @@ sudo apt install -y ttf-mscorefonts-installer
 
 # Install azure cli
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+
+# Install vagrant
+curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+sudo apt-get update && sudo apt-get install vagrant
+echo 'export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"' >> ~/.profile
+echo 'PATH="$PATH:/mnt/c/Program Files/Oracle/VirtualBox"' >> ~/.profile
+vagrant plugin install virtualbox_WSL2
