@@ -27,6 +27,7 @@ choco install -y google-drive-file-stream
 choco install -y virtualbox
 choco install -y parsec
 choco install -y zoom
+choco install -y notion
 
 if ($desktop) {
     choco install -y steam
