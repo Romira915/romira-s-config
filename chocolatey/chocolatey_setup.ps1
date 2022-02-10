@@ -5,7 +5,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 choco install -y googlechrome
 choco install -y firefox
 choco install -y slack
-choco install -y microsoft-windows-terminal
+# choco install -y microsoft-windows-terminal
 choco install -y openvpn
 choco install -y jetbrainstoolbox
 choco install -y vlc
