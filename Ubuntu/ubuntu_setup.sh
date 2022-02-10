@@ -67,3 +67,7 @@ sudo apt-get update && sudo apt-get install vagrant
 echo 'export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"' >> ~/.profile
 echo 'PATH="$PATH:/mnt/c/Program Files/Oracle/VirtualBox"' >> ~/.profile
 vagrant plugin install virtualbox_WSL2
+
+# Install Volta
+curl https://get.volta.sh | bash
+volta install node@16
