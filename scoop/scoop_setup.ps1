@@ -51,6 +51,7 @@ scoop install maven
 scoop install vim
 scoop install gradle
 scoop install ghq
+scoop install vagrant
 
 if ($desktop) {
   # scoop install steam

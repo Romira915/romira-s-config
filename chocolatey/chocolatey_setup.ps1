@@ -27,7 +27,10 @@ choco install -y google-drive-file-stream
 choco install -y virtualbox
 choco install -y parsec
 choco install -y zoom
+choco install -y wakemeonlan
 choco install -y notion
+choco install -y dropbox
+choco install -y nextcloud-client
 
 if ($desktop) {
     choco install -y steam
@@ -45,4 +48,5 @@ if ($desktop) {
     choco install -y discord
     choco install -y voicemeeter-banana
     choco install -y borderlessgaming
+    choco install -y xmedia-recode
 }
