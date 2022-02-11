@@ -3,7 +3,8 @@ cd /d %~dp0
 @REM Install package manager
 powershell -ExecutionPolicy Unrestricted -File ..\chocolatey\chocolatey_setup.ps1
 powershell -ExecutionPolicy Unrestricted -File ..\scoop\scoop_setup.ps1
-start https://github.com/microsoft/winget-cli/releases
+powershell -ExecutionPolicy Unrestricted -File ..\winget\winget_setup.ps1
+@REM start https://github.com/microsoft/winget-cli/releases
 
 @REM Setting git config.
 @REM Change your user name.
