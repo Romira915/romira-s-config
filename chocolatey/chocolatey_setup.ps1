@@ -1,4 +1,8 @@
-$desktop=$TRUE
+Param(
+    [String]$is_desktop = "False"
+    )
+
+$is_desktop_bool = [System.Convert]::ToBoolean($is_desktop)
 
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
@@ -32,7 +36,7 @@ choco install -y notion
 choco install -y dropbox
 choco install -y nextcloud-client
 
-if ($desktop) {
+if ($is_desktop_bool) {
     choco install -y steam
     choco install -y musicbee
     choco install -y ubisoft-connect
