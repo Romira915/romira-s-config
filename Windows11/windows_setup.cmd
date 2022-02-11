@@ -19,3 +19,5 @@ start https://github.com/microsoft/winget-cli/releases
 xcopy ..\WindowsTerminal\settings.json "%LOCALAPPDATA%\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\"
 powershell -ExecutionPolicy Unrestricted -File .\fonts_setup.ps1
 @REM powershell -ExecutionPolicy Unrestricted -File ..\wsl2\wsl2_setup.ps1
+
+powershell -ExecutionPolicy Unrestricted -File ..\wsl2\wsl2_for_windows11.ps1
