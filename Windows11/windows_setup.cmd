@@ -15,6 +15,7 @@ powershell -ExecutionPolicy Unrestricted -File ..\winget\winget_setup.ps1
 %USERPROFILE%\scoop\shims\git.exe config --global alias.ignore '!gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}; gi'
 %USERPROFILE%\scoop\shims\git.exe config --global init.defaultBranch main
 %USERPROFILE%\scoop\shims\git.exe config --global github.user "Romira915"
+%USERPROFILE%\scoop\shims\git.exe config --global core.autocrlf false
 
 @REM xcopy ..\WindowsTerminal\settings.json "%LOCALAPPDATA%\Microsoft\Windows Terminal\"
 xcopy ..\WindowsTerminal\settings.json "%LOCALAPPDATA%\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\"
