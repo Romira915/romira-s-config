@@ -70,4 +70,4 @@ vagrant plugin install virtualbox_WSL2
 
 # Install Volta
 curl https://get.volta.sh | bash
-volta install node@16
+~/.volta/bin/volta install node@16
