@@ -1,6 +1,9 @@
 #!/bin/bash
 cd `dirname $0`
 
+sudo echo "[interop]
+appendWindowsPath = false" >> /etc/wsl.conf
+
 # The usual.
 sudo apt update
 sudo apt upgrade -y
