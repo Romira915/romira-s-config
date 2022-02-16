@@ -37,7 +37,6 @@ scoop bucket add versions
 # $SCOOP_ROOT = if ($env:SCOOP) {$env:SCOOP} else {"$home\scoop"}
 $SCOOP_ROOT = "${home}\scoop"
 
-scoop install nodejs-lts
 scoop install rustup
 scoop install miniconda3
 echo "auto_activate_base: false" >> ~/.condarc
@@ -52,6 +51,7 @@ scoop install vim
 scoop install gradle
 scoop install ghq
 scoop install vagrant
+scoop install volta
 
 if ($desktop) {
   # scoop install steam
