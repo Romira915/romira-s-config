@@ -35,6 +35,7 @@ choco install -y wakemeonlan
 choco install -y notion
 choco install -y dropbox
 choco install -y nextcloud-client
+choco install -y procmon
 
 if ($is_desktop_bool) {
     choco install -y steam
