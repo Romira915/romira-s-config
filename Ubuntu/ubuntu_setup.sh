@@ -1,8 +1,7 @@
 #!/bin/bash
 cd `dirname $0`
 
-sudo echo "[interop]
-appendWindowsPath = false" >> /etc/wsl.conf
+sudo cp ./wsl.conf /etc/wsl.conf
 
 # The usual.
 sudo apt update
@@ -13,14 +12,14 @@ sudo apt install -y build-essential procps curl file git lldb
 
 # Setting zsh
 sudo apt install -y zsh
-zsh -c 'sudo ../zsh/preztoinit.sh'
+zsh ../zsh/preztoinit.sh
 
 # Install cargo
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source $HOME/.cargo/env
 
 # Install Homebrew
-sudo ./homebrew_setup.sh
+./homebrew_setup.sh
 
 # Setting git config.
 git config --global user.name "Romira915" # Change your user name.
@@ -37,7 +36,7 @@ sudo apt install -y fish
 chsh -s $(which fish)
 
 # Setting fisher
-fish -c 'sudo ../fish/fish_setup.fish'
+fish ../fish/fish_setup.fish
 
 # Install Miniconda
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
