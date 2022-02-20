@@ -2,6 +2,7 @@
 cd `dirname $0`
 
 sudo cp ./wsl.conf /etc/wsl.conf
+echo PATH='$HOME/.win_bin:$PATH' >> ~/.profile
 
 # The usual.
 sudo apt update
