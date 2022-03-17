@@ -36,6 +36,7 @@ choco install -y notion
 choco install -y dropbox
 choco install -y nextcloud-client
 choco install -y procmon
+choco install -y wireguard
 
 if ($is_desktop_bool) {
     choco install -y steam
