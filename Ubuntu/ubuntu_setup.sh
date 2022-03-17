@@ -20,7 +20,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source $HOME/.cargo/env
 
 # Install Homebrew
-./homebrew_setup.sh
+bash ./homebrew_setup.sh
 
 # Setting git config.
 git config --global user.name "Romira915" # Change your user name.
