@@ -52,6 +52,7 @@ scoop install gradle
 scoop install ghq
 scoop install vagrant
 scoop install volta
+scoop install rambox
 
 if ($desktop) {
   # scoop install steam
