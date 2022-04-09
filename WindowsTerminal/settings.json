@@ -27,9 +27,11 @@
       "useAcrylic": true,
       "acrylicOpacity": 0.5,
       "colorScheme": "Ubuntu",
-      "fontSize": 18,
-      "closeOnExit": "graceful",
-      "fontFace": "Cascadia Code PL"
+      "font": {
+        "face": "PlemolJP Console NF",
+        "size": 18
+      },
+      "closeOnExit": "graceful"
     },
     {
       "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
@@ -48,38 +50,14 @@
       "acrylicOpacity": 0.9,
       "fontSize": 16,
       "closeOnExit": "graceful",
-      "fontFace": "Cascadia Code PL",
+      "font": {
+        "face": "PlemolJP Console NF",
+        "size": 16
+      },
       "startingDirectory": "%USERPROFILE%",
       "icon": "https://gitforwindows.org/img/gwindows_logo.png",
       "colorScheme": "shades-of-purple"
     },
-    {
-      "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
-      "hidden": false,
-      "name": "Ubuntu",
-      "source": "Windows.Terminal.Wsl",
-      "useAcrylic": true,
-      "acrylicOpacity": 0.5,
-      "colorScheme": "Ubuntu",
-      "fontSize": 18,
-      "closeOnExit": "graceful",
-      "fontFace": "Cascadia Code PL"
-    },
-    {
-      "acrylicOpacity": 0.5,
-      "closeOnExit": "graceful",
-      "colorScheme": "Campbell",
-      "commandline": "node.exe",
-      "icon": "D:\\Program Files (x86)\\Nodist\\nodejs.ico",
-      "fontFace": "Consolas",
-      "fontSize": 14,
-      "guid": "{3093784E-1B56-4927-8473-9DBE231C528A}",
-      "name": "Node.js",
-      "startingDirectory": "%USERPROFILE%",
-      "tabTitle": "Node.js",
-      "useAcrylic": true,
-      "hidden": true
-    }
   ],
   // Add custom color schemes to this array
   "schemes": [
