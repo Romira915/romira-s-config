@@ -37,6 +37,7 @@ choco install -y dropbox
 choco install -y nextcloud-client
 choco install -y procmon
 choco install -y wireguard
+choco install -y font-hackgen-nerd
 
 if ($is_desktop_bool) {
     choco install -y steam
