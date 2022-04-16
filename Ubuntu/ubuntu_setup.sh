@@ -9,7 +9,7 @@ sudo apt update
 sudo apt upgrade -y
 
 # Install basic module
-sudo apt install -y build-essential procps curl file git lldb
+sudo apt install -y build-essential procps curl file git lldb cmake
 
 # Setting zsh
 sudo apt install -y zsh
