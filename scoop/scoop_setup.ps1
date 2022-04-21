@@ -53,6 +53,8 @@ scoop install ghq
 scoop install vagrant
 scoop install volta
 scoop install rambox
+scoop install nu
+scoop install starship
 
 if ($desktop) {
   # scoop install steam
