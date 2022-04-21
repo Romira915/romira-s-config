@@ -58,21 +58,6 @@
       },
       {
         "acrylicOpacity": 0.75,
-        "colorScheme": "Rocky",
-        "font": {
-          "face": "PlemolJP Console NF",
-          "size": 16
-        },
-        "guid": "{4edc856f-af72-5cd2-9ad9-97e18d27846b}",
-        "hidden": false,
-        "icon": "https://wiki.rockylinux.org/icon-primary-64x.png",
-        "name": "Rocky",
-        "source": "Windows.Terminal.Wsl",
-        "tabTitle": "Rocky",
-        "useAcrylic": true
-      },
-      {
-        "acrylicOpacity": 0.75,
         "colorScheme": "shades-of-purple",
         "commandline": "nu.exe",
         "font": {
@@ -85,6 +70,21 @@
         "name": "Nu Shell",
         "useAcrylic": true,
         "startingDirectory": "%USERPROFILE%"
+      },
+      {
+        "acrylicOpacity": 0.75,
+        "colorScheme": "Rocky",
+        "font": {
+          "face": "PlemolJP Console NF",
+          "size": 16
+        },
+        "guid": "{4edc856f-af72-5cd2-9ad9-97e18d27846b}",
+        "hidden": false,
+        "icon": "https://wiki.rockylinux.org/icon-primary-64x.png",
+        "name": "Rocky",
+        "source": "Windows.Terminal.Wsl",
+        "tabTitle": "Rocky",
+        "useAcrylic": true
       }
     ]
   },
