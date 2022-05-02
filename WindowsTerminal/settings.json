@@ -41,12 +41,12 @@
         "useAcrylic": true
       },
       {
-        "acrylicOpacity": 0.90000000000000002,
+        "acrylicOpacity": 0.9,
         "closeOnExit": "graceful",
         "colorScheme": "shades-of-purple",
         "commandline": "%USERPROFILE%/scoop/apps/git/current/bin/bash.exe",
         "font": {
-          "face": "PlemolJP Console NF",
+          "face": "HackGenNerd Console",
           "size": 16
         },
         "guid": "{ca450803-5de7-4507-a8d7-71ecb6eab16a}",
@@ -58,13 +58,28 @@
       },
       {
         "acrylicOpacity": 0.75,
+        "colorScheme": "shades-of-purple",
+        "commandline": "nu.exe",
+        "font": {
+          "face": "PlemolJP Console NF",
+          "size": 18
+        },
+        "guid": "{2b372ca1-1ee2-403d-a839-6d63077ad871}",
+        "hidden": false,
+        "icon": "https://www.google.com/s2/favicons?domain=www.nushell.sh",
+        "name": "Nu Shell",
+        "useAcrylic": true,
+        "startingDirectory": "%USERPROFILE%"
+      },
+      {
+        "acrylicOpacity": 0.75,
         "colorScheme": "Rocky",
         "font": {
           "face": "PlemolJP Console NF",
           "size": 16
         },
         "guid": "{4edc856f-af72-5cd2-9ad9-97e18d27846b}",
-        "hidden": false,
+        "hidden": true,
         "icon": "https://wiki.rockylinux.org/icon-primary-64x.png",
         "name": "Rocky",
         "source": "Windows.Terminal.Wsl",
@@ -142,29 +157,6 @@
       "selectionBackground": "#FFFFFF",
       "white": "#DCDFE4",
       "yellow": "#E5C07B"
-    },
-    {
-      "background": "#094A07",
-      "black": "#0C0C0C",
-      "blue": "#1546DA",
-      "brightBlack": "#767676",
-      "brightBlue": "#3D91FF",
-      "brightCyan": "#61D6D6",
-      "brightGreen": "#16C60C",
-      "brightPurple": "#B4009E",
-      "brightRed": "#E74856",
-      "brightWhite": "#F2F2F2",
-      "brightYellow": "#F9F1A5",
-      "cursorColor": "#000000",
-      "cyan": "#3A96DD",
-      "foreground": "#FFFFFF",
-      "green": "#14AD0F",
-      "name": "Rocky",
-      "purple": "#881798",
-      "red": "#C50F1F",
-      "selectionBackground": "#E565FF",
-      "white": "#CCCCCC",
-      "yellow": "#C19C00"
     },
     {
       "background": "#FAFAFA",
