@@ -39,6 +39,7 @@ choco install -y procmon
 choco install -y wireguard
 choco install -y font-hackgen-nerd
 choco install -y adobe-creative-cloud
+choco install -y jmeter
 
 if ($is_desktop_bool) {
     choco install -y steam
