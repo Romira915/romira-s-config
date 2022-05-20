@@ -6,5 +6,6 @@ Invoke-WebRequest -UseBasicParsing -Uri https://github.com/yuru7/PlemolJP/releas
 Invoke-WebRequest -UseBasicParsing -Uri https://github.com/tomokuni/Myrica/raw/master/product/Myrica.zip
 Invoke-WebRequest -UseBasicParsing -Uri https://github.com/tomokuni/Myrica/raw/master/product/MyricaM.zip
 
-
+Invoke-WebRequest -UseBasicParsing -Uri https://fonts.google.com/download?family=Noto%20Sans%20JP -OutFile Noto_Sans_JP.zip
+Invoke-WebRequest -UseBasicParsing -Uri https://fonts.google.com/download?family=Noto%20Serif%20JP -OutFile Noto_Serif_JP.zip
 # Fonts install
