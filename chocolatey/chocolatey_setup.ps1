@@ -41,6 +41,7 @@ choco install -y font-hackgen-nerd
 choco install -y adobe-creative-cloud
 choco install -y jmeter
 choco install -y postman
+choco install -y du
 
 if ($is_desktop_bool) {
     choco install -y steam
