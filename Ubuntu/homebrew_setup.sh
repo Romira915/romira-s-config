@@ -16,3 +16,5 @@ brew install gh
 brew install terraform
 brew install sqlite
 brew install oci-cli
+brew install go
+brew install graphviz
