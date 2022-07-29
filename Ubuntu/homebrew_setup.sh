@@ -18,3 +18,5 @@ brew install sqlite
 brew install oci-cli
 brew install go
 brew install graphviz
+brew install perl
+brew install cpanm
