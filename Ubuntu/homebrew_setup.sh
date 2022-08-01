@@ -8,6 +8,7 @@ eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 brew install git
 brew install ghq
 brew install pandoc
+brew install pandoc-crossref
 brew install maven 
 brew install gradle
 brew install java
