@@ -43,6 +43,8 @@ choco install -y jmeter
 choco install -y postman
 choco install -y du
 choco install -y devtoys
+choco install -y crystaldiskinfo
+choco install -y crystaldiskmark
 
 if ($is_desktop_bool) {
     choco install -y steam
@@ -52,8 +54,6 @@ if ($is_desktop_bool) {
     choco install -y obs
     choco install -y audacity
     choco install -y blender
-    choco install -y crystaldiskinfo
-    choco install -y crystaldiskmark
     choco install -y gimp
     choco install -y mp3tag
     choco install -y makemkv
