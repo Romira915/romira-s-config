@@ -1,5 +1,6 @@
 cd `dirname $0`
 
+echo "source ~/.bash_profile" >> ~/.bashrc
 echo "export LC_ALL=en_US.utf8" >> ~/.bashrc
 echo "export LANG=en_US.utf8" >> ~/.bashrc
 echo "export LANGUAGE=en_US.utf8" >> ~/.bashrc
@@ -21,3 +22,4 @@ fi" >> ~/.bashrc
 cp -r ../vim/. ~/
 
 conda init bash
+cp ../miniconda3/.condarc ~/.condarc

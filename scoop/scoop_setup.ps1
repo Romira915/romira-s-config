@@ -39,8 +39,6 @@ $SCOOP_ROOT = "${home}\scoop"
 
 scoop install rustup
 scoop install miniconda3
-echo "auto_activate_base: false" | Out-File -Append -Encoding utf8 ~/.condarc
-echo "changeps1: false" | Out-File -Append -Encoding utf8 ~/.condarc
 scoop install pandoc
 scoop install pandoc-crossref
 scoop install msys2
