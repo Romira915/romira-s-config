@@ -46,7 +46,7 @@
         "colorScheme": "shades-of-purple",
         "commandline": "%USERPROFILE%/scoop/apps/git/current/bin/bash.exe",
         "font": {
-          "face": "HackGenNerd Console",
+          "face": "HackGen Console NF",
           "size": 16
         },
         "guid": "{ca450803-5de7-4507-a8d7-71ecb6eab16a}",
