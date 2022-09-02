@@ -3,7 +3,8 @@ cd /d %~dp0
 @REM Install package manager
 powershell -ExecutionPolicy Unrestricted -File ..\chocolatey\chocolatey_setup.ps1
 powershell -ExecutionPolicy Unrestricted -File ..\scoop\scoop_setup.ps1
-start https://github.com/microsoft/winget-cli/releases
+powershell -ExecutionPolicy Unrestricted -File ..\winget\winget_setup.ps1
+@REM start https://github.com/microsoft/winget-cli/releases
 
 @REM Setting git config.
 @REM Change your user name.
@@ -14,6 +15,7 @@ start https://github.com/microsoft/winget-cli/releases
 %USERPROFILE%\scoop\shims\git.exe config --global alias.ignore '!gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}; gi'
 %USERPROFILE%\scoop\shims\git.exe config --global init.defaultBranch main
 %USERPROFILE%\scoop\shims\git.exe config --global github.user "Romira915"
+%USERPROFILE%\scoop\shims\git.exe config --global core.autocrlf false
 
 @REM xcopy ..\WindowsTerminal\settings.json "%LOCALAPPDATA%\Microsoft\Windows Terminal\"
 xcopy ..\WindowsTerminal\settings.json "%LOCALAPPDATA%\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\"
