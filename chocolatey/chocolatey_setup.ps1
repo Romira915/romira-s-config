@@ -62,4 +62,5 @@ if ($is_desktop_bool) {
     choco install -y borderlessgaming
     choco install -y xmedia-recode
     choco install -y vb-cable
+    choco install -y lghub
 }
