@@ -21,3 +21,4 @@ brew install go
 brew install graphviz
 brew install perl
 brew install cpanm
+brew install awscli
