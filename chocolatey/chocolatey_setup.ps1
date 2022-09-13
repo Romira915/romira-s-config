@@ -45,6 +45,7 @@ choco install -y du
 choco install -y devtoys
 choco install -y crystaldiskinfo
 choco install -y crystaldiskmark
+choco install -y powertoys
 
 if ($is_desktop_bool) {
     choco install -y steam
