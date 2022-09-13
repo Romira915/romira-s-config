@@ -46,3 +46,4 @@ echo "source ~/.config/mcfly/mcfly.fish" >> ~/.config/fish/config.fish
 brew install topgrade
 brew install grex
 brew install angle-grinder
+brew install tmux-xpanes
