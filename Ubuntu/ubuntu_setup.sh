@@ -15,6 +15,15 @@ sudo apt install -y build-essential procps curl file git lldb cmake wakeonlan
 sudo apt install -y zsh
 zsh ../zsh/preztoinit.sh
 
+# Install fish
+sudo apt-add-repository ppa:fish-shell/release-3
+sudo apt update
+sudo apt install -y fish
+chsh -s $(which fish)
+
+# Setting fisher
+fish ../fish/fish_setup.fish
+
 # Install cargo
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source $HOME/.cargo/env
@@ -29,15 +38,6 @@ git config --global alias.tree "log --graph --all --format=\"%x09%C(cyan bold)%a
 git config --global alias.ignore '!gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}; gi'
 git config --global init.defaultBranch main
 git config --global github.user "Romira915"
-
-# Install fish
-sudo apt-add-repository ppa:fish-shell/release-3
-sudo apt update
-sudo apt install -y fish
-chsh -s $(which fish)
-
-# Setting fisher
-fish ../fish/fish_setup.fish
 
 # Install Miniconda
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh

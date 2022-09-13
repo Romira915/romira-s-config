@@ -24,3 +24,4 @@ brew install cpanm
 brew install awscli
 brew install peco
 brew install fzf
+brew install zoxide

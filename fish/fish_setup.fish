@@ -17,3 +17,4 @@ echo "function fish_user_key_bindings
   bind \c] peco_select_ghq_repository
   bind \cv\cr peco_recentd
 end" >> ~/.config/fish/config.fish
+echo "zoxide init fish | source" >> ~/.config/fish/config.fish
