@@ -22,3 +22,5 @@ brew install graphviz
 brew install perl
 brew install cpanm
 brew install awscli
+brew install peco
+brew install fzf
