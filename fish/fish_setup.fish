@@ -18,3 +18,7 @@ echo "function fish_user_key_bindings
   bind \cv\cr peco_recentd
 end" >> ~/.config/fish/config.fish
 echo "zoxide init fish | source" >> ~/.config/fish/config.fish
+echo " function zoxide_zi
+  zi
+  commandline -f repaint
+end" >> ~/.config/fish/config.fish
