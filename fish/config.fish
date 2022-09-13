@@ -1,0 +1,23 @@
+bass source ~/.profile
+set -g theme_color_scheme brgrey
+set -g theme_display_date no
+function fish_user_key_bindings
+  bind \cg peco_select_ghq_repository
+  bind \cv\cr zoxide_zi
+end
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+eval /home/romira/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+# <<< conda initialize <<<
+
+set -gx VOLTA_HOME "$HOME/.volta"
+set -gx PATH "$VOLTA_HOME/bin" $PATH
+zoxide init fish | source
+
+function zoxide_zi
+  zi
+  commandline -f repaint
+end
+
+source ~/.config/mcfly/mcfly.fish

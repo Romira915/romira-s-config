@@ -2,7 +2,6 @@
 cd `dirname $0`
 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> ~/.profile
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 brew install git
@@ -42,7 +41,6 @@ brew install sd
 brew tap cantino/mcfly && brew install cantino/mcfly/mcfly
 mcfly init fish ~/.config/mcfly/mcfly.fish
 sd -s "\\cr" "\\ca" ~/.config/mcfly/mcfly.fish
-echo "source ~/.config/mcfly/mcfly.fish" >> ~/.config/fish/config.fish
 brew install topgrade
 brew install grex
 brew install angle-grinder

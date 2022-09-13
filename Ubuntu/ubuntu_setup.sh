@@ -1,8 +1,16 @@
 #!/bin/bash
 cd `dirname $0`
 
-sudo cp ./wsl.conf /etc/wsl.conf
-echo PATH='$HOME/.win_bin:$PATH' >> ~/.profile
+# Symbolic links config files
+sudo ln -fs /home/romira/.config/romira-s-config/Ubuntu/wsl.conf /etc/wsl.conf
+ln -fs /home/romira/.config/romira-s-config/shell/.profile ~/.profile
+ln -fs /home/romira/.config/romira-s-config/fish/config.fish ~/.config/fish/config.fish
+ln -fs /home/romira/.config/romira-s-config/zsh/.zpreztorc ~/.zpreztorc
+ln -fs /home/romira/.config/romira-s-config/git/.gitconfig ~/.gitconfig
+ln -fs /home/romira/.config/romira-s-config/tmux/.tmux.conf ~/.tmux.conf
+ln -fs /home/romira/.config/romira-s-config/vim/.vimrc ~/.vimrc
+ln -fs /home/romira/.config/romira-s-config/vim/.vim ~/.vim
+ln -fs /home/romira/.config/romira-s-config/miniconda3/.condarc ~/.condarc
 
 # The usual.
 sudo apt update
@@ -31,25 +39,12 @@ source $HOME/.cargo/env
 # Install Homebrew
 bash ./homebrew_setup.sh
 
-# Setting git config.
-git config --global user.name "Romira915" # Change your user name.
-git config --global user.email 40430090+Romira915@users.noreply.github.com # Change your user email.
-git config --global alias.tree "log --graph --all --format=\"%x09%C(cyan bold)%an%Creset%x09%C(yellow)%h%Creset %C(magenta reverse)%d%Creset %s\""
-git config --global alias.ignore '!gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}; gi'
-git config --global init.defaultBranch main
-git config --global github.user "Romira915"
-
 # Install Miniconda
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
 rm -f Miniconda3-latest-Linux-x86_64.sh
 ~/miniconda3/bin/conda init fish
 ~/miniconda3/bin/conda init zsh
-echo "auto_activate_base: false" >> ~/.condarc
-
-# Setting vim
-cp -r ../vim/. ~/
-echo "export EDITOR=vim" >> ~/.profile
 
 # Install Tex Live
 wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
@@ -68,8 +63,6 @@ curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
 sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
 sudo apt-get update && sudo apt-get install vagrant
-echo 'export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"' >> ~/.profile
-echo 'PATH="$PATH:/mnt/c/Program Files/Oracle/VirtualBox"' >> ~/.profile
 vagrant plugin install virtualbox_WSL2
 
 # Install Volta
@@ -80,8 +73,4 @@ curl https://get.volta.sh | bash
 git clone https://github.com/fcsonline/tmux-thumbs ~/.tmux/plugins/tmux-thumbs
 cd ~/.tmux/plugins/tmux-thumbs
 cargo build --release
-echo "run-shell ~/.tmux/plugins/tmux-thumbs/tmux-thumbs.tmux" >> ~/.tmux.conf
 cd `dirname $0`
-
-# Setting alias
-echo 'alias pwdw="wslpath -w $(pwd)"' >> ~/.profile
