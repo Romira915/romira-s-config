@@ -76,5 +76,12 @@ vagrant plugin install virtualbox_WSL2
 curl https://get.volta.sh | bash
 ~/.volta/bin/volta install node@16
 
+# Install tmux-thumbs
+git clone https://github.com/fcsonline/tmux-thumbs ~/.tmux/plugins/tmux-thumbs
+cd ~/.tmux/plugins/tmux-thumbs
+cargo build --release
+echo "run-shell ~/.tmux/plugins/tmux-thumbs/tmux-thumbs.tmux" >> ~/.tmux.conf
+cd `dirname $0`
+
 # Setting alias
 echo 'alias pwdw="wslpath -w $(pwd)"' >> ~/.profile

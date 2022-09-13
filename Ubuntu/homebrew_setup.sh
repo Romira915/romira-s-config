@@ -24,4 +24,25 @@ brew install cpanm
 brew install awscli
 brew install peco
 brew install fzf
+brew install tmux
+# Make in Rust tools
 brew install zoxide
+brew install bat
+brew install ripgrep
+brew install rga
+brew install fd
+brew install exa
+brew install git-delta
+brew install xh
+brew install dog
+brew install sk
+brew tap tgotwig/linux-dust && brew install dust
+brew install bottom
+brew install sd
+brew tap cantino/mcfly && brew install cantino/mcfly/mcfly
+mcfly init fish ~/.config/mcfly/mcfly.fish
+sd -s "\\cr" "\\ca" ~/.config/mcfly/mcfly.fish
+echo "source ~/.config/mcfly/mcfly.fish" >> ~/.config/fish/config.fish
+brew install topgrade
+brew install grex
+brew install angle-grinder
