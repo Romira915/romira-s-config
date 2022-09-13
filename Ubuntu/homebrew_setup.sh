@@ -47,3 +47,4 @@ brew install topgrade
 brew install grex
 brew install angle-grinder
 brew install tmux-xpanes
+brew install gping
