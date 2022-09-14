@@ -3,7 +3,8 @@ set -g theme_color_scheme brgrey
 set -g theme_display_date no
 function fish_user_key_bindings
   bind \cg peco_select_ghq_repository
-  bind \cv\cr zoxide_zi
+  bind \cf\cr zoxide_zi
+  bind \cf\cg gh_repo_get
 end
 
 # >>> conda initialize >>>
@@ -17,6 +18,11 @@ zoxide init fish | source
 
 function zoxide_zi
   zi
+  commandline -f repaint
+end
+
+function gh_repo_get
+  gh repo list | sk | awk '{print $1}' | read REPO && ghq get -p $REPO
   commandline -f repaint
 end
 
