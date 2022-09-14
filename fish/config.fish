@@ -3,8 +3,8 @@ set -g theme_color_scheme brgrey
 set -g theme_display_date no
 function fish_user_key_bindings
   bind \cg peco_select_ghq_repository
-  bind \cf\cr zoxide_zi
-  bind \cf\cg gh_repo_get
+  bind \cv\cr zoxide_zi
+  bind \cv\cg gh_repo_get
 end
 
 # >>> conda initialize >>>

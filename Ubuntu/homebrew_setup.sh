@@ -39,7 +39,7 @@ brew tap tgotwig/linux-dust && brew install dust
 brew install bottom
 brew install sd
 brew tap cantino/mcfly && brew install cantino/mcfly/mcfly
-mcfly init fish ~/.config/mcfly/mcfly.fish
+mcfly init fish > ~/.config/mcfly/mcfly.fish
 sd -s "\\cr" "\\cw" ~/.config/mcfly/mcfly.fish
 brew install topgrade
 brew install grex
