@@ -2,7 +2,6 @@
 cd `dirname $0`
 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> ~/.profile
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 brew install git
@@ -21,3 +20,30 @@ brew install go
 brew install graphviz
 brew install perl
 brew install cpanm
+brew install awscli
+brew install peco
+brew install fzf
+brew install tmux
+# Make in Rust tools
+brew install zoxide
+brew install bat
+brew install ripgrep
+brew install rga
+brew install fd
+brew install exa
+brew install git-delta
+brew install xh
+brew install dog
+brew install sk
+brew tap tgotwig/linux-dust && brew install dust
+brew install bottom
+brew install sd
+brew tap cantino/mcfly && brew install cantino/mcfly/mcfly
+mkdir -p ~/.config/mcfly
+mcfly init fish > ~/.config/mcfly/mcfly.fish
+sd -s "\\cr" "\\cw" ~/.config/mcfly/mcfly.fish
+brew install topgrade
+brew install grex
+brew install angle-grinder
+brew install tmux-xpanes
+brew install gping

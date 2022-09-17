@@ -67,3 +67,5 @@ colorscheme tender
 let g:lightline = { 'colorscheme': 'tender' }
 " set airline theme
 let g:airline_theme = 'tender'
+
+:cnoremap w!! w !sudo tee % > /dev/null

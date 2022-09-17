@@ -45,6 +45,7 @@ choco install -y du
 choco install -y devtoys
 choco install -y crystaldiskinfo
 choco install -y crystaldiskmark
+choco install -y powertoys
 
 if ($is_desktop_bool) {
     choco install -y steam
@@ -62,4 +63,5 @@ if ($is_desktop_bool) {
     choco install -y borderlessgaming
     choco install -y xmedia-recode
     choco install -y vb-cable
+    choco install -y lghub
 }
