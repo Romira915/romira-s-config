@@ -32,6 +32,6 @@ export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
 PATH="$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
-alias pwdw="wslpath -w $(pwd)"
+alias pwdw='wslpath -w $(pwd)'
 alias ls="exa"
 alias la="exa -la"
