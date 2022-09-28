@@ -47,3 +47,5 @@ brew install grex
 brew install angle-grinder
 brew install tmux-xpanes
 brew install gping
+# End: Make in Rust tools
+brew install git-lfs
