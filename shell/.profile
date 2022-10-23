@@ -35,3 +35,4 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 alias pwdw='wslpath -w $(pwd)'
 alias ls="exa"
 alias la="exa -la"
+alias pwdw2c="pwdw | clip"

@@ -4,8 +4,8 @@ set -g theme_display_date no
 function fish_user_key_bindings
 #  bind \cg peco_select_ghq_repository
   bind \cg cd_ghq_sk
-  bind \cv\cr zoxide_zi
-  bind \cv\cg gh_repo_get
+  bind \cb\cr zoxide_zi
+  bind \cb\cg gh_repo_get
 end
 
 # >>> conda initialize >>>
