@@ -19,6 +19,8 @@ sudo apt install -y build-essential procps curl file git lldb cmake wakeonlan
 sudo apt install -y zsh
 zsh ../zsh/preztoinit.sh
 ln -fs /home/romira/.config/romira-s-config/zsh/.zpreztorc ~/.zpreztorc
+ln -fs /home/romira/.config/romira-s-config/zsh/.zshrc ~/.zshrc
+ln -fs $HOME/.config/romira-s-config/zsh/.git-prompt.sh ~/.git-prompt.sh
 
 # Install fish
 sudo apt-add-repository ppa:fish-shell/release-3
@@ -35,7 +37,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source $HOME/.cargo/env
 
 # Install Homebrew
-bash ./homebrew_setup.sh
+bash ./homebrew/homebrew_setup.sh
 ln -fs /home/romira/.config/romira-s-config/tmux/.tmux.conf ~/.tmux.conf
 
 # Install Miniconda

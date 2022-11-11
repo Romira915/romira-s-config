@@ -10,7 +10,7 @@ end
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-eval /home/romira/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+eval /Users/romira/miniconda3/bin/conda "shell.fish" "hook" $argv | source
 # <<< conda initialize <<<
 
 set -gx VOLTA_HOME "$HOME/.volta"

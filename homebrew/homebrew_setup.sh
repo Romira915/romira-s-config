@@ -2,7 +2,31 @@
 cd `dirname $0`
 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+if [ "$(uname)" == 'Darwin' ]; then
+    # Mac Only
+    eval $(/opt/homebrew/bin/brew shellenv)
+    brew install wget
+
+    # Install font
+    brew tap homebrew/cask-fonts
+    brew install font-hackgen
+    brew install font-hackgen-nerd
+    brew install font-plemol-jp
+    brew install font-plemol-jp-nf
+    brew install font-plemol-jp-nfj
+    brew install font-plemol-jp-hs
+    brew install --cask font-myrica
+    brew install --cask font-myricam
+    brew install --cask font-noto-sans-jp
+    brew install --cask font-noto-serif-jp
+    brew tap sanemat/font
+    brew install ricty --with-powerline
+    cp -f /opt/homebrew/opt/ricty/share/fonts/Ricty*.ttf ~/Library/Fonts/
+    fc-cache -vf
+elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
+    # Linux Only
+    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+fi
 
 brew install git
 brew install ghq
@@ -35,7 +59,11 @@ brew install git-delta
 brew install xh
 brew install dog
 brew install sk
-brew tap tgotwig/linux-dust && brew install dust
+if [ "$(uname)" == 'Darwin' ]; then
+    brew install dust
+elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
+    brew tap tgotwig/linux-dust && brew install dust
+fi
 brew install bottom
 brew install sd
 brew tap cantino/mcfly && brew install cantino/mcfly/mcfly
@@ -50,4 +78,3 @@ brew install gping
 # End: Make in Rust tools
 brew install git-lfs
 brew install starship
-echo 'eval "$(starship init zsh)"' >> ~/.zshrc

@@ -26,13 +26,19 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 . "$HOME/.cargo/env"
-eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+if [ "$(uname)" == 'Darwin' ]; then
+    # Mac Only
+    eval $(/opt/homebrew/bin/brew shellenv)
+elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
+    # Linux Only
+    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+    PATH="$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
+    alias pwdw='wslpath -w $(pwd)'
+    alias pwdw2c="pwdw | clip"
+fi
 export EDITOR=vim
 export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
-PATH="$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
-alias pwdw='wslpath -w $(pwd)'
 alias ls="exa"
 alias la="exa -la"
-alias pwdw2c="pwdw | clip"
