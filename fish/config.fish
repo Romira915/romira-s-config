@@ -33,4 +33,9 @@ function gh_repo_get
 end
 
 source ~/.config/mcfly/mcfly.fish
-bass eval (ssh-agent) &>/dev/null
+
+switch (uname)
+case Linux
+  bass eval (ssh-agent) &>/dev/null
+case Darwin
+end
