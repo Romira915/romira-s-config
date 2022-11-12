@@ -33,11 +33,11 @@ elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     # Linux Only
     eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
     PATH="$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
+    export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
     alias pwdw='wslpath -w $(pwd)'
     alias pwdw2c="pwdw | clip"
 fi
 export EDITOR=vim
-export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 alias ls="exa"
