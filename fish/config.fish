@@ -39,10 +39,3 @@ case Linux
   bass eval (ssh-agent) &>/dev/null
 case Darwin
 end
-
-function on_exit --on-event fish_exit
-  switch (uname)
-  case Linux
-    bass eval (ssh-agent -k) &>/dev/null
-  end
-end
