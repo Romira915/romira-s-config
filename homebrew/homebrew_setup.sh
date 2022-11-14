@@ -6,6 +6,7 @@ if [ "$(uname)" == 'Darwin' ]; then
     # Mac Only
     eval $(/opt/homebrew/bin/brew shellenv)
     brew install wget
+    brew install p7zip
 
     # Install font
     brew tap homebrew/cask-fonts
