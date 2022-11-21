@@ -7,6 +7,7 @@ ln -fs /home/romira/.config/romira-s-config/shell/.profile ~/.profile
 ln -fs /home/romira/.config/romira-s-config/git/.gitconfig ~/.gitconfig
 ln -fs /home/romira/.config/romira-s-config/vim/.vimrc ~/.vimrc
 ln -fs /home/romira/.config/romira-s-config/vim/.vim ~/.vim
+ln -fs $HOME/.config/romira-s-config/latex/.latexmkrc ~/.latexmkrc
 
 # The usual.
 sudo apt update
