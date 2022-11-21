@@ -32,3 +32,4 @@ brew install --cask discord
 brew install --cask iterm2
 brew install --cask microsoft-edge
 brew install --cask skim
+brew install --cask vmware-fusion
