@@ -69,3 +69,4 @@ let g:lightline = { 'colorscheme': 'tender' }
 let g:airline_theme = 'tender'
 
 :cnoremap w!! w !sudo tee % > /dev/null
+set rtp+=/opt/homebrew/opt/fzf
