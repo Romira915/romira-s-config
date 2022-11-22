@@ -80,3 +80,4 @@ brew install gping
 # End: Make in Rust tools
 brew install git-lfs
 brew install starship
+brew install ghostscript

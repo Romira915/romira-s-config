@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 
 # LaTeX
-$latex = 'lualatex -synctex=1 -halt-on-error -interaction=nonstopmode -file-line-error %O %S';
+$latex = 'lualatex -synctex=1 -halt-on-error -interaction=nonstopmode -file-line-error -shell-escape %O %S';
 $max_repeat = 5;
 
 # BibTeX
