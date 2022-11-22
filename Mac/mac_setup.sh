@@ -54,3 +54,4 @@ wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
 tar -xvf install-tl-unx.tar.gz
 sudo ./install-tl*/install-tl
 sudo /usr/local/texlive/????/bin/*/tlmgr path add
+cpanm Log::Log4perl Log::Dispatch::File YAML::Tiny File::HomeDir Unicode::GCString
