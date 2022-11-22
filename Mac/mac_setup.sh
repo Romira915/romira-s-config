@@ -6,6 +6,7 @@ ln -fs $HOME/.config/romira-s-config/git/.gitconfig ~/.gitconfig
 ln -fs $HOME/.config/romira-s-config/shell/.profile ~/.profile
 ln -fs $HOME/.config/romira-s-config/vim/.vimrc ~/.vimrc
 ln -fs $HOME/.config/romira-s-config/vim/.vim ~/.vim
+ln -fs $HOME/.config/romira-s-config/latex/.latexmkrc ~/.latexmkrc
 
 # Setting zsh
 zsh ../zsh/preztoinit.sh
