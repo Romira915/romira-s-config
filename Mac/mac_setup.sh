@@ -6,6 +6,7 @@ ln -fs $HOME/.config/romira-s-config/git/.gitconfig ~/.gitconfig
 ln -fs $HOME/.config/romira-s-config/shell/.profile ~/.profile
 ln -fs $HOME/.config/romira-s-config/vim/.vimrc ~/.vimrc
 ln -fs $HOME/.config/romira-s-config/vim/.vim ~/.vim
+ln -fs $HOME/.config/romira-s-config/latex/.latexmkrc ~/.latexmkrc
 
 # Setting zsh
 zsh ../zsh/preztoinit.sh
@@ -48,3 +49,10 @@ git clone https://github.com/fcsonline/tmux-thumbs ~/.tmux/plugins/tmux-thumbs
 cd ~/.tmux/plugins/tmux-thumbs
 cargo build --release
 cd `dirname $0`
+
+# Install Tex Live
+wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+tar -xvf install-tl-unx.tar.gz
+sudo ./install-tl*/install-tl
+sudo /usr/local/texlive/????/bin/*/tlmgr path add
+cpanm Log::Log4perl Log::Dispatch::File YAML::Tiny File::HomeDir Unicode::GCString

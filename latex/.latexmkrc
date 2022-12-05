@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 
 # LaTeX
-$latex = 'lualatex -synctex=1 -halt-on-error -interaction=nonstopmode -file-line-error %O %S';
+$latex = 'lualatex -synctex=1 -halt-on-error -interaction=nonstopmode -file-line-error -shell-escape %O %S';
 $max_repeat = 5;
 
 # BibTeX
@@ -22,7 +22,8 @@ if ($^O eq 'linux') {
     $pdf_previewer = "xdg-open %S";
 } elsif ($^O eq 'darwin') {
     $dvi_previewer = "open %S";
-    $pdf_previewer = "open %S";
+    # $pdf_previewer = "open %S";
+    $pdf_previewer = 'open -ga /Applications/Skim.app';
 } else {
     $dvi_previewer = "start %S";
     $pdf_previewer = "start %S";
