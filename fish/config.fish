@@ -5,7 +5,7 @@ function fish_user_key_bindings
 #  bind \cg peco_select_ghq_repository
   bind \cg cd_ghq_sk
   bind \cb\cr zoxide_zi
-  bind \cb\cg gh_repo_get
+  bind \cb\cg get_gh_repo
 end
 
 # >>> conda initialize >>>
@@ -27,8 +27,8 @@ function cd_ghq_sk
   commandline -f repaint
 end
 
-function gh_repo_get
-  gh repo list $argv | sk | awk '{print $1}' | read REPO && ghq get -p $REPO
+function get_gh_repo
+  gh repo list -L 1000 $argv | sk | awk '{print $1}' | read REPO && ghq get -p $REPO
   commandline -f repaint
 end
 
