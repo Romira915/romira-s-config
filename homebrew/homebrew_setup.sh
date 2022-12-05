@@ -71,7 +71,7 @@ brew install sd
 brew tap cantino/mcfly && brew install cantino/mcfly/mcfly
 mkdir -p ~/.config/mcfly
 mcfly init fish > ~/.config/mcfly/mcfly.fish
-sd -s "\\cr" "\\cw" ~/.config/mcfly/mcfly.fish
+sd -s "\\cr" "\\ck" ~/.config/mcfly/mcfly.fish
 brew install topgrade
 brew install grex
 brew install angle-grinder
