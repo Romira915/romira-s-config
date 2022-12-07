@@ -81,3 +81,4 @@ brew install gping
 brew install git-lfs
 brew install starship
 brew install ghostscript
+brew install gnuplot
