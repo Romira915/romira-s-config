@@ -48,6 +48,7 @@ choco install -y crystaldiskmark
 choco install -y powertoys
 choco install -y figma
 choco install -y bitwarden
+choco install -y rufus
 
 if ($is_desktop_bool) {
     choco install -y steam
