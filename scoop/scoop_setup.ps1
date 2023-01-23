@@ -53,6 +53,7 @@ scoop install volta
 scoop install rambox
 scoop install nu
 scoop install starship
+scoop install gcc
 
 if ($desktop) {
   # scoop install steam
