@@ -34,3 +34,4 @@ brew install --cask microsoft-edge
 brew install --cask skim
 brew install --cask vmware-fusion
 brew install --cask openmtp
+brew install --cask mathpix-snipping-tool
