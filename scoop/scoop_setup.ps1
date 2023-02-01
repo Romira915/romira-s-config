@@ -54,6 +54,7 @@ scoop install rambox
 scoop install nu
 scoop install starship
 scoop install gcc
+scoop install mathpix
 
 if ($desktop) {
   # scoop install steam
