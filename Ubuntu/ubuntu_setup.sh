@@ -2,11 +2,11 @@
 cd `dirname $0`
 
 # Symbolic links config files
-sudo ln -fs /home/romira/.config/romira-s-config/Ubuntu/wsl.conf /etc/wsl.conf
-ln -fs /home/romira/.config/romira-s-config/shell/.profile ~/.profile
-ln -fs /home/romira/.config/romira-s-config/git/.gitconfig ~/.gitconfig
-ln -fs /home/romira/.config/romira-s-config/vim/.vimrc ~/.vimrc
-ln -fs /home/romira/.config/romira-s-config/vim/.vim ~/.vim
+sudo ln -fs $HOME/.config/romira-s-config/Ubuntu/wsl.conf /etc/wsl.conf
+ln -fs $HOME/.config/romira-s-config/shell/.profile ~/.profile
+ln -fs $HOME/.config/romira-s-config/git/.gitconfig ~/.gitconfig
+ln -fs $HOME/.config/romira-s-config/vim/.vimrc ~/.vimrc
+ln -fs $HOME/.config/romira-s-config/vim/.vim ~/.vim
 ln -fs $HOME/.config/romira-s-config/latex/.latexmkrc ~/.latexmkrc
 
 # The usual.
@@ -19,8 +19,8 @@ sudo apt install -y build-essential procps curl file git lldb cmake wakeonlan
 # Setting zsh
 sudo apt install -y zsh
 zsh ../zsh/preztoinit.sh
-ln -fs /home/romira/.config/romira-s-config/zsh/.zpreztorc ~/.zpreztorc
-ln -fs /home/romira/.config/romira-s-config/zsh/.zshrc ~/.zshrc
+ln -fs $HOME/.config/romira-s-config/zsh/.zpreztorc ~/.zpreztorc
+ln -fs $HOME/.config/romira-s-config/zsh/.zshrc ~/.zshrc
 ln -fs $HOME/.config/romira-s-config/zsh/.git-prompt.sh ~/.git-prompt.sh
 
 # Install fish
@@ -31,21 +31,21 @@ chsh -s $(which fish)
 
 # Setting fisher
 fish ../fish/fish_setup.fish
-ln -fs /home/romira/.config/romira-s-config/fish/config.fish ~/.config/fish/config.fish
+ln -fs $HOME/.config/romira-s-config/fish/config.fish ~/.config/fish/config.fish
 
 # Install cargo
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source $HOME/.cargo/env
 
 # Install Homebrew
-bash ./homebrew/homebrew_setup.sh
-ln -fs /home/romira/.config/romira-s-config/tmux/.tmux.conf ~/.tmux.conf
+bash ../homebrew/homebrew_setup.sh
+ln -fs $HOME/.config/romira-s-config/tmux/.tmux.conf ~/.tmux.conf
 
 # Install Miniconda
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
 rm -f Miniconda3-latest-Linux-x86_64.sh
-ln -fs /home/romira/.config/romira-s-config/miniconda3/.condarc ~/.condarc
+ln -fs $HOME/.config/romira-s-config/miniconda3/.condarc ~/.condarc
 ~/miniconda3/bin/conda init fish
 ~/miniconda3/bin/conda init zsh
 
