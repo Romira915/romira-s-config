@@ -84,3 +84,5 @@ brew install ghostscript
 brew install gnuplot
 brew install php
 brew install composer
+brew install tfmigrate
+
