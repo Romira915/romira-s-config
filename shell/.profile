@@ -45,5 +45,5 @@ alias la="exa -la"
 
 if [[ "$(uname -r)" == *microsoft* ]]; then
     # WSL Only
-    export BROWSER="/mnt/c/Program\ Files\ (x86)/Microsoft/Edge/Application/msedge.exe"
+    export BROWSER="msedge"
 fi
