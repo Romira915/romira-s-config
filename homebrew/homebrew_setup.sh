@@ -88,4 +88,4 @@ brew install tfmigrate
 brew install ansible
 brew install ansible-lint 
 brew install ansible-language-server
-
+brew install bitwarden-cli
