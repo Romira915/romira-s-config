@@ -49,5 +49,5 @@ if [[ "$(uname -r)" == *microsoft* ]]; then
     # WSL Only
     export BROWSER="msedge"
     /usr/bin/keychain -q --nogui
-    source $HOME/.keychain/$NAME-sh
+    source $HOME/.keychain/$(hostname)-sh
 fi
