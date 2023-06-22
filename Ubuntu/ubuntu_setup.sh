@@ -14,7 +14,7 @@ sudo apt update
 sudo apt upgrade -y
 
 # Install basic module
-sudo apt install -y build-essential procps curl file git lldb cmake wakeonlan
+sudo apt install -y build-essential procps curl file git lldb cmake wakeonlan keychain
 
 # Setting zsh
 sudo apt install -y zsh
