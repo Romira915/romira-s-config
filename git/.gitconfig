@@ -10,7 +10,7 @@
 [github]
 	user = Romira915
 [ghq]
-	root = ~/workspace/project/
+	root = ~/workspace/repositories/
 
 [core]
     pager = delta
