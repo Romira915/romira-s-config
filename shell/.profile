@@ -31,6 +31,7 @@ fi
 if [ "$(uname)" == 'Darwin' ]; then
     # Mac Only
     eval $(/opt/homebrew/bin/brew shellenv)
+    export SSH_ASKPASS_REQUIRE=force
 elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     # Linux Only
     eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
