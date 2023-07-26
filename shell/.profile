@@ -51,3 +51,8 @@ if [[ "$(uname -r)" == *microsoft* ]]; then
     /usr/bin/keychain -q --nogui
     source $HOME/.keychain/$(hostname)-sh
 fi
+
+export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
