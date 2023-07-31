@@ -46,3 +46,5 @@ function on_exit --on-event fish_exit
 #    bass eval (ssh-agent -k) &>/dev/null
   end
 end
+
+pyenv init - | source
