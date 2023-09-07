@@ -37,3 +37,4 @@ brew install --cask openmtp
 brew install --cask mathpix-snipping-tool
 brew install --cask dbeaver-community
 brew install --cask orbstack
+brew install --cask vpn-by-google-one
