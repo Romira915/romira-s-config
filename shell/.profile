@@ -51,6 +51,14 @@ if [[ "$(uname -r)" == *microsoft* ]]; then
     export BROWSER="msedge"
     /usr/bin/keychain -q --nogui
     source $HOME/.keychain/$(hostname)-sh
+    export GTK_IM_MODULE=fcitx
+    export QT_IM_MODULE=fcitx
+    export XMODIFIERS=@im=fcitx
+    export DefaultIMModule=fcitx
+    if [ $SHLVL = 1 ] ; then
+      (fcitx-autostart > /dev/null 2>&1 &)
+      xset -r 49  > /dev/null 2>&1
+    fi
 fi
 
 export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
