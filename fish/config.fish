@@ -50,6 +50,6 @@ end
 pyenv init - | source
 
 function open_jira
-    set current_branch (git branch --show-current)
+    set current_branch (git branch --show-current) | sed 's/feature\///g'
     open https://prtimes.atlassian.net/browse/$current_branch
 end
