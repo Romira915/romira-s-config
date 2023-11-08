@@ -48,3 +48,8 @@ function on_exit --on-event fish_exit
 end
 
 pyenv init - | source
+
+function open_jira
+    set current_branch (git branch --show-current)
+    open https://prtimes.atlassian.net/browse/$current_branch
+end
