@@ -11,19 +11,18 @@
 export LANG="en_US.UTF-8"
 
 # set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
+if [ -d "$HOME/bin" ]; then
     PATH="$HOME/bin:$PATH"
 fi
 
 # set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
+if [ -d "$HOME/.local/bin" ]; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 . "$HOME/.cargo/env"
 if [ "$(uname)" == 'Darwin' ]; then
     # Mac Only
     eval $(/opt/homebrew/bin/brew shellenv)
-    export SSH_ASKPASS_REQUIRE=force
 elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     # Linux Only
     eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
@@ -47,9 +46,9 @@ if [[ "$(uname -r)" == *microsoft* ]]; then
     export QT_IM_MODULE=fcitx
     export XMODIFIERS=@im=fcitx
     export DefaultIMModule=fcitx
-    if [ $SHLVL = 1 ] ; then
-      (fcitx-autostart > /dev/null 2>&1 &)
-      xset -r 49  > /dev/null 2>&1
+    if [ $SHLVL = 1 ]; then
+        (fcitx-autostart >/dev/null 2>&1 &)
+        xset -r 49 >/dev/null 2>&1
     fi
 fi
 
