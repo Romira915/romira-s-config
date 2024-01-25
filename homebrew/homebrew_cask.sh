@@ -1,5 +1,5 @@
 #!/bin/bash
-cd `dirname $0`
+cd $(dirname $0)
 
 brew install --cask visual-studio-code
 brew install --cask google-chrome
@@ -40,3 +40,4 @@ brew install --cask obs
 brew install --cask orbstack
 brew install --cask vpn-by-google-one
 brew install --cask keycastr
+brew install --cask zulip
