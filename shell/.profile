@@ -56,3 +56,8 @@ export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+if [ -d "$HOME/.local/share/binaryen/bin" ] ; then
+    PATH="$HOME/.local/share/binaryen/bin:$PATH"
+fi
+
