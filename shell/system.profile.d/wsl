@@ -1,0 +1,13 @@
+export BROWSER="msedge"
+/usr/bin/keychain -q --nogui
+if [ -f $HOME/.keychain/$(hostname)-sh ]; then
+    source $HOME/.keychain/$(hostname)-sh
+fi
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export DefaultIMModule=fcitx
+if [ $SHLVL = 1 ]; then
+    (fcitx-autostart >/dev/null 2>&1 &)
+    xset -r 49 >/dev/null 2>&1
+fi
