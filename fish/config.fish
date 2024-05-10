@@ -10,7 +10,7 @@ end
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-eval $HOME/.miniconda3/bin/conda "shell.fish" "hook" $argv | source
+# eval $HOME/.miniconda3/bin/conda "shell.fish" "hook" $argv | source
 # <<< conda initialize <<<
 
 set -gx VOLTA_HOME "$HOME/.volta"
@@ -47,9 +47,25 @@ function on_exit --on-event fish_exit
   end
 end
 
-pyenv init - | source
+# pyenv init - | source
+
+function jira_ticket
+    set ticket (git branch --show-current | sed 's/feature\///g')
+    echo $ticket
+end
+
+function jira_url
+    echo https://prtimes.atlassian.net/browse/(jira_ticket)
+end
 
 function open_jira
-    set current_branch (git branch --show-current | sed 's/feature\///g')
-    open https://prtimes.atlassian.net/browse/$current_branch
+    open (jira_url)
+end
+
+function ghprc
+    set ticket_name (jira_ticket)
+    set ticket_url (jira_url)
+    gh pr create -a @me -t "$ticket_name:" -b "## JIRA
+$ticket_url
+" -w
 end

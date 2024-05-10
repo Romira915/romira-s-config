@@ -19,44 +19,39 @@ fi
 if [ -d "$HOME/.local/bin" ]; then
     PATH="$HOME/.local/bin:$PATH"
 fi
-. "$HOME/.cargo/env"
+
+if [ -r "$HOME/.cargo/env" ]; then
+    . "$HOME/.cargo/env"
+fi
 if [ "$(uname)" == 'Darwin' ]; then
     # Mac Only
-    eval $(/opt/homebrew/bin/brew shellenv)
+    . ~/.config/romira-s-config/shell/system.profile.d/darwin
 elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     # Linux Only
-    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-    PATH="$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
-    export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
-    alias pwdw='wslpath -w $(pwd)'
-    alias pwdw2c="pwdw | clip"
+    . ~/.config/romira-s-config/shell/system.profile.d/linux
 fi
-export EDITOR=vim
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-alias ls="exa"
-alias la="exa -la"
-
 if [[ "$(uname -r)" == *microsoft* ]]; then
     # WSL Only
-    export BROWSER="msedge"
-    /usr/bin/keychain -q --nogui
-    source $HOME/.keychain/$(hostname)-sh
-    export GTK_IM_MODULE=fcitx
-    export QT_IM_MODULE=fcitx
-    export XMODIFIERS=@im=fcitx
-    export DefaultIMModule=fcitx
-    if [ $SHLVL = 1 ]; then
-        (fcitx-autostart >/dev/null 2>&1 &)
-        xset -r 49 >/dev/null 2>&1
-    fi
+    . ~/.config/romira-s-config/shell/system.profile.d/wsl
 fi
+
+export EDITOR=vim
+export VOLTA_HOME="$HOME/.volta"
+if [ -d "$VOLTA_HOME/bin" ]; then
+    export PATH="$VOLTA_HOME/bin:$PATH"
+fi
+
+alias ls="exa"
+alias la="exa -la"
 
 export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+command -v pyenv >/dev/null && eval "$(pyenv init -)"
 
 if [ -d "$HOME/.local/share/binaryen/bin" ]; then
     PATH="$HOME/.local/share/binaryen/bin:$PATH"
 fi
+for f in $HOME/.config/romira-s-config/shell/profile.d/*; do
+    [ -f "$f" ] && source "$f"
+done
