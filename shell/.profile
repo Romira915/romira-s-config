@@ -24,19 +24,21 @@ if [ -r "$HOME/.cargo/env" ]; then
     . "$HOME/.cargo/env"
 fi
 
+command -v setopt >/dev/null 2>&1 && setopt +o nomatch
 for f in $HOME/.config/romira-s-config/shell/profile.d/*; do
     [ -f "$f" ] && source "$f"
     # ファイルがなかった場合何もしないとなぜか詰まるのでなんかする
     echo "Sourced $f" >/dev/null
 done
-if [ "$(uname)" == 'Darwin' ]; then
+command -v setopt >/dev/null 2>&1 && setopt -o nomatch
+if [ "$(uname)" = 'Darwin' ]; then
     # Mac Only
     . ~/.config/romira-s-config/shell/system.profile.d/darwin
-elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
+elif [ "$(expr substr $(uname -s) 1 5)" = 'Linux' ]; then
     # Linux Only
     . ~/.config/romira-s-config/shell/system.profile.d/linux
 fi
-if [[ "$(uname -r)" == *microsoft* ]]; then
+if [[ "$(uname -r)" = *microsoft* ]]; then
     # WSL Only
     . ~/.config/romira-s-config/shell/system.profile.d/wsl
 fi
@@ -58,5 +60,3 @@ command -v pyenv >/dev/null && eval "$(pyenv init -)"
 if [ -d "$HOME/.local/share/binaryen/bin" ]; then
     PATH="$HOME/.local/share/binaryen/bin:$PATH"
 fi
-
-
