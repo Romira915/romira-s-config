@@ -8,10 +8,9 @@ function fish_user_key_bindings
   bind \cb\cg get_gh_repo
 end
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-# eval $HOME/.miniconda3/bin/conda "shell.fish" "hook" $argv | source
-# <<< conda initialize <<<
+for f in ~/.config/romira-s-config/fish/config.d/*.fish
+    source $f
+end
 
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx PATH "$VOLTA_HOME/bin" $PATH
@@ -33,21 +32,6 @@ function get_gh_repo
 end
 
 source ~/.config/mcfly/mcfly.fish
-
-switch (uname)
-case Linux
-#  bass eval (ssh-agent) &>/dev/null
-case Darwin
-end
-
-function on_exit --on-event fish_exit
-  switch (uname)
-  case Linux
-#    bass eval (ssh-agent -k) &>/dev/null
-  end
-end
-
-# pyenv init - | source
 
 function jira_ticket
     set ticket (git branch --show-current | sed 's/feature\///g')
