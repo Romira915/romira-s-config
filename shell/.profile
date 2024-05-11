@@ -23,6 +23,12 @@ fi
 if [ -r "$HOME/.cargo/env" ]; then
     . "$HOME/.cargo/env"
 fi
+
+for f in $HOME/.config/romira-s-config/shell/profile.d/*; do
+    [ -f "$f" ] && source "$f"
+    # ファイルがなかった場合何もしないとなぜか詰まるのでなんかする
+    echo "Sourced $f" >/dev/null
+done
 if [ "$(uname)" == 'Darwin' ]; then
     # Mac Only
     . ~/.config/romira-s-config/shell/system.profile.d/darwin
@@ -52,6 +58,5 @@ command -v pyenv >/dev/null && eval "$(pyenv init -)"
 if [ -d "$HOME/.local/share/binaryen/bin" ]; then
     PATH="$HOME/.local/share/binaryen/bin:$PATH"
 fi
-for f in $HOME/.config/romira-s-config/shell/profile.d/*; do
-    [ -f "$f" ] && source "$f"
-done
+
+
