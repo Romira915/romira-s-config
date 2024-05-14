@@ -32,24 +32,3 @@ function get_gh_repo
 end
 
 source ~/.config/mcfly/mcfly.fish
-
-function jira_ticket
-    set ticket (git branch --show-current | sed 's/feature\///g')
-    echo $ticket
-end
-
-function jira_url
-    echo https://prtimes.atlassian.net/browse/(jira_ticket)
-end
-
-function open_jira
-    open (jira_url)
-end
-
-function ghprc
-    set ticket_name (jira_ticket)
-    set ticket_url (jira_url)
-    gh pr create -a @me -t "$ticket_name:" -b "## JIRA
-$ticket_url
-" -w
-end
