@@ -49,8 +49,8 @@ if [ -d "$VOLTA_HOME/bin" ]; then
     export PATH="$VOLTA_HOME/bin:$PATH"
 fi
 
-alias ls="exa"
-alias la="exa -la"
+alias ls="eza"
+alias la="eza -la"
 
 export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
 export PYENV_ROOT="$HOME/.pyenv"
