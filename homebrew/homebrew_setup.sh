@@ -1,5 +1,5 @@
 #!/bin/bash
-cd `dirname $0`
+cd $(dirname $0)
 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 if [ "$(uname)" == 'Darwin' ]; then
@@ -34,7 +34,7 @@ brew install git
 brew install ghq
 brew install pandoc
 brew install pandoc-crossref
-brew install maven 
+brew install maven
 brew install gradle
 brew install java
 brew install openjdk
@@ -56,7 +56,7 @@ brew install bat
 brew install ripgrep
 brew install rga
 brew install fd
-brew install exa
+brew install eza
 brew install git-delta
 brew install xh
 brew install dog
@@ -70,7 +70,7 @@ brew install bottom
 brew install sd
 brew tap cantino/mcfly && brew install cantino/mcfly/mcfly
 mkdir -p ~/.config/mcfly
-mcfly init fish > ~/.config/mcfly/mcfly.fish
+mcfly init fish >~/.config/mcfly/mcfly.fish
 sd -s "\\cr" "\\ck" ~/.config/mcfly/mcfly.fish
 brew install topgrade
 brew install grex
@@ -86,6 +86,6 @@ brew install php
 brew install composer
 brew install tfmigrate
 brew install ansible
-brew install ansible-lint 
+brew install ansible-lint
 brew install ansible-language-server
 brew install bitwarden-cli
