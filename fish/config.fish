@@ -32,3 +32,6 @@ function get_gh_repo
 end
 
 source ~/.config/mcfly/mcfly.fish
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '~/.tmp/google-cloud-sdk/path.fish.inc' ]; . '~/.tmp/google-cloud-sdk/path.fish.inc'; end
