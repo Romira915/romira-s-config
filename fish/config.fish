@@ -11,6 +11,10 @@ end
 for f in ~/.config/romira-s-config/fish/config.d/*.fish
     source $f
 end
+if string match -q "*microsoft*" (uname -r)
+    # WSL Only
+    source ~/.config/romira-s-config/fish/system.config.d/wsl.fish
+end
 
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx PATH "$VOLTA_HOME/bin" $PATH
@@ -32,3 +36,6 @@ function get_gh_repo
 end
 
 source ~/.config/mcfly/mcfly.fish
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/yuudai.tanaka/.tmp/google-cloud-sdk/path.fish.inc' ]; . '/Users/yuudai.tanaka/.tmp/google-cloud-sdk/path.fish.inc'; end
