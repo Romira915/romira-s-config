@@ -60,3 +60,7 @@ command -v pyenv >/dev/null && eval "$(pyenv init -)"
 if [ -d "$HOME/.local/share/binaryen/bin" ]; then
     PATH="$HOME/.local/share/binaryen/bin:$PATH"
 fi
+
+if [ -d "$HOME/.go/bin" ]; then
+    PATH="$HOME/.go/bin:$PATH"
+fi
