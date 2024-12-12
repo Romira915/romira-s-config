@@ -42,3 +42,4 @@ brew install --cask vpn-by-google-one
 brew install --cask keycastr
 brew install --cask zulip
 brew install --cask tailscale
+brew install --cask rectangle
