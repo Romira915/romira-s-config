@@ -14,7 +14,6 @@ brew install --cask docker
 brew install --cask authy
 brew install --cask google-japanese-ime
 brew install --cask vivaldi
-brew install --cask microsoft-teams
 brew install --cask microsoft-office
 brew install --cask unity
 brew install --cask teamviewer
@@ -43,3 +42,4 @@ brew install --cask keycastr
 brew install --cask zulip
 brew install --cask tailscale
 brew install --cask rectangle
+brew install --cask jordanbaird-ice
