@@ -10,7 +10,6 @@ if [ "$(uname)" == 'Darwin' ]; then
     brew install htop
 
     # Install font
-    brew tap homebrew/cask-fonts
     brew install font-hackgen
     brew install font-hackgen-nerd
     brew install font-plemol-jp
@@ -21,10 +20,6 @@ if [ "$(uname)" == 'Darwin' ]; then
     brew install --cask font-myricam
     brew install --cask font-noto-sans-jp
     brew install --cask font-noto-serif-jp
-    brew tap sanemat/font
-    brew install ricty --with-powerline
-    cp -f /opt/homebrew/opt/ricty/share/fonts/Ricty*.ttf ~/Library/Fonts/
-    fc-cache -vf
 elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     # Linux Only
     eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
@@ -47,7 +42,6 @@ brew install graphviz
 brew install perl
 brew install cpanm
 brew install awscli
-brew install peco
 brew install fzf
 brew install tmux
 # Make in Rust tools
@@ -69,9 +63,6 @@ fi
 brew install bottom
 brew install sd
 brew tap cantino/mcfly && brew install cantino/mcfly/mcfly
-mkdir -p ~/.config/mcfly
-mcfly init fish >~/.config/mcfly/mcfly.fish
-sd -s "\\cr" "\\ck" ~/.config/mcfly/mcfly.fish
 brew install topgrade
 brew install grex
 brew install angle-grinder

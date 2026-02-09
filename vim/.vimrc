@@ -65,8 +65,6 @@ syntax enable
 colorscheme tender
 " set lighline theme inside lightline config
 let g:lightline = { 'colorscheme': 'tender' }
-" set airline theme
-let g:airline_theme = 'tender'
 
 :cnoremap w!! w !sudo tee % > /dev/null
 set rtp+=/opt/homebrew/opt/fzf
