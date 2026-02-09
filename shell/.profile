@@ -64,3 +64,8 @@ fi
 if [ -d "$HOME/.go/bin" ]; then
     PATH="$HOME/.go/bin:$PATH"
 fi
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:$HOME/.lmstudio/bin"
+# End of LM Studio CLI section
+
