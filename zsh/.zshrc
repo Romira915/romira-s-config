@@ -48,4 +48,8 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# makeコマンドの関数定義を無効化
+unfunction make 2>/dev/null || true
+
 source $HOME/.profile
+

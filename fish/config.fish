@@ -49,3 +49,4 @@ end
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/yuudai.tanaka/.tmp/google-cloud-sdk/path.fish.inc' ]; . '/Users/yuudai.tanaka/.tmp/google-cloud-sdk/path.fish.inc'; end
+
