@@ -11,7 +11,6 @@ brew install --cask vlc
 brew install --cask deepl
 brew install --cask wireshark
 brew install --cask docker
-brew install --cask authy
 brew install --cask google-japanese-ime
 brew install --cask vivaldi
 brew install --cask microsoft-office
@@ -37,7 +36,6 @@ brew install --cask mathpix-snipping-tool
 brew install --cask dbeaver-community
 brew install --cask obs
 brew install --cask orbstack
-brew install --cask vpn-by-google-one
 brew install --cask keycastr
 brew install --cask zulip
 brew install --cask tailscale

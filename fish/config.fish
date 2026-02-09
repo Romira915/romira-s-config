@@ -1,8 +1,5 @@
 bass source ~/.profile
-set -g theme_color_scheme brgrey
-set -g theme_display_date no
 function fish_user_key_bindings
-#  bind \cg peco_select_ghq_repository
   bind \cg cd_ghq_sk
   bind \cb\cr zoxide_zi
   bind \cb\cg get_gh_repo
