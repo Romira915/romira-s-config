@@ -16,26 +16,8 @@ if string match -q "*microsoft*" (uname -r)
     source ~/.config/romira-s-config/fish/system.config.d/wsl.fish
 end
 
-set -gx VOLTA_HOME "$HOME/.volta"
-set -gx PATH "$VOLTA_HOME/bin" $PATH
 zoxide init fish | source
-
-function zoxide_zi
-  zi
-  commandline -f repaint
-end
-
-function cd_ghq_sk
-  ghq list | sk | read REPO && cd (ghq root)/$REPO
-  commandline -f repaint
-end
-
-function get_gh_repo
-  gh repo list -L 1000 $argv | sk | awk '{print $1}' | read REPO && ghq get -p $REPO
-  commandline -f repaint
-end
-
-source ~/.config/mcfly/mcfly.fish
+mcfly init fish | source
 
 function bw-add-ssh
   set -l item_id "d8778a92-7c5f-481d-a046-fa59ecb65132"
@@ -48,5 +30,5 @@ function bw-add-ssh
 end
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/yuudai.tanaka/.tmp/google-cloud-sdk/path.fish.inc' ]; . '/Users/yuudai.tanaka/.tmp/google-cloud-sdk/path.fish.inc'; end
+if [ -f "$HOME/.tmp/google-cloud-sdk/path.fish.inc" ]; . "$HOME/.tmp/google-cloud-sdk/path.fish.inc"; end
 

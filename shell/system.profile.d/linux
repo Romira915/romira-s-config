@@ -1,5 +1,2 @@
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-PATH="$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
-export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
-alias pwdw='wslpath -w $(pwd)'
-alias pwdw2c="pwdw | clip"
+export LD_LIBRARY_PATH="$HOME/.local/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"

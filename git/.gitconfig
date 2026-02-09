@@ -37,3 +37,5 @@
 	process = git-lfs filter-process
 [include]
 	path = ~/.gitconfig.local
+[coderabbit]
+	machineId = cli/53f69c3805c0477cb49acec3d100d7ba

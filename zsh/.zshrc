@@ -5,15 +5,6 @@ fi
 
 # Customize to your needs...
 
-setopt PROMPT_SUBST
-source ~/.git-prompt.sh
-
-# git補完 詳細設定
-GIT_PS1_SHOWDIRTYSTATE=1
-GIT_PS1_SHOWUPSTREAM=1
-GIT_PS1_SHOWUNTRACKEDFILES=1
-# GIT_PS1_SHOWSTASHSTATE=1
-
 #単語の入力途中でもTab補完を有効化
 setopt complete_in_word
 # 補完候補をハイライト
@@ -32,21 +23,6 @@ setopt auto_pushd
 # コマンドの打ち間違いを指摘してくれる
 setopt correct
 eval "$(starship init zsh)"
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/romira/miniconda3/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/romira/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/romira/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/romira/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
 # makeコマンドの関数定義を無効化
 unfunction make 2>/dev/null || true

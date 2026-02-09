@@ -10,3 +10,8 @@ fisher install oh-my-fish/theme-bobthefish \
                decors/fish-ghq \
                yoshiori/fish-peco_select_ghq_repository \
                tsu-nera/fish-peco_recentd
+
+# Symlink custom functions
+for f in ~/.config/romira-s-config/fish/functions/*.fish
+    ln -fs "$f" ~/.config/fish/functions/
+end
