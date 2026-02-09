@@ -10,62 +10,51 @@
 
 export LANG="en_US.UTF-8"
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ]; then
-    PATH="$HOME/bin:$PATH"
-fi
-
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ]; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
-
 if [ -r "$HOME/.cargo/env" ]; then
     . "$HOME/.cargo/env"
 fi
 
 command -v setopt >/dev/null 2>&1 && setopt +o nomatch
-for f in $HOME/.config/romira-s-config/shell/profile.d/*; do
-    [ -f "$f" ] && source "$f"
-    # ファイルがなかった場合何もしないとなぜか詰まるのでなんかする
-    echo "Sourced $f" >/dev/null
+for f in "$HOME/.config/romira-s-config/shell/profile.d/"*; do
+    [ -f "$f" ] && . "$f"
 done
 command -v setopt >/dev/null 2>&1 && setopt -o nomatch
-if [ "$(uname)" = 'Darwin' ]; then
-    # Mac Only
-    . ~/.config/romira-s-config/shell/system.profile.d/darwin
-elif [ "$(expr substr $(uname -s) 1 5)" = 'Linux' ]; then
-    # Linux Only
-    . ~/.config/romira-s-config/shell/system.profile.d/linux
-fi
-if [[ "$(uname -r)" = *microsoft* ]]; then
-    # WSL Only
-    . ~/.config/romira-s-config/shell/system.profile.d/wsl
-fi
+_uname_s="$(uname -s)"
+_uname_r="$(uname -r)"
+case "$_uname_s" in
+    Darwin) . ~/.config/romira-s-config/shell/system.profile.d/darwin ;;
+    Linux)  . ~/.config/romira-s-config/shell/system.profile.d/linux ;;
+esac
+case "$_uname_r" in
+    *microsoft*) . ~/.config/romira-s-config/shell/system.profile.d/wsl ;;
+esac
+unset _uname_s _uname_r
 
 export EDITOR=vim
+export MCFLY_RESULTS_SORT=LAST_RUN
 export VOLTA_HOME="$HOME/.volta"
-if [ -d "$VOLTA_HOME/bin" ]; then
-    export PATH="$VOLTA_HOME/bin:$PATH"
-fi
+export PYENV_ROOT="$HOME/.pyenv"
+
+# === PATH (prepend) ===
+for _dir in \
+    "$HOME/bin" \
+    "$HOME/.local/bin" \
+    "$VOLTA_HOME/bin" \
+    "$PYENV_ROOT/bin" \
+    "$HOME/.local/share/binaryen/bin" \
+    "$HOME/.go/bin"
+do
+    [ -d "$_dir" ] && PATH="$_dir:$PATH"
+done
+unset _dir
+
+# === PATH (append) ===
+[ -d "$HOME/.lmstudio/bin" ] && PATH="$PATH:$HOME/.lmstudio/bin"
 
 alias ls="eza"
 alias la="eza -la"
 
-export LD_LIBRARY_PATH=$HOME/.local/lib:$LD_LIBRARY_PATH
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 command -v pyenv >/dev/null && eval "$(pyenv init -)"
 
-if [ -d "$HOME/.local/share/binaryen/bin" ]; then
-    PATH="$HOME/.local/share/binaryen/bin:$PATH"
-fi
-
-if [ -d "$HOME/.go/bin" ]; then
-    PATH="$HOME/.go/bin:$PATH"
-fi
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:$HOME/.lmstudio/bin"
-# End of LM Studio CLI section
+true
 
