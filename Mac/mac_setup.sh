@@ -22,14 +22,15 @@ chsh -s $(which fish)
 # Setting fisher
 fish ../fish/fish_setup.fish
 ln -fs $HOME/.config/romira-s-config/fish/config.fish ~/.config/fish/config.fish
+ln -fs $HOME/.config/romira-s-config/starship/starship.toml ~/.config/starship.toml
 
 # Install cargo
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source $HOME/.cargo/env
 
-# Install Homebrew
-bash ./homebrew/homebrew_setup.sh
 ln -fs $HOME/.config/romira-s-config/tmux/.tmux.conf ~/.tmux.conf
+
+# Install Homebrew Cask
 bash ./homebrew/homebrew_cask.sh
 
 # Install Miniconda

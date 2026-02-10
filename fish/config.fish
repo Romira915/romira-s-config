@@ -15,6 +15,7 @@ end
 
 zoxide init fish | source
 mcfly init fish | source
+starship init fish | source
 
 function bw-add-ssh
   set -l item_id "d8778a92-7c5f-481d-a046-fa59ecb65132"

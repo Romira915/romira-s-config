@@ -9,36 +9,24 @@ ln -fs $HOME/.config/romira-s-config/vim/.vimrc ~/.vimrc
 ln -fs $HOME/.config/romira-s-config/vim/.vim ~/.vim
 ln -fs $HOME/.config/romira-s-config/latex/.latexmkrc ~/.latexmkrc
 
-# The usual.
-sudo apt update
-sudo apt upgrade -y
-
-# Install basic module
-sudo apt install -y build-essential procps curl file git lldb cmake wakeonlan keychain
-
 # Setting zsh
-sudo apt install -y zsh
 zsh ../zsh/preztoinit.sh
 ln -fs $HOME/.config/romira-s-config/zsh/.zpreztorc ~/.zpreztorc
 ln -fs $HOME/.config/romira-s-config/zsh/.zshrc ~/.zshrc
 ln -fs $HOME/.config/romira-s-config/zsh/.git-prompt.sh ~/.git-prompt.sh
 
 # Install fish
-sudo apt-add-repository ppa:fish-shell/release-3
-sudo apt update
-sudo apt install -y fish
 chsh -s $(which fish)
 
 # Setting fisher
 fish ../fish/fish_setup.fish
 ln -fs $HOME/.config/romira-s-config/fish/config.fish ~/.config/fish/config.fish
+ln -fs $HOME/.config/romira-s-config/starship/starship.toml ~/.config/starship.toml
 
 # Install cargo
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source $HOME/.cargo/env
 
-# Install Homebrew
-bash ../homebrew/homebrew_setup.sh
 ln -fs $HOME/.config/romira-s-config/tmux/.tmux.conf ~/.tmux.conf
 
 # Install Miniconda
@@ -55,12 +43,6 @@ tar -xvf install-tl-unx.tar.gz
 sudo ./install-tl*/install-tl
 sudo /usr/local/texlive/????/bin/*/tlmgr path add
 /home/linuxbrew/.linuxbrew/bin/cpanm Log::Log4perl Log::Dispatch::File YAML::Tiny File::HomeDir Unicode::GCString
-
-# Install font
-sudo apt install -y ttf-mscorefonts-installer
-
-# Install azure cli
-curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
 # Install vagrant
 curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
