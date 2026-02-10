@@ -34,13 +34,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### 環境セットアップの流れ
 
-1. **Mac**: `Mac/mac_setup.sh` → シンボリックリンク作成 → zsh/fish設定 → Rust → Homebrew → Miniconda → Volta → TeX Live
-2. **Ubuntu/WSL**: `Ubuntu/ubuntu_setup.sh` → apt基本パッケージ → 同様のツールチェーンインストール
+1. **Mac**: `Mac/mac_setup.sh` → シンボリックリンク作成 → zsh/fish設定 → Rust → Homebrew Cask → Miniconda → Volta → TeX Live
+2. **Ubuntu/WSL**: APT・Homebrew パッケージは Ansible で管理。`Ubuntu/ubuntu_setup.sh` は Ansible 未移行の処理（Miniconda, TeX Live, Vagrant 等）のみ
 3. **Windows**: `Windows10/` or `Windows11/` 配下のPowerShell/cmdスクリプト、`winget/`、`scoop/`、`chocolatey/` でパッケージ管理
 
 ### 主要ツールチェーン
 
-Homebrewで管理されるCLIツール群（`homebrew/homebrew_setup.sh`）:
+Homebrewパッケージリストは Ansible (`romira-arcadia-ops/ansible/roles/brew/vars/main.yml`) で一元管理。
 - Rust製ツール: zoxide, bat, ripgrep, fd, eza, git-delta, sk (skim), bottom, mcfly, sd, dust
 - 開発ツール: ghq + sk でリポジトリ管理、gh (GitHub CLI)、starship (プロンプト)
 
