@@ -1,0 +1,10 @@
+{
+  "enabledPlugins": {
+    "context7@claude-plugins-official": true,
+    "serena@claude-plugins-official": true,
+    "github@claude-plugins-official": true,
+    "playwright@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "Notion@claude-plugins-official": true
+  }
+}
