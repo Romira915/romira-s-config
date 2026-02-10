@@ -33,6 +33,7 @@ unset _uname_s _uname_r
 export EDITOR=vim
 export MCFLY_FUZZY=2
 export MCFLY_RESULTS_SORT=LAST_RUN
+export GOPATH="$HOME/go"
 export VOLTA_HOME="$HOME/.volta"
 export PYENV_ROOT="$HOME/.pyenv"
 
@@ -43,7 +44,7 @@ for _dir in \
     "$VOLTA_HOME/bin" \
     "$PYENV_ROOT/bin" \
     "$HOME/.local/share/binaryen/bin" \
-    "$HOME/.go/bin"
+    "$GOPATH/bin"
 do
     [ -d "$_dir" ] && PATH="$_dir:$PATH"
 done

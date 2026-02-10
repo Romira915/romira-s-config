@@ -29,3 +29,6 @@ unfunction make 2>/dev/null || true
 
 source $HOME/.profile
 
+eval "$(zoxide init zsh)"
+eval "$(mcfly init zsh)"
+
