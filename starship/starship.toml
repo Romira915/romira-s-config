@@ -1,13 +1,12 @@
 add_newline = false
 format = """\
-[](fg:#333333)\
+
 $directory\
-[](fg:#333333 bg:#addc10)\
+[](fg:#333333 bg:#addc10)\
 $git_branch\
 $git_status\
 $git_state\
-[](fg:#addc10)\
- $character"""
+[](fg:#addc10) """
 
 [directory]
 format = "[ $path ]($style)"
@@ -21,7 +20,7 @@ before_repo_root_style = "fg:#999999 bg:#333333"
 
 [git_branch]
 format = "[ $symbol$branch]($style)"
-symbol = " "
+symbol = " "
 style = "fg:#0c4801 bg:#addc10"
 
 [git_status]
@@ -40,5 +39,5 @@ format = "[ $state( $progress_current/$progress_total) ]($style)"
 style = "fg:#0c4801 bg:#addc10"
 
 [character]
-success_symbol = "[❯](bold green)"
-error_symbol = "[❯](bold red)"
+success_symbol = " "
+error_symbol = "[✘ ](bold red)"
