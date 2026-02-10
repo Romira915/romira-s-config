@@ -33,14 +33,6 @@ ln -fs $HOME/.config/romira-s-config/tmux/.tmux.conf ~/.tmux.conf
 # Install Homebrew Cask
 bash ./homebrew/homebrew_cask.sh
 
-# Install Miniconda
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh
-bash Miniconda3-latest-MacOSX-arm64.sh
-rm -f Miniconda3-latest-MacOSX-arm64.sh
-ln -fs $HOME/.config/romira-s-config/miniconda3/.condarc ~/.condarc
-~/miniconda3/bin/conda init fish
-~/miniconda3/bin/conda init zsh
-
 # Install Volta
 curl https://get.volta.sh | bash
 ~/.volta/bin/volta install node@16
@@ -50,10 +42,3 @@ git clone https://github.com/fcsonline/tmux-thumbs ~/.tmux/plugins/tmux-thumbs
 cd ~/.tmux/plugins/tmux-thumbs
 cargo build --release
 cd `dirname $0`
-
-# Install Tex Live
-wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
-tar -xvf install-tl-unx.tar.gz
-sudo ./install-tl*/install-tl
-sudo /usr/local/texlive/????/bin/*/tlmgr path add
-cpanm Log::Log4perl Log::Dispatch::File YAML::Tiny File::HomeDir Unicode::GCString
