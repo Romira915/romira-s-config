@@ -38,7 +38,6 @@ scoop bucket add versions
 $SCOOP_ROOT = "${home}\scoop"
 
 scoop install rustup
-scoop install miniconda3
 scoop install pandoc
 scoop install pandoc-crossref
 scoop install msys2
