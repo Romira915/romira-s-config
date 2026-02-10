@@ -20,6 +20,3 @@ fi" >> ~/.bashrc
 
 # Setting vim
 cp -r ../vim/. ~/
-
-conda init bash
-cp ../miniconda3/.condarc ~/.condarc
