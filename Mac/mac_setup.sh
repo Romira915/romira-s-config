@@ -20,7 +20,10 @@ sudo sh -c "echo $(which fish) >> /etc/shells"
 chsh -s $(which fish)
 
 # Setting fisher
-fish ../fish/fish_setup.fish
+# TODO: macOS Ansible 化時に廃止。Ansible develop_ubuntu.yml Play 4 と同等の処理
+fish -c 'curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher'
+fish -c 'fisher install 0rax/fish-bd edc/bass'
+for f in $HOME/.config/romira-s-config/fish/functions/*.fish; do ln -fs "$f" ~/.config/fish/functions/; done
 ln -fs $HOME/.config/romira-s-config/fish/config.fish ~/.config/fish/config.fish
 ln -fs $HOME/.config/romira-s-config/starship/starship.toml ~/.config/starship.toml
 
