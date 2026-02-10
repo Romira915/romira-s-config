@@ -1,0 +1,44 @@
+add_newline = false
+format = """\
+[](fg:#333333)\
+$directory\
+[](fg:#333333 bg:#addc10)\
+$git_branch\
+$git_status\
+$git_state\
+[](fg:#addc10)\
+ $character"""
+
+[directory]
+format = "[ $path ]($style)"
+style = "fg:#999999 bg:#333333"
+truncation_length = 5
+truncation_symbol = "…/"
+fish_style_pwd_dir_length = 1
+repo_root_format = "[ $before_root_path[$repo_root]($repo_root_style)$path ]($style)"
+repo_root_style = "bold fg:#ffffff bg:#333333"
+before_repo_root_style = "fg:#999999 bg:#333333"
+
+[git_branch]
+format = "[ $symbol$branch]($style)"
+symbol = " "
+style = "fg:#0c4801 bg:#addc10"
+
+[git_status]
+format = "[ $all_status$ahead_behind ]($style)"
+style = "fg:#0c4801 bg:#addc10"
+stashed = "\\$"
+modified = "…"
+staged = "+"
+untracked = "?"
+ahead = "⬆"
+behind = "⬇"
+diverged = "⬍"
+
+[git_state]
+format = "[ $state( $progress_current/$progress_total) ]($style)"
+style = "fg:#0c4801 bg:#addc10"
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
