@@ -1,5 +1,8 @@
 bass source ~/.profile
 
+# Syntax highlighting colors
+set -g fish_color_command blue
+
 for f in ~/.config/romira-s-config/fish/config.d/*.fish
     source $f
 end
