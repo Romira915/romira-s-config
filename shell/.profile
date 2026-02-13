@@ -32,7 +32,6 @@ unset _uname_s _uname_r
 
 export EDITOR=vim
 export MCFLY_FUZZY=2
-export MCFLY_RESULTS_SORT=LAST_RUN
 export GOPATH="$HOME/go"
 export VOLTA_HOME="$HOME/.volta"
 export PYENV_ROOT="$HOME/.pyenv"
