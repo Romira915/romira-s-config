@@ -22,19 +22,14 @@
 - CLAUDE.mdに日本語での指示がある
 - ユーザーが日本語で話しかけている
 
-## Development Flow
+## 安全性ルール
 
-- **mainブランチに直接コミットしない** - 必ず `main` からフィーチャーブランチを切って作業し、PRを作成すること。mainブランチはブランチ保護ルールにより直接pushできない
-- **1メソッド追加 = 1テスト追加** - 新しいメソッドを追加したら必ず対応するテストも追加すること
-- **日本語テスト名を使う場合** - `//noinspection NonAsciiCharacters` を追加してIDE警告を抑制する。まず `#[cfg(test)] mod tests` の直前に配置し、効果がなければファイル先頭に配置する
+- **破壊的gitコマンド禁止** — `git reset --hard`, `git push --force`, `git clean -f`, `git branch -D` 等はユーザーの明示的な指示がない限り実行しない
+- **スキルの allowed-tools は最小権限** — `Bash(git:*)` のようなワイルドカードは使わず、`Bash(git status:*)` のようにコマンド単位で許可する
+- **マージ操作は行わない** — PR作成までは自動化してよいが、マージはユーザーが手動で行う
 
-## アーキテクチャ原則
+## スキル管理
 
-### Handler の責務
-Handler（Server Function）の役割は以下に限定する：
-1. HTTPからInputを受け取る
-2. HTTP非依存の適切なデータ形式に変換する
-3. Serviceに処理を委譲する
-4. 結果に応じてステータスコードとレスポンスを決定する
-
-**バリデーションはService層で行う** - HandlerはHTTP層の変換のみを担当し、ビジネスロジック（バリデーション含む）はService層に委譲する
+- スキルの実体は `~/.config/romira-s-config/ai-config/skills/` に置く
+- `~/.claude/skills/` にはシンボリックリンクのみ配置する
+- プロジェクトの `.claude/skills/` にはスキルを置かない（グローバル管理）
