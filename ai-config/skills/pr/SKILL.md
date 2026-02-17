@@ -1,7 +1,7 @@
 ---
 name: pr
 description: Create a pull request for the current branch with auto-generated title and body
-allowed-tools: Bash(git:*), Bash(gh:*)
+allowed-tools: Bash(git status:*), Bash(git log:*), Bash(git diff:*), Bash(git push:*), Bash(gh pr create:*), Bash(gh repo view:*)
 ---
 
 # PR作成スキル
@@ -33,10 +33,9 @@ Title: <変更の要約を簡潔に>（日本語）
 - テスト方法・確認事項を箇条書き
 ```
 
-## 作成後のオプション
+## 作成後
 
-PR作成後、以下を確認する：
-- **オートマージ**: 有効にするか確認し、希望すれば `gh pr merge --auto --squash <number>` を実行
+- オートマージの設定やマージ操作は行わない（ユーザーが別途手動で行う）
 
 ## 注意事項
 
