@@ -689,13 +689,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.92549019607843142</real>
+				<real>0.78104287385940552</real>
 				<key>Color Space</key>
-				<string>sRGB</string>
+				<string>P3</string>
 				<key>Green Component</key>
-				<real>0.93333333333333335</real>
+				<real>0.78104299306869507</real>
 				<key>Red Component</key>
-				<real>0.93333333333333335</real>
+				<real>0.78104287385940552</real>
 			</dict>
 			<key>Guid</key>
 			<string>07CBEE2D-661A-4248-9A90-26790397CCED</string>
@@ -725,7 +725,7 @@
 			<key>Only The Default BG Color Uses Transparency</key>
 			<false/>
 			<key>Option Key Sends</key>
-			<integer>0</integer>
+			<integer>2</integer>
 			<key>Prompt Before Closing 2</key>
 			<false/>
 			<key>Right Option Key Sends</key>
@@ -767,7 +767,7 @@
 			<key>Terminal Type</key>
 			<string>xterm-256color</string>
 			<key>Transparency</key>
-			<real>0.10114147986322182</real>
+			<real>0.15258200354609927</real>
 			<key>Unlimited Scrollback</key>
 			<false/>
 			<key>Use Bold Font</key>
@@ -996,6 +996,8 @@
 				<key>Red Component</key>
 				<integer>1</integer>
 			</dict>
+			<key>Cursor Type</key>
+			<integer>1</integer>
 			<key>Custom Command</key>
 			<string>No</string>
 			<key>Custom Directory</key>
@@ -1010,12 +1012,16 @@
 			<false/>
 			<key>Foreground Color</key>
 			<dict>
+				<key>Alpha Component</key>
+				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.73333334922790527</real>
+				<real>0.78039222955703735</real>
+				<key>Color Space</key>
+				<string>P3</string>
 				<key>Green Component</key>
-				<real>0.73333334922790527</real>
+				<real>0.78039222955703735</real>
 				<key>Red Component</key>
-				<real>0.73333334922790527</real>
+				<real>0.78039222955703735</real>
 			</dict>
 			<key>Guid</key>
 			<string>058DFBCE-2589-434C-80C1-2D9FEF24C02C</string>
