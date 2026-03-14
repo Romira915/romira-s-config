@@ -13,3 +13,5 @@ export XMODIFIERS=@im=fcitx5
 export INPUT_METHOD=fcitx5
 export DefaultIMModule=fcitx5
 alias sclip='iconv -t sjis | clip'
+export CLAUDE_CODE_SKIP_WINDOWS_PROFILE=1
+export USERPROFILE="/mnt/c/Users/romira"
