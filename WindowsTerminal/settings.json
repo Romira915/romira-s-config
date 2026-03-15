@@ -82,7 +82,7 @@
       {
         "closeOnExit": "graceful",
         "colorScheme": "shades-of-purple",
-        "commandline": "%USERPROFILE%/scoop/apps/msys2/current/msys2_shell.cmd -defterm -here -no-start -msys -use-full-path",
+        "commandline": "%USERPROFILE%/scoop/apps/msys2/current/msys2_shell.cmd -defterm -here -no-start -msys",
         "font": {
           "face": "PlemolJP Console NF",
           "size": 18
