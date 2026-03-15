@@ -11,9 +11,9 @@ if string match -q "*microsoft*" (uname -r)
     source ~/.config/romira-s-config/fish/system.config.d/wsl.fish
 end
 
-zoxide init fish | source
-mcfly init fish | source
-starship init fish | source
+command -q zoxide; and zoxide init fish | source
+command -q mcfly; and mcfly init fish | source
+command -q starship; and starship init fish | source
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "$HOME/.tmp/google-cloud-sdk/path.fish.inc" ]; . "$HOME/.tmp/google-cloud-sdk/path.fish.inc"; end
