@@ -82,6 +82,22 @@
       {
         "closeOnExit": "graceful",
         "colorScheme": "shades-of-purple",
+        "commandline": "%USERPROFILE%/scoop/apps/msys2/current/msys2_shell.cmd -defterm -here -no-start -msys",
+        "font": {
+          "face": "PlemolJP Console NF",
+          "size": 18
+        },
+        "guid": "{17da3cac-b318-431e-8a3e-7fcdefe6d114}",
+        "hidden": false,
+        "icon": "%USERPROFILE%/scoop/apps/msys2/current/msys2.ico",
+        "name": "MSYS2",
+        "opacity": 75,
+        "startingDirectory": "%USERPROFILE%",
+        "useAcrylic": true
+      },
+      {
+        "closeOnExit": "graceful",
+        "colorScheme": "shades-of-purple",
         "commandline": "%USERPROFILE%/scoop/apps/git/current/bin/bash.exe",
         "font": {
           "face": "HackGen Console NF",
