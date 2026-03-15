@@ -22,8 +22,9 @@ command -v setopt >/dev/null 2>&1 && setopt -o nomatch
 _uname_s="$(uname -s)"
 _uname_r="$(uname -r)"
 case "$_uname_s" in
-    Darwin) . ~/.config/romira-s-config/shell/system.profile.d/darwin ;;
-    Linux)  . ~/.config/romira-s-config/shell/system.profile.d/linux ;;
+    Darwin)       . ~/.config/romira-s-config/shell/system.profile.d/darwin ;;
+    Linux)        . ~/.config/romira-s-config/shell/system.profile.d/linux ;;
+    MSYS*|MINGW*) . ~/.config/romira-s-config/shell/system.profile.d/msys2 ;;
 esac
 case "$_uname_r" in
     *microsoft*) . ~/.config/romira-s-config/shell/system.profile.d/wsl ;;
