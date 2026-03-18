@@ -38,3 +38,7 @@ allowed-tools: <許可するツール（例: Bash(git status:*), Bash(git push:*
 - スキルの実体は必ず `~/.config/romira-s-config/ai-config/skills/` に置く
 - `~/.claude/skills/` には実体を置かず、シンボリックリンクのみ
 - プロジェクトの `.claude/skills/` にはスキルを置かない（グローバル管理）
+- **クロスプラットフォーム対応**: スキルは macOS / Linux / Windows で動作するように設計する
+  - OS固有のパス（`/opt/homebrew/bin/` 等）をハードコードしない
+  - コマンドはPATHから解決される前提で記述する（例: `/opt/homebrew/bin/obsidian` ではなく `obsidian`）
+  - OS依存の処理が必要な場合はスキル内で分岐を明記する
