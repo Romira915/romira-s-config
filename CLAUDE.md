@@ -50,3 +50,4 @@ Homebrewパッケージリストは Ansible (`romira-arcadia-ops/ansible/roles/b
 - fish固有の設定は `fish/config.d/` に `.fish` ファイルとして追加
 - OS固有の設定は `shell/system.profile.d/` または `fish/system.config.d/` に追加
 - プライベートな設定は `profile.d/.gitignore` / `config.d/.gitignore` でトラッキング除外可能
+- **共有設定ファイルにOS固有の値を直接書かないこと。** `.gitconfig`、`.profile` 等はmacOS/Linux/WSL/Windowsで共有されている。OS固有の設定は `.local` ファイル（例: `~/.gitconfig.local`）や `system.profile.d/`、`system.config.d/` の環境分岐の仕組みを使う
