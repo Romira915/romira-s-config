@@ -5,9 +5,12 @@ set -l _cache_valid true
 if not test -f $_pcache
     set _cache_valid false
 else
-    for _f in ~/.profile ~/.cargo/env \
-              ~/.config/romira-s-config/shell/profile.d/* \
-              ~/.config/romira-s-config/shell/system.profile.d/*
+    set -l _deps ~/.profile ~/.cargo/env
+    set -l _pd ~/.config/romira-s-config/shell/profile.d
+    set -l _spd ~/.config/romira-s-config/shell/system.profile.d
+    test -d $_pd; and set -a _deps $_pd/*
+    test -d $_spd; and set -a _deps $_spd/*
+    for _f in $_deps
         if test -f $_f; and test $_f -nt $_pcache
             set _cache_valid false
             break
@@ -19,6 +22,7 @@ if not $_cache_valid
     # Snapshot exported vars before bass
     set -l _snap
     for _k in (set --names -gx)
+        string match -rq '^[a-zA-Z_][a-zA-Z0-9_]*$' -- $_k; or continue
         set -a _snap "$_k="(string escape -- $$_k | string join \x1f)
     end
     # Snapshot function bodies before bass (to detect overrides like ls→eza)
@@ -35,6 +39,8 @@ if not $_cache_valid
     echo "# Profile cache - "(date -Iseconds) >$_pcache
 
     for _k in (set --names -gx)
+        # Skip variable names with special characters (e.g. ProgramFiles(x86))
+        string match -rq '^[a-zA-Z_][a-zA-Z0-9_]*$' -- $_k; or continue
         set -l _cur "$_k="(string escape -- $$_k | string join \x1f)
         if not contains -- $_cur $_snap
             echo "set -gx $_k" (string escape -- $$_k) >>$_pcache
