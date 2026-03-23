@@ -3,10 +3,16 @@ PATH="$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
 export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
 alias pwdw='wslpath -w $(pwd)'
 alias pwdw2c="pwdw | clip"
-/usr/bin/keychain -q --nogui
-if [ -f $HOME/.keychain/$(hostname)-sh ]; then
-    source $HOME/.keychain/$(hostname)-sh
+_ssh_agent_env="$HOME/.ssh/agent.env"
+if [ -f "$_ssh_agent_env" ]; then
+    . "$_ssh_agent_env" > /dev/null
 fi
+if [ -z "$SSH_AUTH_SOCK" ] || [ ! -S "$SSH_AUTH_SOCK" ]; then
+    ssh-agent -s > "$_ssh_agent_env" 2>/dev/null
+    chmod 600 "$_ssh_agent_env"
+    . "$_ssh_agent_env" > /dev/null
+fi
+unset _ssh_agent_env
 export GTK_IM_MODULE=fcitx5
 export QT_IM_MODULE=fcitx5
 export XMODIFIERS=@im=fcitx5
