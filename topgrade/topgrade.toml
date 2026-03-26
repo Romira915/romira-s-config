@@ -1,0 +1,9 @@
+[misc]
+# Run `sudo -v` to cache credentials at the start of the run
+pre_sudo = true
+
+[git]
+# Additional git repositories to pull or fetch
+repos = [
+    "~/.config/romira-s-config/",
+]
