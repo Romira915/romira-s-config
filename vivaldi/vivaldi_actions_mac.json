@@ -132,6 +132,7 @@
           "meta+z"
         ]
       },
+      "COMMAND_CLOSE_ALL_BUT_ACTIVE_TAB": {},
       "COMMAND_CLOSE_TAB": {
         "gestures": [
           "20"
@@ -478,6 +479,7 @@
       "COMMAND_READERVIEW_TOGGLE": {
         "shortcuts": []
       },
+      "COMMAND_REPORT_BUG": {},
       "COMMAND_SAVE_PAGE": {
         "shortcuts": [
           "meta+s"
@@ -640,14 +642,14 @@
         ]
       },
       "COMMAND_TAB_STACK_TILE_HORIZONTAL": {
-        "gestures": [
-          "04"
-        ],
         "shortcuts": [
           "meta+f8"
         ]
       },
       "COMMAND_TAB_STACK_TILE_VERTICAL": {
+        "gestures": [
+          "04"
+        ],
         "shortcuts": [
           "meta+f9"
         ]
