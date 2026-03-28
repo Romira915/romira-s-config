@@ -1,4 +1,4 @@
 [wsl2]
-memory=16GB
-swap=0
+memory=32GB
+swap=4GB
 kernelCommandLine=sysctl.net.ipv4.ping_group_range=\"0 2147483647\"

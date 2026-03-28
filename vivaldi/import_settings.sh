@@ -42,7 +42,18 @@ if [[ ! -f "$PREFS_FILE" ]]; then
 fi
 
 # Vivaldiが起動中かチェック
-if pgrep -x "$VIVALDI_PROC" > /dev/null 2>&1; then
+is_vivaldi_running() {
+    case "$(uname -s)" in
+        MINGW*|MSYS*|CYGWIN*)
+            tasklist //FI "IMAGENAME eq $VIVALDI_PROC" 2>/dev/null | grep -qi "$VIVALDI_PROC"
+            ;;
+        *)
+            pgrep -x "$VIVALDI_PROC" > /dev/null 2>&1
+            ;;
+    esac
+}
+
+if is_vivaldi_running; then
     echo "Error: Vivaldi is running. Please quit Vivaldi before importing." >&2
     exit 1
 fi
