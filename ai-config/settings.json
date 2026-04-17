@@ -162,6 +162,6 @@
   "skipDangerousModePermissionPrompt": true,
   "statusLine": {
     "type": "command",
-    "command": "sh ~/.claude/statusline-command.sh"
+    "command": "sh ~/.config/romira-s-config/ai-config/statusline-command.sh"
   }
 }
