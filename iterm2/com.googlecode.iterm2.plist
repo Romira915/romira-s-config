@@ -24,6 +24,8 @@
 	<integer>128000</integer>
 	<key>AitermURL</key>
 	<string>https://api.openai.com/v1/responses</string>
+	<key>AllowClipboardAccess</key>
+	<true/>
 	<key>Default Bookmark Guid</key>
 	<string>07CBEE2D-661A-4248-9A90-26790397CCED</string>
 	<key>GlobalKeyMap</key>
@@ -1166,6 +1168,8 @@
 			<string>/Users/romira</string>
 		</dict>
 	</array>
+	<key>PasteTabToStringTabStopSize</key>
+	<integer>4</integer>
 	<key>PointerActions</key>
 	<dict>
 		<key>Button,1,1,,</key>

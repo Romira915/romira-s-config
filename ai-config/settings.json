@@ -148,6 +148,7 @@
     ],
     "defaultMode": "default"
   },
+  "model": "opus[1m]",
   "enabledPlugins": {
     "context7@claude-plugins-official": true,
     "serena@claude-plugins-official": true,
@@ -158,5 +159,9 @@
     "notion@claude-plugins-official": true
   },
   "effortLevel": "high",
-  "skipDangerousModePermissionPrompt": true
+  "skipDangerousModePermissionPrompt": true,
+  "statusLine": {
+    "type": "command",
+    "command": "sh ~/.claude/statusline-command.sh"
+  }
 }
