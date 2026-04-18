@@ -1,80 +1,85 @@
 #!/bin/sh
 # Claude Code statusLine command
-# Inspired by starship config: directory + git branch/status + model
+# Shows: cwd (~/shortened) | git branch [status] | model | ctx used%
 
 input=$(cat)
 
-# --- directory ---
-cwd=$(echo "$input" | jq -r '.cwd // .workspace.current_dir // ""')
-# Shorten home directory
-cwd=$(echo "$cwd" | sed "s|^$HOME|~|")
-# Truncate to last 5 path components with …/ prefix
-depth=$(echo "$cwd" | tr -cd '/' | wc -c | tr -d ' ')
-if [ "$depth" -gt 5 ]; then
-  cwd="…/$(echo "$cwd" | rev | cut -d'/' -f1-5 | rev)"
-fi
+# --- directory (basename only) ---
+cwd=$(echo "$input" | jq -r '.cwd // .workspace.current_dir // ""' | sed 's|\\|/|g')
+cwd=$(basename "$cwd")
+# Show ~ when at $HOME
+[ "$cwd" = "$(basename "$HOME")" ] && cwd="~"
 
-# --- git info (skip optional locks) ---
+# --- git info (--no-optional-locks to avoid stalling) ---
 git_branch=""
-git_status_str=""
-if git -C "$(echo "$input" | jq -r '.cwd // .workspace.current_dir // "."')" \
-       --no-optional-locks rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-  git_dir=$(echo "$input" | jq -r '.cwd // .workspace.current_dir // "."')
+git_indicators=""
+git_dir=$(echo "$input" | jq -r '.cwd // .workspace.current_dir // "."')
+git_dir=$(echo "$git_dir" | sed 's|\\|/|g')
+if git -C "$git_dir" --no-optional-locks rev-parse --is-inside-work-tree >/dev/null 2>&1; then
   git_branch=$(git -C "$git_dir" --no-optional-locks symbolic-ref --short HEAD 2>/dev/null \
                 || git -C "$git_dir" --no-optional-locks rev-parse --short HEAD 2>/dev/null)
 
-  # Build status indicators
-  indicators=""
-  # Untracked
-  if git -C "$git_dir" --no-optional-locks ls-files --others --exclude-standard --quiet 2>/dev/null | grep -q .; then
-    indicators="${indicators}?"
+  ind=""
+  # Untracked files
+  if git -C "$git_dir" --no-optional-locks ls-files --others --exclude-standard 2>/dev/null | grep -q .; then
+    ind="${ind}?"
   fi
-  # Modified (unstaged)
+  # Unstaged modifications
   if ! git -C "$git_dir" --no-optional-locks diff --quiet 2>/dev/null; then
-    indicators="${indicators}…"
+    ind="${ind}*"
   fi
-  # Staged
+  # Staged changes
   if ! git -C "$git_dir" --no-optional-locks diff --cached --quiet 2>/dev/null; then
-    indicators="${indicators}+"
+    ind="${ind}+"
   fi
-  # Ahead/behind
+  # Ahead/behind upstream
   upstream=$(git -C "$git_dir" --no-optional-locks rev-parse --abbrev-ref '@{u}' 2>/dev/null)
   if [ -n "$upstream" ]; then
     ahead=$(git -C "$git_dir" --no-optional-locks rev-list --count "@{u}..HEAD" 2>/dev/null || echo 0)
     behind=$(git -C "$git_dir" --no-optional-locks rev-list --count "HEAD..@{u}" 2>/dev/null || echo 0)
-    [ "$ahead" -gt 0 ] && indicators="${indicators}⬆"
-    [ "$behind" -gt 0 ] && indicators="${indicators}⬇"
+    [ "$ahead" -gt 0 ] && ind="${ind}^"
+    [ "$behind" -gt 0 ] && ind="${ind}v"
   fi
 
-  if [ -n "$indicators" ]; then
-    git_status_str=" [$indicators]"
-  fi
+  [ -n "$ind" ] && git_indicators=" [$ind]"
 fi
 
 # --- model ---
 model=$(echo "$input" | jq -r '.model.display_name // ""')
 
-# --- context usage ---
+# --- context: show used% (warn color if >= 70%) ---
 used_pct=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
 
-# --- assemble ---
-# Format: [dir] [branch+status] model [ctx%]
+# --- assemble line ---
+# dim white for directory
 dir_part=$(printf '\033[2;37m%s\033[0m' "$cwd")
 
+# dim green for git branch, yellow indicators if dirty
 if [ -n "$git_branch" ]; then
-  git_part=$(printf ' \033[2;32m%s%s\033[0m' " $git_branch" "$git_status_str")
+  if [ -n "$git_indicators" ]; then
+    git_part=$(printf '  \033[2;32m%s\033[2;33m%s\033[0m' "$git_branch" "$git_indicators")
+  else
+    git_part=$(printf '  \033[2;32m%s\033[0m' "$git_branch")
+  fi
 else
   git_part=""
 fi
 
+# dim cyan for model name
 if [ -n "$model" ]; then
-  model_part=$(printf ' \033[2;36m%s\033[0m' "$model")
+  model_part=$(printf '  \033[2;36m%s\033[0m' "$model")
 else
   model_part=""
 fi
 
+# context usage: dim yellow normally, dim red if >= 80%
 if [ -n "$used_pct" ]; then
-  ctx_part=$(printf ' \033[2;33mctx:%.0f%%\033[0m' "$used_pct")
+  used_int=$(printf '%.0f' "$used_pct")
+  if [ "$used_int" -ge 80 ]; then
+    ctx_part=$(printf '  \033[2;31mctx:%d%%\033[0m' "$used_int")
+  else
+    ctx_part=$(printf '  \033[2;33mctx:%d%%\033[0m' "$used_int")
+  fi
 else
   ctx_part=""
 fi
