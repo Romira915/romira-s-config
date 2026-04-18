@@ -7,7 +7,11 @@ function cd_ghq_sk
     set -l list (ghq list)
     set -f repo (printf '%s\n' $list | $finder)
     if test -n "$repo"
-        cd (ghq root)/$repo
+        if command -q cygpath
+            cd (ghq root | cygpath -u -f -)/$repo
+        else
+            cd (ghq root)/$repo
+        end
     end
     commandline -f repaint
 end

@@ -43,9 +43,9 @@ WAIT := Map(
     "after_select",     100,    ; プレイヤー選択後
     "after_click",      50,     ; フィールドクリック後
     "before_start",     50,     ; 開始ボタン押下前
-    "otp_appear",       50,   ; OTP ダイアログ表示待ち
-    "game_launch",      50,  ; ゲーム起動完了待ち
-    "launcher_init",    8000,   ; ランチャー描画完了待ち
+    "otp_appear",       800,    ; OTP ダイアログ表示待ち
+    "game_launch",      5000,   ; ゲーム起動完了待ち（2回目対策で長め）
+    "launcher_init",    8000    ; ランチャー描画完了待ち
 )
 
 ; BW セッション（内部使用）
@@ -72,7 +72,7 @@ Esc::ExitApp()
 
 ; === メイン処理 ===
 RunDqxLogin() {
-    global BwSession
+    global BwSession, WAIT
 
     Status("BW アンロック中...")
     if !BwUnlock()
@@ -89,13 +89,14 @@ RunDqxLogin() {
     Status("ゲーム起動待機中...")
     Sleep(WAIT["game_launch"])
 
-    ; プレイヤー2 のためにランチャーを再度開く
+    ; プレイヤー2 のためにランチャーを再度開く / 復帰
     Status("ランチャー復帰中...")
     if !ActivateOrLaunch()
         return
 
     Status("プレイヤー2 ログイン中...")
-    Login("player2")
+    if !Login("player2")
+        return
 
     ; セキュリティ: BW をロック
     RunCmd("bw lock")
@@ -106,9 +107,13 @@ RunDqxLogin() {
 
 ; === ログイン処理 ===
 Login(player) {
+    global POS, WAIT, BW_ID
+
     CoordMode("Mouse", "Client")
-    WinActivate(LAUNCHER_TITLE)
-    WinWaitActive(LAUNCHER_TITLE)
+
+    ; 毎回ここで存在確認込みでランチャーを確保する
+    if !ActivateOrLaunch()
+        return false
 
     ; プレイヤー選択
     ClickAt(POS[player])
@@ -125,6 +130,7 @@ Login(player) {
         MsgBox(player ": パスワード取得に失敗しました。`nbw が unlock されているか確認してください。")
         return false
     }
+
     SendText(pw)
     pw := ""
     Sleep(WAIT["before_start"])
@@ -139,6 +145,7 @@ Login(player) {
         MsgBox(player ": TOTP 取得に失敗しました。")
         return false
     }
+
     ClickAt(POS["otp"])
     Sleep(WAIT["after_click"])
     SendText(totp)
@@ -152,15 +159,27 @@ Login(player) {
 
 ; === ランチャー起動/アクティブ化 ===
 ActivateOrLaunch() {
-    if WinExist(LAUNCHER_TITLE) {
-        WinActivate(LAUNCHER_TITLE)
-    } else {
+    global DQX_BOOT, LAUNCHER_TITLE, WAIT
+
+    ; 既に存在すればそれを使う。なければ起動。
+    if !WinExist(LAUNCHER_TITLE) {
         Run(DQX_BOOT)
     }
-    if !WinWaitActive(LAUNCHER_TITLE,, 30) {
-        MsgBox("ランチャーが見つかりません。タイムアウトしました。")
+
+    ; まず「存在するまで」待つ
+    if !WinWait(LAUNCHER_TITLE,, 30) {
+        MsgBox("ランチャーが見つかりません。`n対象: " LAUNCHER_TITLE)
         return false
     }
+
+    ; その後アクティブ化
+    try WinActivate(LAUNCHER_TITLE)
+
+    if !WinWaitActive(LAUNCHER_TITLE,, 10) {
+        MsgBox("ランチャーをアクティブ化できませんでした。`n対象: " LAUNCHER_TITLE)
+        return false
+    }
+
     Sleep(WAIT["launcher_init"])
     return true
 }
@@ -203,9 +222,11 @@ BwUnlock() {
 
 BwGet(type, itemId) {
     global BwSession
+
     cmd := "bw get " type " " itemId
     if (BwSession != "")
         cmd .= ' --session "' BwSession '"'
+
     return RunCmd(cmd)
 }
 

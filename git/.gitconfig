@@ -44,6 +44,7 @@
 [safe]
 	directory = %(prefix)///wsl.localhost/Ubuntu/home/romira/romira-arcadia-ops
 	directory = C:/Users/romira/.config/romira-s-config
+	directory = *
 [credential "helperselector"]
 	selected = manager
 
