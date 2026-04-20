@@ -1,6 +1,6 @@
 ---
 name: create-skill
-description: 新しい Claude Code スキルを `~/.config/romira-s-config/ai-config/skills/` 配下に作成し、`~/.claude/skills/` にシンボリックリンクを張って登録する。ユーザーが新規スキルの作成を依頼したときに起動する。
+description: 新しい Claude Code スキルを作成して `~/.claude/skills/` に登録する。新規スキル作成の依頼に使う。
 allowed-tools: Bash(mkdir:*), Bash(ln:*), Bash(ls:*)
 ---
 

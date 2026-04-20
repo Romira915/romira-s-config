@@ -1,6 +1,6 @@
 ---
 name: resume-session
-description: MEMORY.md と現在の git 状態を読み、前回の続きから作業再開できるよう状況をユーザーに報告する。新セッション開始時や /clear 直後にユーザーが作業再開を希望したときに起動する。
+description: MEMORY.md と git 状態から前回の続きを復元しユーザーに報告する。新セッション開始時や /clear 直後の作業再開に使う。
 ---
 
 # Resume Session

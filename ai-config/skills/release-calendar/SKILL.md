@@ -1,6 +1,6 @@
 ---
 name: release-calendar
-description: service-release カレンダーにリリース予定イベントを登録・追記する。ユーザーが PR のリリース日時を共有カレンダーに載せたいときに起動する。
+description: service-release カレンダーにリリース予定イベントを登録・追記する。PR のリリース日時を共有カレンダーに載せたいときに使う。
 allowed-tools: Bash(gog calendar:*), Bash(gog cal:*), Bash(gh pr view:*), mcp__claude_ai_Atlassian__getJiraIssue, AskUserQuestion
 ---
 

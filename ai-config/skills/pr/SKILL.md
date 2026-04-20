@@ -1,6 +1,6 @@
 ---
 name: pr
-description: 現在のブランチの全コミットを分析してタイトル・Summary・Test Plan を自動生成し、`gh pr create --assignee @me` で PR を作成する。ユーザーがフィーチャーの実装を終えてレビュー依頼したいときに起動する（デフォルトブランチや未コミット変更がある場合は中断）。
+description: 現在のブランチから PR を作成する。コミット群からタイトル・Summary・Test Plan を生成し `gh pr create --assignee @me` を実行。実装完了後のレビュー依頼に使う（デフォルトブランチや未コミット変更があれば中断）。
 allowed-tools: Bash(git status:*), Bash(git log:*), Bash(git diff:*), Bash(git push:*), Bash(gh pr create:*), Bash(gh repo view:*)
 ---
 

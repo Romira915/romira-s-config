@@ -1,6 +1,6 @@
 ---
 name: obsidian
-description: Obsidian CLI (`obsidian`) で Vault を操作する。ユーザーが Obsidian のノート・タスク・デイリーノート・検索・プロパティ・タグ等を扱いたいときに起動する。Obsidian アプリが起動中であることが前提。
+description: Obsidian Vault を操作する（obsidian CLI）。ノート・タスク・デイリーノート・検索・プロパティ・タグの読み書きに使う。Obsidian アプリ起動中が前提。
 allowed-tools:
   - Bash(obsidian:*)
 ---

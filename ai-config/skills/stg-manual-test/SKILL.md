@@ -1,6 +1,6 @@
 ---
 name: stg-manual-test
-description: Jira チケットの仕様からテストケースを設計し、STG 環境で Playwright を使ったマニュアルテストを実行してエビデンスを取得、Jira コメント下書きを作成する。ユーザーが Jira チケットの STG 検証を依頼したときに起動する。
+description: Jira チケットから STG マニュアルテストを設計・実行しエビデンスと Jira コメント下書きを作成する（Playwright 版）。Jira チケットの STG 検証依頼に使う。
 allowed-tools: Bash(mkdir:*), Bash(rm:*), Bash(ls:*), Bash(mv:*)
 ---
 
