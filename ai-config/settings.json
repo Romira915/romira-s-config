@@ -151,7 +151,7 @@
   "model": "opus[1m]",
   "statusLine": {
     "type": "command",
-    "command": "sh ~/.config/romira-s-config/ai-config/statusline-command.sh"
+    "command": "sh -c 'sh $HOME/.config/romira-s-config/ai-config/statusline-command.sh'"
   },
   "enabledPlugins": {
     "context7@claude-plugins-official": true,
@@ -163,5 +163,8 @@
     "notion@claude-plugins-official": true
   },
   "effortLevel": "xhigh",
-  "skipDangerousModePermissionPrompt": true
+  "skipDangerousModePermissionPrompt": true,
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  }
 }
