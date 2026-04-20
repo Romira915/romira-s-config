@@ -138,7 +138,7 @@ document.querySelectorAll('.content.g-scrollbox')[last]?.scrollBy(0, 400);
 メール一覧をループし、本文のキーワードで種類を判定してからスクショを取る。
 
 ### BaseMachinaでのアクション実行
-- アクション一覧: `https://example.basemachina.com/projects/<basemachina-project-id>/environments/<basemachina-env-id>/actions`
+- アクション一覧: personal.md の `stg-manual-test / BaseMachina アクション一覧 URL` を使用
 - リンク検索: `page.evaluate` で `textContent` を検索してクリック
 - フォーム入力: `page.getByRole('textbox', { name: '<aria-label>' })`
 - iframe内コンテンツ: `page.frameLocator('iframe').first()`
