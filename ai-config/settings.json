@@ -148,10 +148,10 @@
     ],
     "defaultMode": "default"
   },
-  "model": "sonnet[1m]",
+  "model": "opus[1m]",
   "statusLine": {
     "type": "command",
-    "command": "sh -c 'sh $HOME/.config/romira-s-config/ai-config/statusline-command.sh'"
+    "command": "sh ~/.config/romira-s-config/ai-config/statusline-command.sh"
   },
   "enabledPlugins": {
     "context7@claude-plugins-official": true,
@@ -162,6 +162,6 @@
     "playwright@claude-plugins-official": true,
     "notion@claude-plugins-official": true
   },
-  "effortLevel": "high",
+  "effortLevel": "xhigh",
   "skipDangerousModePermissionPrompt": true
 }
