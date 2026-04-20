@@ -1,10 +1,9 @@
 # User CLAUDE.md
 
-## 個人情報
+## 個人情報の扱い
 
-個人情報はリポジトリで管理せず、以下のファイルから読み込む:
-
-@~/.claude/personal.md
+個人情報は git 管理しない `~/.claude/personal.md` に置く。このファイルは**常時ロードしない**。
+スキルや回答で個人固有の値（氏名・メール・外部サービスのドメイン・スキル別デフォルト等）が必要になったときに、Read ツールで `~/.claude/personal.md` を読んで利用する。
 
 ## 日本語応答ポリシー
 
@@ -33,9 +32,3 @@
 - **破壊的gitコマンド禁止** — `git reset --hard`, `git push --force`, `git clean -f`, `git branch -D` 等はユーザーの明示的な指示がない限り実行しない
 - **スキルの allowed-tools は最小権限** — `Bash(git:*)` のようなワイルドカードは使わず、`Bash(git status:*)` のようにコマンド単位で許可する
 - **マージ操作は行わない** — PR作成までは自動化してよいが、マージはユーザーが手動で行う
-
-## スキル管理
-
-- スキルの実体は `~/.config/romira-s-config/ai-config/skills/` に置く
-- `~/.claude/skills/` にはシンボリックリンクのみ配置する
-- プロジェクトの `.claude/skills/` にはスキルを置かない（グローバル管理）

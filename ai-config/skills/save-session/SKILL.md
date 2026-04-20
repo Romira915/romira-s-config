@@ -1,6 +1,6 @@
 ---
 name: save-session
-description: Save current session status (tasks, issues, remaining work) to memory for next conversation
+description: 現在のセッション状況（完了・進行中・残タスク・ブロッカー）を MEMORY.md に反映し、次回セッションでコンテキスト共有なしに再開できるようにする。ユーザーがセッションを中断する前に起動する（詳細ドキュメントは残さない軽量版。詳細版は handoff）。
 ---
 
 # Save Session

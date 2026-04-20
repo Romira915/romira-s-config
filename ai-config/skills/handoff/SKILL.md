@@ -1,6 +1,6 @@
 ---
 name: handoff
-description: セッション引き継ぎ（詳細ドキュメント保存 + MEMORY更新 + 次回プロンプト表示）
+description: セッションの詳細引き継ぎドキュメントを sessions/ に保存し、MEMORY.md を更新した上で次回セッション冒頭に貼るプロンプトを提示する。ユーザーが大きめの作業を途中で終えて次回に完全引き継ぎしたいときに起動する（軽量版は save-session）。
 ---
 
 # Handoff

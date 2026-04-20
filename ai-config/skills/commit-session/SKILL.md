@@ -1,6 +1,6 @@
 ---
 name: commit-session
-description: Commit and push files modified in this session
+description: 現在のセッションで修正したファイルのみを対象に format / clippy / test を通してからコミット・push する。ユーザーが作業の区切りで変更を反映したいときに起動する（未コミットの全変更ではなくセッション中の修正分だけ）。
 allowed-tools: Bash(git status:*), Bash(git add:*), Bash(git commit:*), Bash(git push:*), Bash(git diff:*), Bash(git log:*), Bash(just format:*), Bash(just clippy:*), Bash(just test:*)
 ---
 

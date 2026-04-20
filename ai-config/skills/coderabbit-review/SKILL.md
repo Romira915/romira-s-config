@@ -1,6 +1,6 @@
 ---
 name: coderabbit-review
-description: Run CodeRabbit CLI review on committed changes, triage each finding, and optionally apply fixes
+description: `coderabbit` CLI でコミット済み変更のレビューを実行し、各指摘を「対応する／対応しない／要相談」にトリアージしてレポートする。ユーザーが CodeRabbit の指摘対応を一括判断したいときに起動する（修正適用はユーザー承認後）。
 allowed-tools: Bash(coderabbit:*), Bash(git log:*), Bash(git diff:*), Bash(git status:*)
 ---
 
