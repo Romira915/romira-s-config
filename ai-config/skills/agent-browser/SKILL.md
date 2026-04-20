@@ -1,6 +1,6 @@
 ---
 name: agent-browser
-description: agent-browser CLI を使って任意の Web サイトで対話型のブラウザ自動化を実行する。ユーザーが URL 遷移・ページ調査・スクリーンショット取得・フォーム入力・スクレイピング等の汎用ブラウザタスクを依頼したときに起動する。
+description: Web サイトで対話型ブラウザ自動化を実行する（agent-browser CLI）。URL 遷移・ページ調査・スクリーンショット・フォーム入力・スクレイピング等の依頼に使う。
 allowed-tools:
   - Bash(agent-browser:*)
   - Bash(mkdir:*)
