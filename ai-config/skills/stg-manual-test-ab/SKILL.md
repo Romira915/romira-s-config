@@ -1,6 +1,6 @@
 ---
 name: stg-manual-test-ab
-description: Jira チケットからテストケースを設計し、STG 環境で agent-browser CLI を使ったマニュアルテストを実行、エビデンスを取得して Jira コメント下書きを作成する。ユーザーが agent-browser ベースの STG 検証を依頼したときに起動する。
+description: Jira チケットから STG マニュアルテストを設計・実行しエビデンスと Jira コメント下書きを作成する（agent-browser 版）。agent-browser ベースの STG 検証依頼に使う。
 allowed-tools:
   - Bash(agent-browser:*)
   - Bash(mkdir:*)

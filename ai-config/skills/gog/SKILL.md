@@ -1,6 +1,6 @@
 ---
 name: gog
-description: 非公式 Google CLI `gog` で Gmail / Drive / Calendar / Tasks / Sheets / Chat / Docs / Slides / Contacts / Forms / Apps Script を操作する。ユーザーが Google Workspace リソースの読み取り・送信・更新を求めたときに起動する。
+description: Gmail / Drive / Calendar / Docs / Tasks / Sheets など Google Workspace を操作する（gog CLI）。Workspace リソースの読み取り・送信・更新の依頼に使う。
 allowed-tools: Bash(gog:*)
 ---
 
