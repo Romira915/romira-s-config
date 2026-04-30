@@ -1,0 +1,31 @@
+#!/bin/sh
+# Claude Code via Claude Code Router → GitHub Copilot Enterprise.
+# Auto-starts copilot-api on :4141 if not running, then execs `ccr code`.
+# Plain `claude` continues to hit the upstream Anthropic API.
+set -eu
+
+COPILOT_PORT=4141
+COPILOT_HEALTH_URL="http://127.0.0.1:${COPILOT_PORT}/v1/models"
+COPILOT_LOG="$HOME/.local/share/copilot-api/copilot-api.log"
+
+if ! curl -fsS "$COPILOT_HEALTH_URL" >/dev/null 2>&1; then
+    mkdir -p "$(dirname "$COPILOT_LOG")"
+    nohup copilot-api start \
+        --port "$COPILOT_PORT" \
+        --account-type enterprise \
+        >>"$COPILOT_LOG" 2>&1 &
+    i=0
+    while [ $i -lt 20 ]; do
+        sleep 1
+        if curl -fsS "$COPILOT_HEALTH_URL" >/dev/null 2>&1; then
+            break
+        fi
+        i=$((i + 1))
+    done
+    if ! curl -fsS "$COPILOT_HEALTH_URL" >/dev/null 2>&1; then
+        echo "copilot-api failed to start (see $COPILOT_LOG)" >&2
+        exit 1
+    fi
+fi
+
+exec ccr code "$@"
