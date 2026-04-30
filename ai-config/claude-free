@@ -1,0 +1,33 @@
+#!/bin/sh
+# Claude Code via local LiteLLM proxy (NVIDIA NIM backend, free).
+# Auto-starts the proxy if not running, then execs the official `claude` CLI.
+# Plain `claude` continues to hit the real Anthropic API.
+set -eu
+
+PROXY_URL="http://127.0.0.1:4000"
+CONFIG_PATH="$HOME/.config/litellm/config.yaml"
+LOG_PATH="$HOME/.config/litellm/logs/litellm.log"
+HEALTH_URL="$PROXY_URL/health/liveliness"
+
+if ! curl -fsS "$HEALTH_URL" >/dev/null 2>&1; then
+    mkdir -p "$(dirname "$LOG_PATH")"
+    nohup litellm --config "$CONFIG_PATH" --port 4000 --host 127.0.0.1 \
+        >>"$LOG_PATH" 2>&1 &
+    i=0
+    while [ $i -lt 15 ]; do
+        sleep 1
+        if curl -fsS "$HEALTH_URL" >/dev/null 2>&1; then
+            break
+        fi
+        i=$((i + 1))
+    done
+    if ! curl -fsS "$HEALTH_URL" >/dev/null 2>&1; then
+        echo "litellm proxy failed to start (see $LOG_PATH)" >&2
+        exit 1
+    fi
+fi
+
+exec env \
+    ANTHROPIC_BASE_URL="$PROXY_URL" \
+    ANTHROPIC_AUTH_TOKEN="sk-litellm-local" \
+    claude "$@"

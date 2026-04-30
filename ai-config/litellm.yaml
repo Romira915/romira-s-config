@@ -1,0 +1,128 @@
+model_list:
+  # ===== smart (default / longContext / opus / sonnet 系) =====
+  - model_name: smart
+    litellm_params:
+      model: nvidia_nim/moonshotai/kimi-k2-thinking
+      api_base: https://integrate.api.nvidia.com/v1
+      api_key: os.environ/NVIDIA_API_KEY
+  - model_name: smart
+    litellm_params:
+      model: nvidia_nim/deepseek-ai/deepseek-v4-pro
+      api_base: https://integrate.api.nvidia.com/v1
+      api_key: os.environ/NVIDIA_API_KEY
+  - model_name: smart
+    litellm_params:
+      model: nvidia_nim/qwen/qwen3-coder-480b-a35b-instruct
+      api_base: https://integrate.api.nvidia.com/v1
+      api_key: os.environ/NVIDIA_API_KEY
+  - model_name: smart
+    litellm_params:
+      model: nvidia_nim/moonshotai/kimi-k2-instruct-0905
+      api_base: https://integrate.api.nvidia.com/v1
+      api_key: os.environ/NVIDIA_API_KEY
+  - model_name: smart
+    litellm_params:
+      model: nvidia_nim/deepseek-ai/deepseek-v4-flash
+      api_base: https://integrate.api.nvidia.com/v1
+      api_key: os.environ/NVIDIA_API_KEY
+
+  # ===== fast (background / haiku 系) =====
+  - model_name: fast
+    litellm_params:
+      model: nvidia_nim/meta/llama-4-maverick-17b-128e-instruct
+      api_base: https://integrate.api.nvidia.com/v1
+      api_key: os.environ/NVIDIA_API_KEY
+  - model_name: fast
+    litellm_params:
+      model: nvidia_nim/openai/gpt-oss-20b
+      api_base: https://integrate.api.nvidia.com/v1
+      api_key: os.environ/NVIDIA_API_KEY
+  - model_name: fast
+    litellm_params:
+      model: nvidia_nim/nvidia/nemotron-3-nano-30b-a3b
+      api_base: https://integrate.api.nvidia.com/v1
+      api_key: os.environ/NVIDIA_API_KEY
+
+  # ===== Claude モデル名エイリアス =====
+  # claude-haiku-* → fast 群
+  - model_name: claude-haiku-4-5
+    litellm_params:
+      model: nvidia_nim/meta/llama-4-maverick-17b-128e-instruct
+      api_base: https://integrate.api.nvidia.com/v1
+      api_key: os.environ/NVIDIA_API_KEY
+  - model_name: claude-haiku-4-5
+    litellm_params:
+      model: nvidia_nim/openai/gpt-oss-20b
+      api_base: https://integrate.api.nvidia.com/v1
+      api_key: os.environ/NVIDIA_API_KEY
+  - model_name: claude-haiku-4-5
+    litellm_params:
+      model: nvidia_nim/nvidia/nemotron-3-nano-30b-a3b
+      api_base: https://integrate.api.nvidia.com/v1
+      api_key: os.environ/NVIDIA_API_KEY
+
+  # claude-sonnet-* → smart 群
+  - model_name: claude-sonnet-4-6
+    litellm_params:
+      model: nvidia_nim/moonshotai/kimi-k2-thinking
+      api_base: https://integrate.api.nvidia.com/v1
+      api_key: os.environ/NVIDIA_API_KEY
+  - model_name: claude-sonnet-4-6
+    litellm_params:
+      model: nvidia_nim/deepseek-ai/deepseek-v4-pro
+      api_base: https://integrate.api.nvidia.com/v1
+      api_key: os.environ/NVIDIA_API_KEY
+  - model_name: claude-sonnet-4-6
+    litellm_params:
+      model: nvidia_nim/qwen/qwen3-coder-480b-a35b-instruct
+      api_base: https://integrate.api.nvidia.com/v1
+      api_key: os.environ/NVIDIA_API_KEY
+
+  # claude-opus-* → smart 群
+  - model_name: claude-opus-4-7
+    litellm_params:
+      model: nvidia_nim/moonshotai/kimi-k2-thinking
+      api_base: https://integrate.api.nvidia.com/v1
+      api_key: os.environ/NVIDIA_API_KEY
+  - model_name: claude-opus-4-7
+    litellm_params:
+      model: nvidia_nim/deepseek-ai/deepseek-v4-pro
+      api_base: https://integrate.api.nvidia.com/v1
+      api_key: os.environ/NVIDIA_API_KEY
+  - model_name: claude-opus-4-7
+    litellm_params:
+      model: nvidia_nim/qwen/qwen3-coder-480b-a35b-instruct
+      api_base: https://integrate.api.nvidia.com/v1
+      api_key: os.environ/NVIDIA_API_KEY
+
+  # 未マッチ全部受ける wildcard
+  - model_name: "*"
+    litellm_params:
+      model: nvidia_nim/moonshotai/kimi-k2-thinking
+      api_base: https://integrate.api.nvidia.com/v1
+      api_key: os.environ/NVIDIA_API_KEY
+  - model_name: "*"
+    litellm_params:
+      model: nvidia_nim/deepseek-ai/deepseek-v4-pro
+      api_base: https://integrate.api.nvidia.com/v1
+      api_key: os.environ/NVIDIA_API_KEY
+
+router_settings:
+  routing_strategy: simple-shuffle
+  num_retries: 5
+  allowed_fails: 1
+  cooldown_time: 60
+  retry_after: 1
+
+litellm_settings:
+  drop_params: true
+  additional_drop_params:
+    - output_config
+    - thinking
+    - anthropic_beta
+    - cache_control
+    - container
+  set_verbose: false
+
+general_settings:
+  master_key: sk-litellm-local
