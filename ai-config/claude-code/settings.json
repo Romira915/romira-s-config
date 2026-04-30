@@ -153,7 +153,7 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "sh -c 'sh $HOME/.config/romira-s-config/ai-config/statusline-command.sh'"
+    "command": "sh -c 'sh $HOME/.config/romira-s-config/ai-config/claude-code/statusline-command.sh'"
   },
   "enabledPlugins": {
     "context7@claude-plugins-official": true,
