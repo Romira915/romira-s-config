@@ -1,0 +1,62 @@
+{
+  "LOG": true,
+  "LOG_LEVEL": "info",
+  "HOST": "127.0.0.1",
+  "PORT": 3456,
+  "API_TIMEOUT_MS": 600000,
+  "Providers": [
+    {
+      "name": "copilot",
+      "api_base_url": "http://127.0.0.1:4141/v1/chat/completions",
+      "api_key": "dummy",
+      "models": [
+        "claude-sonnet-4.6",
+        "claude-opus-4.6",
+        "claude-haiku-4.5",
+        "gemini-3.1-pro-preview",
+        "gemini-3-flash-preview",
+        "gpt-5.4",
+        "gpt-5.4-mini",
+        "gpt-5.3-codex",
+        "grok-code-fast-1"
+      ]
+    },
+    {
+      "name": "nvidia",
+      "api_base_url": "https://integrate.api.nvidia.com/v1/chat/completions",
+      "api_key": "$NVIDIA_API_KEY",
+      "models": [
+        "deepseek-ai/deepseek-v4-pro",
+        "deepseek-ai/deepseek-v4-flash",
+        "meta/llama-4-maverick-17b-128e-instruct",
+        "moonshotai/kimi-k2-thinking",
+        "moonshotai/kimi-k2-instruct-0905",
+        "qwen/qwen3-coder-480b-a35b-instruct"
+      ]
+    },
+    {
+      "name": "openrouter",
+      "api_base_url": "https://openrouter.ai/api/v1/chat/completions",
+      "api_key": "$OPENROUTER_API_KEY",
+      "models": [
+        "moonshotai/kimi-k2:free",
+        "deepseek/deepseek-chat-v3.1:free"
+      ],
+      "transformer": { "use": ["openrouter"] }
+    }
+  ],
+  "Router": {
+    "default":     "copilot,claude-sonnet-4.6",
+    "background":  "copilot,gpt-5.4-mini",
+    "think":       "copilot,claude-opus-4.6",
+    "longContext": "copilot,gemini-3.1-pro-preview",
+    "longContextThreshold": 60000,
+    "webSearch":   "copilot,gpt-5.4-mini"
+  },
+  "fallback": {
+    "default":     ["nvidia,deepseek-ai/deepseek-v4-pro"],
+    "background":  ["nvidia,meta/llama-4-maverick-17b-128e-instruct"],
+    "think":       ["nvidia,moonshotai/kimi-k2-thinking"],
+    "longContext": ["nvidia,deepseek-ai/deepseek-v4-pro"]
+  }
+}
