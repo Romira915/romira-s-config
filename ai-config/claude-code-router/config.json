@@ -1,6 +1,6 @@
 {
   "LOG": true,
-  "LOG_LEVEL": "info",
+  "LOG_LEVEL": "debug",
   "HOST": "127.0.0.1",
   "PORT": 3456,
   "API_TIMEOUT_MS": 600000,
@@ -46,12 +46,12 @@
     }
   ],
   "Router": {
-    "default":     "copilot,claude-sonnet-4.6",
-    "background":  "copilot,gpt-5.4-mini",
+    "default":     "copilot,claude-opus-4.6",
+    "background":  "copilot,claude-sonnet-4.6",
     "think":       "copilot,claude-opus-4.6",
     "longContext": "copilot,gemini-3.1-pro-preview",
-    "longContextThreshold": 60000,
-    "webSearch":   "copilot,gpt-5.4-mini"
+    "longContextThreshold": 300000,
+    "webSearch":   "copilot,claude-sonnet-4.6"
   },
   "fallback": {
     "default":     ["nvidia,deepseek-ai/deepseek-v4-pro"],
