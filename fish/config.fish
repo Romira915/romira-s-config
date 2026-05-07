@@ -1,3 +1,8 @@
+# Ensure MSYS2 base paths are available (needed when spawned by tmux)
+if test -d /usr/bin; and not contains /usr/bin $PATH
+    set -gx PATH /usr/local/bin /usr/bin /bin $PATH
+end
+
 bass source ~/.profile
 
 # Syntax highlighting colors
