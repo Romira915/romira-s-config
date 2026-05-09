@@ -166,9 +166,8 @@
   },
   "effortLevel": "xhigh",
   "skipDangerousModePermissionPrompt": true,
+  "skipAutoPermissionPrompt": true,
   "verbose": true,
   "remoteControlAtStartup": true,
-  "agentPushNotifEnabled": true,
-  "skipAutoPermissionPrompt": true,
-  "model": "opus[1m]"
+  "agentPushNotifEnabled": true
 }
