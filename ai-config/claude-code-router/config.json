@@ -1,6 +1,6 @@
 {
   "LOG": true,
-  "LOG_LEVEL": "debug",
+  "LOG_LEVEL": "info",
   "HOST": "127.0.0.1",
   "PORT": 3456,
   "API_TIMEOUT_MS": 600000,
