@@ -33,14 +33,13 @@ unset _uname_s _uname_r
 export EDITOR=vim
 export MCFLY_FUZZY=2
 export GOPATH="$HOME/go"
-export VOLTA_HOME="$HOME/.volta"
 export PYENV_ROOT="$HOME/.pyenv"
 
 # === PATH (prepend) ===
 for _dir in \
     "$HOME/bin" \
+    "$HOME/.local/share/mise/shims" \
     "$HOME/.local/bin" \
-    "$VOLTA_HOME/bin" \
     "$PYENV_ROOT/bin" \
     "$HOME/.local/share/binaryen/bin" \
     "$GOPATH/bin"
@@ -57,5 +56,12 @@ alias la="eza -la"
 
 command -v pyenv >/dev/null && eval "$(pyenv init -)"
 
-true
+if command -v mise >/dev/null 2>&1; then
+    if [ -n "$BASH_VERSION" ]; then
+        eval "$(mise activate bash)"
+    elif [ -n "$ZSH_VERSION" ]; then
+        eval "$(mise activate zsh)"
+    fi
+fi
 
+true
