@@ -10,7 +10,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### シンボリックリンク方式
 
-設定ファイルはこのリポジトリ内に保持し、各OS向けのセットアップスクリプト（`Mac/mac_setup.sh`、`Ubuntu/ubuntu_setup.sh`）がホームディレクトリにシンボリックリンクを作成する。
+設定ファイルはこのリポジトリ内に保持し、Ansible (`romira-arcadia-ops/ansible/`) の `develop_macOS.yml` / `develop_ubuntu.yml` / `develop_windows.yml` がホームディレクトリにシンボリックリンクを作成する。
 
 主なリンク先:
 - `git/.gitconfig` → `~/.gitconfig`
@@ -34,13 +34,21 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### 環境セットアップの流れ
 
-1. **Mac**: `Mac/mac_setup.sh` → シンボリックリンク作成 → zsh/fish設定 → Rust → Homebrew Cask → Volta → tmux-thumbs
-2. **Ubuntu/WSL**: 全て Ansible (`romira-arcadia-ops`) で管理。`ubuntu_setup.sh` は削除済み
-3. **Windows**: `Windows10/` or `Windows11/` 配下のPowerShell/cmdスクリプト、`winget/`、`scoop/`、`chocolatey/` でパッケージ管理
+プロビジョニングは全 OS で Ansible (`romira-arcadia-ops/ansible/`) に集約済み。レガシーな setup スクリプト（`Mac/mac_setup.sh`、`Ubuntu/ubuntu_setup.sh`、`homebrew/homebrew_cask.sh` 等）は削除済み。
+
+1. **Mac**: `ansible-playbook develop_macOS.yml`（Homebrew + Cask、シンボリックリンク、各種ツール）
+2. **Ubuntu/WSL**: `ansible-playbook develop_ubuntu.yml`
+3. **Windows**: `ansible-playbook develop_windows.yml`（Scoop、シンボリックリンク等）
+
+このリポジトリ自体に残っている OS 固有のリソースは設定ファイルのみ:
+- `macos/export_*.sh`: macOS の `defaults` コマンドエクスポート/復元スクリプト
+- `Ubuntu/wsl.conf`: WSL 内 Ubuntu の `/etc/wsl.conf` ソース
+- `wsl2/.wslconfig`: Windows ホスト側の WSL2 設定
 
 ### 主要ツールチェーン
 
-Homebrewパッケージリストは Ansible (`romira-arcadia-ops/ansible/roles/brew/vars/main.yml`) で一元管理。
+Homebrewパッケージリストは Ansible (`romira-arcadia-ops/ansible/roles/brew/defaults/main.yml`) で一元管理。
+- バージョンマネージャ: `mise`（旧 Volta から移行済み）
 - Rust製ツール: zoxide, bat, ripgrep, fd, eza, git-delta, sk (skim), bottom, mcfly, sd, dust
 - 開発ツール: ghq + sk でリポジトリ管理、gh (GitHub CLI)、starship (プロンプト)
 
