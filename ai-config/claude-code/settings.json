@@ -155,6 +155,7 @@
     ],
     "defaultMode": "auto"
   },
+  "model": "opus[1m]",
   "statusLine": {
     "type": "command",
     "command": "sh -c 'sh $HOME/.config/romira-s-config/ai-config/claude-code/statusline-command.sh'"
@@ -170,9 +171,9 @@
   },
   "effortLevel": "xhigh",
   "skipDangerousModePermissionPrompt": true,
+  "theme": "dark-daltonized",
   "verbose": true,
   "remoteControlAtStartup": true,
   "agentPushNotifEnabled": true,
-  "skipAutoPermissionPrompt": true,
-  "theme": "dark-daltonized"
+  "skipAutoPermissionPrompt": true
 }
