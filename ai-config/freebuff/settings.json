@@ -1,5 +1,5 @@
 {
   "mode": "DEFAULT",
   "adsEnabled": true,
-  "freebuffModel": "deepseek/deepseek-v4-flash"
+  "freebuffModel": "deepseek-ai/deepseek-v4-pro"
 }
