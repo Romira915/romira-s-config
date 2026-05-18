@@ -33,14 +33,12 @@ unset _uname_s _uname_r
 export EDITOR=vim
 export MCFLY_FUZZY=2
 export GOPATH="$HOME/go"
-export PYENV_ROOT="$HOME/.pyenv"
 
 # === PATH (prepend) ===
 for _dir in \
     "$HOME/bin" \
     "$HOME/.local/share/mise/shims" \
     "$HOME/.local/bin" \
-    "$PYENV_ROOT/bin" \
     "$HOME/.local/share/binaryen/bin" \
     "$GOPATH/bin"
 do
@@ -53,8 +51,6 @@ unset _dir
 
 alias ls="eza"
 alias la="eza -la"
-
-command -v pyenv >/dev/null && eval "$(pyenv init -)"
 
 if command -v mise >/dev/null 2>&1; then
     if [ -n "$BASH_VERSION" ]; then
