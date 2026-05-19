@@ -35,7 +35,9 @@ export MCFLY_FUZZY=2
 export GOPATH="$HOME/go"
 
 # === PATH (prepend) ===
+export PNPM_HOME="$HOME/.local/share/pnpm"
 for _dir in \
+    "$PNPM_HOME" \
     "$HOME/bin" \
     "$HOME/.local/share/mise/shims" \
     "$HOME/.local/bin" \
