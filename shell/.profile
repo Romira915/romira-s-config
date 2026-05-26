@@ -42,7 +42,8 @@ for _dir in \
     "$HOME/.local/share/mise/shims" \
     "$HOME/.local/bin" \
     "$HOME/.local/share/binaryen/bin" \
-    "$GOPATH/bin"
+    "$GOPATH/bin" \
+    "$HOME/.opencode/bin"
 do
     [ -d "$_dir" ] && PATH="$_dir:$PATH"
 done
