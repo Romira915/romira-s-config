@@ -15,6 +15,17 @@
       ],
       "enabled": true,
       "timeout": 30000
+    },
+    "newrelic": {
+      "type": "remote",
+      "url": "https://mcp.newrelic.com/mcp/",
+      "enabled": true,
+      "oauth": {
+        "clientId": "pUWGgnjsQ0bydqCbavTPpw==",
+        "authorizationUrl": "https://login.newrelic.com/login",
+        "tokenUrl": "https://mcp.newrelic.com/oauth2/token",
+        "scope": "openid"
+      }
     }
   }
 }
