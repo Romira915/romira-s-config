@@ -26,6 +26,18 @@
         "tokenUrl": "https://mcp.newrelic.com/oauth2/token",
         "scope": "openid"
       }
+    },
+    "workspace-mcp": {
+      "type": "local",
+      "command": ["uvx", "workspace-mcp", "--tool-tier", "core"],
+      "enabled": true,
+      "timeout": 60000,
+      "environment": {
+        "GOOGLE_OAUTH_CLIENT_ID": "{file:~/.config/opencode/env/google-oauth-client-id}",
+        "GOOGLE_OAUTH_CLIENT_SECRET": "{file:~/.config/opencode/env/google-oauth-client-secret}",
+        "OAUTHLIB_INSECURE_TRANSPORT": "1",
+        "USER_GOOGLE_EMAIL": "{file:~/.config/opencode/env/user-google-email}"
+      }
     }
   }
 }
