@@ -155,7 +155,6 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "opus[1m]",
   "statusLine": {
     "type": "command",
     "command": "sh -c 'sh $HOME/.config/romira-s-config/ai-config/claude-code/statusline-command.sh'"
@@ -167,7 +166,8 @@
     "Notion@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
     "playwright@claude-plugins-official": true,
-    "notion@claude-plugins-official": true
+    "notion@claude-plugins-official": true,
+    "chrome-devtools-mcp@claude-plugins-official": true
   },
   "effortLevel": "xhigh",
   "skipDangerousModePermissionPrompt": true,
