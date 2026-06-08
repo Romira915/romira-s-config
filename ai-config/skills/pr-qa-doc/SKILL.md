@@ -1,12 +1,19 @@
 ---
 name: pr-qa-doc
-description: PR の変更内容から STG/PROD などの QA 確認事項を Markdown で書き出す。煽り強調禁止・結果＝エビデンス・コマンド/出力 → 判定の 2 段、というフォーマット規約を守る。出力先は cwd に応じて Repo の docs/ または Obsidian Vault 配下を提案する。
+description: PR の変更内容から STG/PROD などの QA 確認事項を Markdown で書き出す。PR 作成そのものは pr、Jira 起点の STG 実行・エビデンス作成は stg-manual-test を使う。
 allowed-tools: Bash(gh pr view:*), Bash(gh pr diff:*), Bash(gh api repos:*), Bash(git rev-parse:*), Bash(git remote:*), Bash(ls:*), Bash(mkdir:*), Bash(screencapture:*), Bash(osascript:*), Bash(sips:*), Read, Write, Edit, mcp__plugin_chrome-devtools-mcp_chrome-devtools__new_page, mcp__plugin_chrome-devtools-mcp_chrome-devtools__navigate_page, mcp__plugin_chrome-devtools-mcp_chrome-devtools__list_pages, mcp__plugin_chrome-devtools-mcp_chrome-devtools__take_snapshot, mcp__plugin_chrome-devtools-mcp_chrome-devtools__fill_form, mcp__plugin_chrome-devtools-mcp_chrome-devtools__fill, mcp__plugin_chrome-devtools-mcp_chrome-devtools__click, mcp__plugin_chrome-devtools-mcp_chrome-devtools__wait_for, mcp__plugin_chrome-devtools-mcp_chrome-devtools__select_page, mcp__plugin_chrome-devtools-mcp_chrome-devtools__close_page
 ---
 
 # pr-qa-doc
 
 PR の変更内容から QA 確認事項を設計し、フォーマット規約に従った Markdown ファイルとして書き出す。Jira コメントにそのまま貼って使える形にする。
+
+## 関連スキルとの使い分け
+
+- **pr**: 現在のブランチから GitHub PR を作成する。PR タイトル・本文・Test Plan 生成まで。
+- **pr-qa-doc**: 既存 PR の差分から QA チェックリストを Markdown 化する。原則、検証実行はしない。
+- **stg-manual-test**: Jira チケット起点で STG テストケースを設計し、実際に検証してスクショ等のエビデンスと Jira コメント下書きまで作る。
+- **agent-browser**: 汎用 Web 操作・調査・スクショ取得。Jira/PR の QA 文書化やテスト結果整理が不要な単発ブラウザ作業向け。
 
 ## 引数
 

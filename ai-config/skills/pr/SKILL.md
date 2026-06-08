@@ -1,6 +1,6 @@
 ---
 name: pr
-description: 現在のブランチから PR を作成する。コミット群からタイトル・Summary・Test Plan を生成し `gh pr create --assignee @me` を実行。実装完了後のレビュー依頼に使う（デフォルトブランチや未コミット変更があれば中断）。
+description: 現在のブランチから PR を作成する。コミット群からタイトル・Summary・Test Plan を生成し `gh pr create --assignee @me` を実行。QA 確認事項の文書化は pr-qa-doc を使う。
 allowed-tools: Bash(git status:*), Bash(git log:*), Bash(git diff:*), Bash(git push:*), Bash(gh pr create:*), Bash(gh repo view:*)
 ---
 
@@ -36,6 +36,8 @@ Title: <変更の要約を簡潔に>（日本語）
 ## 作成後
 
 - オートマージの設定やマージ操作は行わない（ユーザーが別途手動で行う）
+- PR 作成後に STG/PROD の QA 確認事項を Markdown 化したい場合は `pr-qa-doc` スキルを案内する
+- Jira チケット起点で STG マニュアルテストを実際に設計・実行し、エビデンスと Jira コメント下書きまで作る場合は `stg-manual-test` を使う
 
 ## 注意事項
 

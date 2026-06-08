@@ -1,6 +1,6 @@
 ---
 name: agent-browser
-description: Web サイトで対話型ブラウザ自動化を実行する（agent-browser CLI）。URL 遷移・ページ調査・スクリーンショット・フォーム入力・スクレイピング等の依頼に使う。
+description: agent-browser CLI で汎用 Web 操作を実行する。URL 遷移・ページ調査・スクリーンショット・フォーム入力・スクレイピング等に使う。Jira 起点の STG テストは stg-manual-test を使う。
 allowed-tools:
   - Bash(agent-browser:*)
   - Bash(mkdir:*)
@@ -12,7 +12,14 @@ allowed-tools:
 
 [agent-browser CLI](https://github.com/vercel-labs/agent-browser) を使い、自然言語で依頼された汎用ブラウザタスクを **snapshot-ref パターン** で逐次実行する。
 
-「このページを調べて」「〜のスクショを取って」「フォームに入力してボタンを押して」「〜の情報を抜き出して」といった汎用タスク向け。STG マニュアルテスト用途には専用スキル `stg-manual-test-ab` を使う。
+「このページを調べて」「〜のスクショを取って」「フォームに入力してボタンを押して」「〜の情報を抜き出して」といった汎用タスク向け。
+
+## 使い分け
+
+- **agent-browser**: 汎用の Web 操作・調査・スクショ取得・フォーム入力。Jira/PR の QA 文書化やテスト結果整理が不要な単発作業。
+- **stg-manual-test**: Jira チケット起点の STG マニュアルテスト。テストケース設計、実行、エビデンス保存、Jira コメント下書きまで必要な場合。
+- **pr-qa-doc**: PR 差分から QA 確認事項を Markdown 化する。原則、検証実行はしない。
+- **Playwright MCP**: DOM 調査や MCP ツールでの軽い確認に使う。Jira 起点の STG テストで Playwright を使う場合も、入口は `stg-manual-test` にする。
 
 ## 引数
 
@@ -120,5 +127,5 @@ agent-browser --session-name browse-<X> snapshot -i   # 再取得必須
 
 ## 関連スキル
 
-- `stg-manual-test-ab`: STG マニュアルテスト専用（Jira 連携、コメント下書き生成）
-- `stg-manual-test`: 同上の Playwright MCP 版
+- `stg-manual-test`: STG マニュアルテスト専用（Jira 連携、エビデンス保存、コメント下書き生成）
+- `pr-qa-doc`: PR 差分から QA 確認事項を Markdown 化

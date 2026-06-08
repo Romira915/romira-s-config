@@ -1,6 +1,6 @@
 # STG マニュアルテスト固有の agent-browser ノウハウ
 
-agent-browser CLI 一般のコマンド・認証・トラブルシューティングは `~/.claude/skills/agent-browser/REFERENCE.md` を参照。ここでは STG 検証で頻出する固有のテクニックのみ記述する。
+agent-browser CLI 一般のコマンド・認証・トラブルシューティングは `agent-browser` スキルの `REFERENCE.md` を参照。ここでは STG 検証で頻出する固有のテクニックのみ記述する。
 
 ## ログイン（セッション未作成の場合のみ）
 
