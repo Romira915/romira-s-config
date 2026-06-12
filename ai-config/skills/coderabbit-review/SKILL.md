@@ -1,7 +1,7 @@
 ---
 name: coderabbit-review
 description: CodeRabbit の指摘を「対応／非対応／要相談」にトリアージしてレポートする（coderabbit CLI）。指摘対応を一括判断したいときに使う。修正適用はユーザー承認後。
-allowed-tools: Bash(coderabbit:*), Bash(git log:*), Bash(git diff:*), Bash(git status:*)
+allowed-tools: Bash(coderabbit review:*), Bash(git log:*), Bash(git diff:*), Bash(git status:*)
 ---
 
 # CodeRabbit レビュー対応スキル
@@ -11,8 +11,14 @@ allowed-tools: Bash(coderabbit:*), Bash(git log:*), Bash(git diff:*), Bash(git s
 
 ## 引数
 
-- `$ARGUMENTS` にオプションを指定できる（例: `--base main`）
-- 省略時はコミット済み変更を対象にレビューする
+- `$ARGUMENTS` に `coderabbit review` のオプションを指定できる
+- 省略時は `-t committed` でコミット済み変更を対象にレビューする
+- 例:
+  - `-t uncommitted`: 未コミット変更を対象にする
+  - `-t all`: コミット済み変更と未コミット変更を対象にする
+  - `--base <branch>`: 比較元ブランチを指定する
+  - `--base-commit <commit>`: 比較元コミットを指定する
+  - `--dir <path>`: レビュー対象ディレクトリを指定する
 
 ## 手順
 
@@ -21,16 +27,26 @@ allowed-tools: Bash(coderabbit:*), Bash(git log:*), Bash(git diff:*), Bash(git s
 コミット済みの変更に対してレビューを実行する：
 
 ```
-coderabbit review -t committed --plain
+coderabbit review -t committed --agent
 ```
 
-引数でオプションが指定されている場合はそれを追加する（例: `--base <branch>`）。
+`--agent` は構造化 findings を出力し、エージェントによる解析・トリアージに適している。CLI 自身も Claude 環境検出時に `--agent` を推奨する。
+
+引数でオプションが指定されている場合はそれを追加する（例: `--base <branch>`）。レビュー実行は数分かかることがあるため、Bash 実行時は timeout を長め（10分 = 600000ms）に設定する。
 
 出力が長い場合があるため、全文を取得すること。
 
+#### 直近レビュー結果の再利用
+
+同一セッションで既にレビュー実行済みで、直近のレビュー結果を再トリアージしたい場合は、レビューを再実行せず前回ローカルレビューの findings を取得する：
+
+```
+coderabbit review findings
+```
+
 ### Step 2: 指摘の解析
 
-CodeRabbitの出力から個別の指摘（finding）を抽出する。各指摘について：
+`--agent` の構造化出力に含まれる findings を、そのまま指摘単位として扱う。各指摘について：
 
 1. **ファイルパスと行番号**を特定する
 2. **指摘内容**（説明、重要度）を把握する
@@ -59,7 +75,7 @@ CodeRabbitの出力から個別の指摘（finding）を抽出する。各指摘
 ```
 ## CodeRabbit レビュー対応判断
 
-レビュー対象: committed changes
+レビュー対象: <実行したレビュー範囲（例: committed changes / uncommitted changes / --base main）>
 指摘数: <N>件
 
 ---
@@ -101,5 +117,6 @@ CodeRabbitの出力から個別の指摘（finding）を抽出する。各指摘
 
 - このスキルはレビュー実行と判断レポートまでを自動で行い、実際のコード修正はユーザーの承認後にのみ実施する
 - レポートではCodeRabbitの原文を要約し、冗長な出力は省略する
-- `--agent` オプションは構造化出力が得られるが、`--plain` の方が読みやすいためデフォルトは `--plain` を使用する
+- `--prompt-only` は `--agent` の deprecated エイリアスなので使わない
+- レビュー実行には数分かかることがある。再トリアージには `coderabbit review findings` を使い、不要な再実行を避ける
 - CLAUDE.md を追加の指示として渡したい場合は `-c CLAUDE.md` を付与できる
