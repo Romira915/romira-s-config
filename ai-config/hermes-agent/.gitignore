@@ -1,0 +1,8 @@
+.env
+auth.json
+state.db*
+sessions/
+logs/
+cache/
+lsp/
+*.backup.*
