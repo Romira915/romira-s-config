@@ -294,7 +294,7 @@ display:
   resume_max_assistant_lines: 3
   resume_skip_tool_only: true
   busy_input_mode: interrupt
-  interface: cli
+  interface: tui
   tui_auto_resume_recent: false
   tui_agents_nudge: true
   bell_on_complete: false
@@ -594,6 +594,7 @@ sessions:
 onboarding:
   seen:
     tool_progress_prompt: true
+    busy_input_prompt: true
   profile_build: ask
 updates:
   pre_update_backup: false
@@ -674,3 +675,9 @@ image_gen:
 known_plugin_toolsets:
   cli:
   - spotify
+mcp_servers:
+  jira:
+    url: https://mcp.atlassian.com/v1/sse
+    enabled: true
+    auth: oauth
+    transport: sse
