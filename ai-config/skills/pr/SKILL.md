@@ -1,7 +1,7 @@
 ---
 name: pr
 description: 現在のブランチから PR を作成する。コミット群からタイトル・Summary・Test Plan を生成し `gh pr create --assignee @me` を実行。QA 確認事項の文書化は pr-qa-doc を使う。
-allowed-tools: Bash(git status:*), Bash(git log:*), Bash(git diff:*), Bash(git push:*), Bash(gh pr create:*), Bash(gh repo view:*)
+allowed-tools: Bash(git status:*), Bash(git log:*), Bash(git diff:*), Bash(git push:*), Bash(gh pr create:*), Bash(gh repo view:*), Bash(git check-ignore:*)
 ---
 
 # PR作成スキル
@@ -45,3 +45,19 @@ Title: <変更の要約を簡潔に>（日本語）
 - `--fill` は使わない（全コミットを分析して適切なタイトル・本文を生成する）
 - リベースやforce pushは行わない（破壊的操作は別途ユーザーが指示すべき）
 - タイトル・本文はユーザーの言語に合わせる
+
+## ハマりどころ
+
+### ネストリポジトリ（親リポジトリの .gitignore 配下に別リポジトリがある場合）
+- 例: `prtimes-dev-docker/web/prtimes-source` は `.gitignore` で除外されており、中身は別リポジトリ `PRTIMES/prtimes`（default branch: master）
+- PR 作成・コミット操作は内側のリポジトリ内で `gh` / `git` を実行する
+- 親リポジトリでブランチを作っても対象ファイルに影響しない — `git check-ignore -v <path>` で対象ファイルがどちらのリポジトリに属するか事前確認する
+
+### 別タスクの変更が混在するワークツリーからの切り出し
+- 別ブランチに staged 変更があり、今回のタスク分が unstaged にある場合:
+  1. `git stash --keep-index` で unstaged 変更だけ退避
+  2. `git checkout -b <新ブランチ> origin/<default-branch>` で clean な新ブランチ作成
+  3. staged がついてきた場合は `git reset HEAD -- . && git checkout -- .` でクリーンに戻す
+  4. `git checkout stash@{0} -- <対象ファイルのみ>` で該当ファイルだけ復元（stash には混在変更が入るのでファイル単位で選択）
+  5. コミット・push・PR 作成
+  6. 元ブランチに戻って `git stash pop` で退避分を復元
