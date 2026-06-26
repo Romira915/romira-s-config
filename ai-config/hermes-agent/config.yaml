@@ -346,7 +346,7 @@ display:
     - cwd
   show_cost: false
   show_reasoning: false
-  skin: default
+  skin: slate
   streaming: true
   timestamps: false
   tool_preview_length: 0
