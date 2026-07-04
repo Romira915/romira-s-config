@@ -45,6 +45,14 @@
         {
             "id": "User.splitPane.A6751878",
             "keys": "alt+shift+d"
+        },
+        {
+            "command": null,
+            "keys": "alt+enter"
+        },
+        {
+            "command": null,
+            "keys": "alt+return"
         }
     ],
     "newTabMenu": [
