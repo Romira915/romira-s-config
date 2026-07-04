@@ -1,0 +1,81 @@
+# ──────────────────────────────────────────────
+# herdr config — tmux (.tmux.conf) 完全準拠
+# ──────────────────────────────────────────────
+
+# ----- UI -----
+[ui]
+agent_panel_sort      = "spaces"
+mouse_capture         = true            # tmux: mouse on（デフォルトと同じ）
+prompt_new_tab_name   = false
+right_click_passthrough_modifier = "ctrl"  # Ctrl+右クリック で TUI にパススルー
+
+# ----- キーバインド -----
+show_agent_labels_on_pane_borders = true
+[keys]
+prefix           = "ctrl+a"           # tmux: set -g prefix C-a
+
+# --- pane 移動（tmux: bind h/j/k/l select-pane） ---
+# デフォルトが prefix+h/j/k/l なので明示的に書かなくても動く
+focus_pane_left  = "prefix+h"
+focus_pane_down  = "prefix+j"
+focus_pane_up    = "prefix+k"
+focus_pane_right = "prefix+l"
+
+# --- 分割（tmux: bind \\ split-window -h / bind - split-window -v）---
+split_vertical   = 'prefix+\'         # 左右分割
+split_horizontal = "prefix+minus"      # 上下分割
+
+# --- タブ操作 ---
+new_tab          = "prefix+c"          # tmux: bind c new-window
+next_tab         = "prefix+n"
+previous_tab     = "prefix+p"
+switch_tab       = "prefix+1..9"
+rename_tab       = "prefix+comma"      # tmux: prefix+,（rename window）
+close_tab        = "prefix+ampersand"  # tmux: prefix+&（kill window）
+
+# --- workspace（tmux session 相当） ---
+workspace_picker    = "prefix+w"          # tmux: bind w（window picker）
+goto                = "prefix+g"          # tmux: bind C-s（汎用ジャンプ picker）
+new_workspace       = "prefix+shift+n"
+rename_workspace    = "prefix+$"           # tmux: prefix+$（rename session）
+close_workspace     = "prefix+shift+d"
+next_workspace      = "prefix+shift+right"    # tmux: 次の session
+previous_workspace  = "prefix+shift+left"     # tmux: 前の session
+
+# --- detach（tmux: prefix+d） ---
+detach           = "prefix+d"
+
+# --- 最終 window に戻る（tmux: bind Tab last-window） ---
+last_pane        = "prefix+tab"
+
+# --- pane 操作 ---
+close_pane       = "prefix+x"          # tmux: prefix+x（デフォルト）
+zoom             = "prefix+z"          # tmux: prefix+z（デフォルト）
+resize_mode      = "prefix+r"          # tmux の H/J/K/L リサイズ → herdr は mode 方式
+                                        # prefix+r → h/j/k/l でリサイズ、Esc で抜ける
+cycle_pane_next  = "prefix+o"          # tmux: prefix+o（pane 巡回）
+toggle_sidebar   = "prefix+b"          # デフォルト（tmux の break-pane は非対応）
+
+# --- copy mode（tmux: mode-keys vi + 各種 binding） ---
+copy_mode        = "prefix+["          # tmux: prefix+[（デフォルト）
+
+# ----- ターミナル -----
+[terminal]
+default_shell    = "fish"              # tmux: set -g default-command "fish -l"
+shell_mode       = "login"             # fish -l 相当
+new_cwd          = "follow"            # tmux: new-window -c "#{pane_current_path}"
+
+# ----- スクロールバッファ -----
+[advanced]
+scrollback_limit_bytes = 10485760      # tmux: history-limit 50000（約10MB相当）
+
+[theme]
+name = "tokyo-night"
+auto_switch = false
+
+[ui.toast]
+delivery = "herdr"
+
+[ui.toast.clipboard]
+enabled  = true
+position = "bottom-center"
