@@ -48,6 +48,11 @@ detach           = "prefix+d"
 # --- 最終 window に戻る（tmux: bind Tab last-window） ---
 last_pane        = "prefix+tab"
 
+# --- agent pane 移動 ---
+focus_agent      = "prefix+alt+1..9"   # 1..9 番目の agent pane に直ジャンプ
+previous_agent   = "prefix+<"          # vim 風 prev/next
+next_agent       = "prefix+>"
+
 # --- pane 操作 ---
 close_pane       = "prefix+x"          # tmux: prefix+x（デフォルト）
 zoom             = "prefix+z"          # tmux: prefix+z（デフォルト）
