@@ -181,6 +181,7 @@
     ],
     "defaultMode": "auto"
   },
+  "model": "claude-fable-5[1m]",
   "remoteControlAtStartup": true,
   "skipAutoPermissionPrompt": true,
   "skipDangerousModePermissionPrompt": true,
