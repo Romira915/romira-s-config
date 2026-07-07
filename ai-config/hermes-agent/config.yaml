@@ -60,8 +60,9 @@ agent:
     uwu: hewwo! i'm your fwiendwy assistant uwu~ i wiww twy my best to hewp you! *nuzzles
       your code* OwO what's this? wet me take a wook! i pwomise to be vewy hewpful
       >w<
-  reasoning_effort: medium
+  reasoning_effort: xhigh
   verbose: false
+  verify_on_stop: false
 terminal:
   backend: local
   modal_mode: auto
@@ -275,7 +276,7 @@ display:
   tui_auto_resume_recent: false
   tui_agents_nudge: true
   bell_on_complete: false
-  show_reasoning: false
+  show_reasoning: true
   reasoning_full: false
   memory_notifications: 'on'
   streaming: true
@@ -288,7 +289,7 @@ display:
   file_mutation_verifier: true
   credits_notices: true
   turn_completion_explainer: true
-  show_cost: false
+  show_cost: true
   skin: slate
   language: en
   tui_status_indicator: kaomoji
@@ -319,6 +320,8 @@ display:
   long_running_notifications: true
   tool_progress: all
   tui_compact: true
+  sections:
+    thinking: expanded
 dashboard:
   theme: default
   show_token_analytics: false
@@ -589,7 +592,7 @@ paste_collapse_threshold_fallback: 5
 paste_collapse_char_threshold: 2000
 computer_use:
   cua_telemetry: false
-_config_version: 30
+_config_version: 32
 group_sessions_per_user: true
 image_gen:
   model: gpt-image-2-medium
@@ -620,6 +623,10 @@ mcp_servers:
       OAUTHLIB_INSECURE_TRANSPORT: '1'
       USER_GOOGLE_EMAIL: ${WORKSPACE_MCP_USER_GOOGLE_EMAIL}
     enabled: true
+  newrelic:
+    url: https://mcp.newrelic.com/mcp/
+    enabled: true
+    auth: oauth
 platform_toolsets:
   cli:
     - browser
