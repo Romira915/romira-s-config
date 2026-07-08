@@ -1,10 +1,11 @@
+onboarding = false
 # ──────────────────────────────────────────────
 # herdr config — tmux (.tmux.conf) 完全準拠
 # ──────────────────────────────────────────────
 
 # ----- UI -----
 [ui]
-agent_panel_sort      = "spaces"
+agent_panel_sort = "spaces"
 mouse_capture         = true            # tmux: mouse on（デフォルトと同じ）
 prompt_new_tab_name   = false
 right_click_passthrough_modifier = "ctrl"  # Ctrl+右クリック で TUI にパススルー

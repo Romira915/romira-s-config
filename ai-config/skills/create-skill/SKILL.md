@@ -1,6 +1,6 @@
 ---
 name: create-skill
-description: 新しい Claude Code スキルを作成して `~/.claude/skills/` に登録する。新規スキル作成の依頼に使う。
+description: 新しい Claude Code スキルを作成して `~/.claude/skills/` に登録する。新規スキル作成の依頼に使う。既存スキル（romira-s-config配下）への追記・編集時も固有情報ルールは同じく適用されるため、必ずこのスキルを先に参照する。
 allowed-tools: Bash(mkdir:*), Bash(ln:*), Bash(ls:*), Bash(grep:*)
 ---
 
@@ -9,6 +9,8 @@ allowed-tools: Bash(mkdir:*), Bash(ln:*), Bash(ls:*), Bash(grep:*)
 ユーザーの要望に基づいて新しい Claude Code スキルを作成・登録する。
 
 このリポジトリは **public** にホストされているので、SKILL.md には個人・所属が判別できる情報を一切書かない。固有値は `~/.claude/personal.md` に逃がし、スキル側は Read で読み込む設計にする。
+
+**このルールは新規作成に限らない。`~/.config/romira-s-config/ai-config/skills/` 配下の既存スキル（`pr`, `pr-qa-doc`, `pr-jira-task` 等）に1行でも追記・編集するときも、必ずこのスキルを先にロードして「固有情報の扱い（必読）」節に照らしてから書く。** 「別スキルの改善」「ちょっとした追記」のつもりでも、他タスク中に得た固有の具体例（社名・プロジェクト名・内部ID・業務ロジック定数など）をそのまま貼り付けるのが典型的な事故パターン。romira-s-config 配下のファイルに `patch`/`write_file` を使う直前は、このスキルの「直書き禁止のもの」表と「完成後の固有情報チェック」を思い出すこと。
 
 ## 手順
 
