@@ -5,7 +5,7 @@ onboarding = false
 
 # ----- UI -----
 [ui]
-agent_panel_sort = "spaces"
+agent_panel_sort = "priority"
 mouse_capture         = true            # tmux: mouse on（デフォルトと同じ）
 prompt_new_tab_name   = false
 right_click_passthrough_modifier = "ctrl"  # Ctrl+右クリック で TUI にパススルー
@@ -64,6 +64,16 @@ toggle_sidebar   = "prefix+b"          # デフォルト（tmux の break-pane �
 
 # --- copy mode（tmux: mode-keys vi + 各種 binding） ---
 copy_mode        = "prefix+["          # tmux: prefix+[（デフォルト）
+
+# --- thumbs 風ヒントコピー（tmux: tmux-thumbs の prefix+Space 相当） ---
+# herdr にネイティブ機能が無いため、可視テキストを thumbs に流して
+# ヒント選択→クリップボードへコピーするヘルパーを一時ペインで起動する。
+# 大文字ヒントで選ぶとコピーに加え `open` で開く（tmux の upcase-command 相当）。
+[[keys.command]]
+key         = "prefix+space"
+type        = "pane"
+command     = "~/.config/romira-s-config/herdr/scripts/thumbs-copy.sh"
+description = "thumbs: 画面上のトークンをヒント選択してコピー"
 
 # ----- ターミナル -----
 [terminal]
