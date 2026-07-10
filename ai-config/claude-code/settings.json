@@ -1,36 +1,10 @@
 {
-  "agentPushNotifEnabled": true,
-  "attribution": {
-    "commit": "",
-    "pr": ""
-  },
-  "effortLevel": "xhigh",
-  "enabledPlugins": {
-    "Notion@claude-plugins-official": true,
-    "chrome-devtools-mcp@claude-plugins-official": true,
-    "context7@claude-plugins-official": true,
-    "github@claude-plugins-official": true,
-    "notion@claude-plugins-official": true,
-    "playwright@claude-plugins-official": true,
-    "rust-analyzer-lsp@claude-plugins-official": true,
-    "serena@claude-plugins-official": true
-  },
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
-  "hooks": {
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "command": "bash '~/.claude/hooks/herdr-agent-state.sh' session",
-            "timeout": 10,
-            "type": "command"
-          }
-        ],
-        "matcher": "*"
-      }
-    ]
+  "attribution": {
+    "commit": "",
+    "pr": ""
   },
   "permissions": {
     "allow": [
@@ -181,15 +155,41 @@
     ],
     "defaultMode": "auto"
   },
-  "model": "claude-fable-5[1m]",
-  "remoteControlAtStartup": true,
-  "skipAutoPermissionPrompt": true,
-  "skipDangerousModePermissionPrompt": true,
-  "statusLine": {
-    "command": "sh -c 'sh $HOME/.config/romira-s-config/ai-config/claude-code/statusline-command.sh'",
-    "type": "command"
+  "model": "sonnet",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '~/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
   },
-  "theme": "dark-daltonized",
+  "statusLine": {
+    "type": "command",
+    "command": "sh -c 'sh $HOME/.config/romira-s-config/ai-config/claude-code/statusline-command.sh'"
+  },
+  "enabledPlugins": {
+    "Notion@claude-plugins-official": true,
+    "chrome-devtools-mcp@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
+    "github@claude-plugins-official": true,
+    "notion@claude-plugins-official": true,
+    "playwright@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "serena@claude-plugins-official": true
+  },
+  "effortLevel": "xhigh",
   "tui": "fullscreen",
-  "verbose": true
+  "skipDangerousModePermissionPrompt": true,
+  "theme": "dark-daltonized",
+  "verbose": true,
+  "remoteControlAtStartup": true,
+  "agentPushNotifEnabled": true,
+  "skipAutoPermissionPrompt": true
 }
