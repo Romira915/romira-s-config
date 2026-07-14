@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "command": "bash -lc 'if [ -f ~/.codex/herdr-agent-state.sh ]; then sh ~/.codex/herdr-agent-state.sh session; fi'",
+            "timeout": 10,
+            "type": "command"
+          }
+        ]
+      }
+    ]
+  }
+}
