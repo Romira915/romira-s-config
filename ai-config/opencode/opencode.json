@@ -29,7 +29,7 @@
       "url": "https://mcp.newrelic.com/mcp/",
       "enabled": true,
       "oauth": {
-        "clientId": "pUWGgnjsQ0bydqCbavTPpw==",
+        "clientId": "{file:~/.config/opencode/env/newrelic-client-id}",
         "authorizationUrl": "https://login.newrelic.com/login",
         "tokenUrl": "https://mcp.newrelic.com/oauth2/token",
         "scope": "openid"
