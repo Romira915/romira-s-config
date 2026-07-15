@@ -1,7 +1,7 @@
 ---
 name: pr
 description: 現在のブランチから PR を作成する。コミット群からタイトル・Summary・Test Plan を生成し `gh pr create --assignee @me` を実行。QA 確認事項の文書化は pr-qa-doc を使う。
-allowed-tools: Bash(git status:*), Bash(git log:*), Bash(git diff:*), Bash(git push:*), Bash(gh pr create:*), Bash(gh repo view:*), Bash(git check-ignore:*)
+allowed-tools: Read, Bash(git status:*), Bash(git log:*), Bash(git diff:*), Bash(git push:*), Bash(gh pr create:*), Bash(gh repo view:*), Bash(git check-ignore:*)
 ---
 
 # PR作成スキル
@@ -19,6 +19,7 @@ allowed-tools: Bash(git status:*), Bash(git log:*), Bash(git diff:*), Bash(git p
 2. リモートにpushされていなければ `git push -u origin <branch>` でpush
 3. 変更内容からPRタイトルと本文を生成し、`gh pr create` で作成
    - `--assignee @me` を必ず付与
+   - 対象の Jira チケットがある場合は、PR 本文の先頭に `## JIRA` とチケット URL を記載
 4. 作成後、PRのURLを表示
 
 ## PR本文フォーマット
@@ -26,12 +27,22 @@ allowed-tools: Bash(git status:*), Bash(git log:*), Bash(git diff:*), Bash(git p
 ```
 Title: <変更の要約を簡潔に>（日本語）
 
+## JIRA
+
+<jira_issue_url>
+
 ## Summary
 - 変更点を箇条書き
 
 ## Test Plan
 - テスト方法・確認事項を箇条書き
 ```
+
+- `## JIRA` は対象の Jira チケットがある場合のみ記載し、無い場合は見出しごと省略する
+- ユーザーの依頼、既存文脈、ブランチ名、コミットメッセージから対象チケットを特定する
+- チケット URL が既存文脈で分かっている場合はそれを使う
+- issue key のみ分かっている場合は、そのときに限り `~/.claude/personal.md` を Read し、`pr-jira-task` の `Jira チケット URL プレフィックス` から URL を組み立てる
+- 対象チケットを特定できない場合は URL を推測せず、`## JIRA` を省略する
 
 ## 作成後
 
