@@ -419,6 +419,7 @@ delegation:
   max_spawn_depth: 1
   orchestrator_enabled: true
   subagent_auto_approve: false
+  max_async_children: 3
 prefill_messages_file: ''
 goals:
   max_turns: 20
@@ -494,6 +495,7 @@ approvals:
   destructive_slash_confirm: true
 command_allowlist:
   - script execution via -e/-c flag
+  - execute_code
 hooks_auto_accept: false
 security:
   allow_private_urls: false
@@ -603,13 +605,13 @@ known_plugin_toolsets:
 mcp_servers:
   jira:
     auth: oauth
-    enabled: true
+    enabled: false
     transport: sse
     url: https://mcp.atlassian.com/v1/sse
   notion:
     url: https://mcp.notion.com/mcp
     auth: oauth
-    enabled: true
+    enabled: false
   workspace-mcp:
     command: uvx
     args:
@@ -621,10 +623,10 @@ mcp_servers:
       GOOGLE_OAUTH_CLIENT_SECRET: ${WORKSPACE_MCP_GOOGLE_OAUTH_CLIENT_SECRET}
       OAUTHLIB_INSECURE_TRANSPORT: '1'
       USER_GOOGLE_EMAIL: ${WORKSPACE_MCP_USER_GOOGLE_EMAIL}
-    enabled: true
+    enabled: false
   newrelic:
     url: https://mcp.newrelic.com/mcp/
-    enabled: true
+    enabled: false
     auth: oauth
   codex:
     command: codex
