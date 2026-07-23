@@ -1,7 +1,7 @@
 # Project trust, generated state, cache paths, and application-specific absolute
 # paths are intentionally excluded because they are local to each environment.
 model = "gpt-5.6-sol"
-model_reasoning_effort = "xhigh"
+model_reasoning_effort = "medium"
 service_tier = "default"
 
 [plugins."google-calendar@openai-curated"]
