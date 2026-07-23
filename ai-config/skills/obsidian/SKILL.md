@@ -13,6 +13,7 @@ Obsidian CLI (`obsidian`) を使って Vault を操作する。CLI は Obsidian 
 
 - Obsidian アプリが起動中
 - Vault が 1 つの場合、`vault=` パラメータは省略可能
+- Vault の名前・**ファイルシステム上の実パス**・ファイル数などは `obsidian vault` で取得できる（出力の `path` 行が Vault ルートの絶対パス）
 
 ## 基本構文
 
@@ -35,7 +36,8 @@ obsidian <command> [options] [vault="Vault名"]
 ## 実行方針
 
 - **出力フォーマット**: パース用途は `format=json`、表示用途は `text`/`tree`、エクスポートは `csv`/`tsv`
-- **ファイル直接編集 (Read/Edit/Write) より CLI を優先**: CLI は Obsidian のインデックス・リンク・メタデータ更新を正しく処理する
+- **原則 CLI を優先**: CLI は Obsidian のインデックス・リンク・メタデータ更新を正しく処理する
+- **CLI で扱いにくい場合はパスで直接編集してよい**: 長文ノートの新規作成や大量の Markdown 編集など `content=` 引数では壊れやすい/非効率なケースは、`obsidian vault` の `path` で得た Vault ルート配下のファイルを Read/Edit/Write で直接編集する（Obsidian が Vault 内のファイル変更を自動で再インデックスする）
 - **破壊的操作は実行前にユーザーへ確認**: `delete`, `history:restore`, `sync:restore`, `plugin:uninstall` など
 - **`eval` は任意の JS を実行する**ため、必要な場合のみ使用
 

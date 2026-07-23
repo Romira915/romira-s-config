@@ -1,6 +1,6 @@
 ---
 name: stg-manual-test
-description: Jira チケットから STG マニュアルテストを設計・実行し、エビデンスと Jira コメント下書きを作成する。通常は agent-browser CLI、Playwright MCP 指定時のみ Playwright で実行する。
+description: Jira チケットから STG マニュアルテストを設計・実行し、確認コマンドと実出力を含む Jira 貼付用の単一 Markdown を作成する。通常は agent-browser CLI、Playwright MCP 指定時のみ Playwright で実行する。
 allowed-tools:
   - Bash(agent-browser:*)
   - Bash(mkdir:*)
@@ -14,13 +14,13 @@ allowed-tools:
 
 # STG マニュアルテスト実行スキル
 
-Jira チケットの仕様からテストケースを設計し、STG 環境のマニュアルテストを実行、スクリーンショットを取得して Jira コメントの下書きを作成する。
+Jira チケットの仕様からテストケースを設計し、STG 環境のマニュアルテストを実行して、Jira コメントとしてそのまま貼り付けられる単一の QA Markdown を作成する。
 
 ## 実行方式の選択
 
 - **通常は agent-browser CLI を使う**。CLI ベースで軽量・高速、`snapshot -i` で得られる `@e<N>` ref による決定的操作ができる。
 - **Playwright MCP はユーザーが明示した場合だけ使う**（例: 「Playwright で実行して」「Playwright MCP 版で」）。
-- 汎用的な Web 調査・スクショ取得・フォーム入力だけなら `agent-browser` スキルを使う。Jira 起点の STG テスト設計・エビデンス整理・コメント下書き作成まで必要な場合はこのスキルを使う。
+- 汎用的な Web 調査・スクショ取得・フォーム入力だけなら `agent-browser` スキルを使う。Jira 起点の STG テスト設計・エビデンス整理・Jira 貼付用 QA Markdown 作成まで必要な場合はこのスキルを使う。
 
 ## 引数
 
@@ -28,7 +28,7 @@ Jira チケットの仕様からテストケースを設計し、STG 環境の�
 
 ## 参照ファイル
 
-- **コメント下書きのフォーマット・テーブル記載ルール・スクショ命名規則**: 同ディレクトリの `TEMPLATE.md` を Read
+- **Jira 貼付用 QA Markdown のフォーマット・テーブル記載ルール・スクショ命名規則**: 同ディレクトリの `TEMPLATE.md` を Read
 - **agent-browser の STG 固有ノウハウ（ログイン/mailcatcher/BaseMachina/batch）**: 同ディレクトリの `NOTES.md` を Read
 - **Playwright 操作ノウハウ（URL バー付きスクショ、mailcatcher スクロール、BaseMachina 等）**: Playwright MCP を使う場合のみ同ディレクトリの `PLAYWRIGHT.md` を Read
 - **agent-browser CLI 一般のコマンド・セレクタ・認証・トラブルシューティング**: `agent-browser` スキルの `REFERENCE.md` を Read
@@ -116,14 +116,26 @@ agent-browser --session-name stg-<TICKET> screenshot --full test<N>_<内容>_upp
 - 変更前にユーザーの確認を取る
 - テスト完了後は必ず元の状態に復元する
 
-### Step 4: コメント下書き作成
+### Step 4: Jira 貼付用 QA Markdown の作成
 
-`TEMPLATE.md` のフォーマットに従って `evidence/<チケットキー>/comment_draft.md` に Jira コメント用 Markdown を生成する。
+`TEMPLATE.md` のフォーマットに従い、テスト手順・期待結果・確認コマンド・実出力を一つの Markdown に統合する。
+
+- 出力先は、既存ファイルやユーザー指定があればそれを優先する。指定がなければ `docs/qa/<チケットキー>-STG-QA.md` とする
+- この Markdown 自体を Jira コメントとしてそのまま貼れる内容にする
+- `comment_draft.md` など、QA Markdownを参照するだけの二次ファイルを作らない
+- 「詳細はローカルファイルを参照」のように、Jira 閲覧者がアクセスできないパスへ誘導しない
+- CLI確認は、合否の要約だけでなく、実行した確認コマンドと実出力を同じファイルへ記載する
+- 期待結果とエビデンスは、今回の変更が保証すべき独立した事実だけに絞る。より強い確認に包含される確認や、同じ意味の言い換えを重ねない
+- HTTPレスポンスを確認できている場合はcurl終了ステータスを省き、ZIPの正常性などレスポンスだけでは判断できない場合に限り終了ステータスを記載する
+- ステータス・遷移先・attachmentの不在で拒否を証明できる場合は、本文サイズや「ZIPではない」など重複する確認を追加しない
+- チケットの変更内容と直接関係しない正常性確認を追加しない
+- スクリーンショットを証跡にする場合は、Jiraへ添付する前提のファイル名だけを記載し、ローカル絶対パスやクリックリンクを記載しない
+- 前提条件には、テスト実行に必要なデータ・認証情報・接続状態だけを書く。値をCSVから取得したなど、作成者の入手経路や作業履歴は書かない
 
 ### Step 5: ユーザーに結果報告
 
 1. テスト結果のサマリ（OK/NG 件数）
-2. `comment_draft.md` のパスを提示
+2. Jira 貼付用 QA Markdown のパスを提示
 3. **Jira への投稿はユーザーの指示を待つ**（自動投稿しない）
 
 ## 注意事項
@@ -132,4 +144,4 @@ agent-browser --session-name stg-<TICKET> screenshot --full test<N>_<内容>_upp
 - テストデータを変更する場合はユーザーに確認し、テスト後に必ず復元する
 - 副作用のある操作（メール送信、データ更新等）は実行前にユーザーの確認を取る
 - ブラウザセッションが切れた場合はユーザーに再ログインを依頼する
-- コメント下書きのフォーマットは、チケットに既存のテスト結果コメントがあればその形式に合わせる
+- QA Markdown のフォーマットは、チケットに既存のテスト結果コメントがあればその形式に合わせる
