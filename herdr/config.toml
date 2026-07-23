@@ -75,6 +75,24 @@ type        = "pane"
 command     = "~/.config/romira-s-config/herdr/scripts/thumbs-copy.sh"
 description = "thumbs: 画面上のトークンをヒント選択してコピー"
 
+# --- popup: 汎用シェル（タブレイアウトを変えずに一時ターミナルを開く） ---
+[[keys.command]]
+key         = "prefix+enter"
+type        = "popup"
+command     = "fish"
+width       = "95%"
+height      = "90%"
+description = "popup: 汎用シェルを開く"
+
+# --- popup: lazygit ---
+[[keys.command]]
+key         = "prefix+alt+g"
+type        = "popup"
+command     = "lazygit"
+width       = "95%"
+height      = "90%"
+description = "popup: lazygitを開く"
+
 # ----- ターミナル -----
 [terminal]
 default_shell    = "fish"              # tmux: set -g default-command "fish -l"
@@ -95,3 +113,6 @@ delivery = "herdr"
 [ui.toast.clipboard]
 enabled  = true
 position = "bottom-center"
+
+[experimental]
+pane_history = false
