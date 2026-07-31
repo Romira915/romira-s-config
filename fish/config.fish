@@ -4,6 +4,9 @@ if test -d /usr/bin; and not contains /usr/bin $PATH
 end
 
 function __load_cached_posix_profile
+    # ssh-agent sockets are short-lived and must not be frozen into this cache.
+    set -lx ROMIRA_SKIP_SSH_AGENT_INIT 1
+
     set -l cache_home "$HOME/.cache"
     if set -q XDG_CACHE_HOME
         set cache_home "$XDG_CACHE_HOME"
