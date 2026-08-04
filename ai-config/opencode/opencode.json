@@ -2,10 +2,29 @@
   "$schema": "https://opencode.ai/config.json",
   "agent": {
     "build": {
-      "prompt": "{file:./prompts/build.md}"
+      "prompt": "{file:./prompts/build.md}",
+      "model": "opencode-go/gpt-5.6-luna",
+      "variant": "max"
     },
     "title": {
       "model": "opencode/deepseek-v4-flash-free"
+    }
+  },
+  "provider": {
+    "opencode-go": {
+      "models": {
+        "gpt-5.6-luna": {
+          "variants": {
+            "max": {
+              "reasoningEffort": "max",
+              "reasoningSummary": "auto",
+              "include": [
+                "reasoning.encrypted_content"
+              ]
+            }
+          }
+        }
+      }
     }
   },
   "mcp": {
