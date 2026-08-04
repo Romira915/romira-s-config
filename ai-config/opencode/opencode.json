@@ -65,6 +65,20 @@
         "OAUTHLIB_INSECURE_TRANSPORT": "1",
         "USER_GOOGLE_EMAIL": "{file:~/.config/opencode/env/user-google-email}"
       }
+    },
+    "google_maps": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@cablate/mcp-google-map",
+        "--stdio"
+      ],
+      "enabled": true,
+      "timeout": 30000,
+      "environment": {
+        "GOOGLE_MAPS_API_KEY": "{file:~/.config/opencode/env/google-maps-api-key}"
+      }
     }
   }
 }

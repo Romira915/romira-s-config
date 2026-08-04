@@ -101,5 +101,11 @@ url = "https://mcp.newrelic.com/mcp/"
 [mcp_servers.openaiDeveloperDocs]
 url = "https://developers.openai.com/mcp"
 
+[mcp_servers.google_maps]
+command = "npx"
+args = ["-y", "@cablate/mcp-google-map", "--stdio"]
+env_vars = ["GOOGLE_MAPS_API_KEY"]
+startup_timeout_sec = 30
+
 [shell_environment_policy]
 inherit = "core"
