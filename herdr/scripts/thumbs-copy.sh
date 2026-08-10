@@ -34,13 +34,12 @@ if [ ! -x "$thumbs_bin" ]; then
   exit 1
 fi
 
-# クリップボードコマンド（macOS: pbcopy / WSL: clip）
-if command -v pbcopy >/dev/null 2>&1; then
-  clip=(pbcopy)
-elif command -v clip >/dev/null 2>&1; then
-  clip=(clip)
-else
-  echo "クリップボードコマンド(pbcopy/clip)が見つかりません" >&2
+# クリップボード書き込みと URL/パスのオープンは OS 共通ヘルパーに委譲する。
+# このスクリプト側で OS ごとの分岐を持つと、tmux 側と対応がずれるため。
+script_dir="$(CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+clipboard_bin="$script_dir/clipboard-copy.sh"
+if [ ! -x "$clipboard_bin" ]; then
+  echo "クリップボードヘルパーが見つかりません: $clipboard_bin" >&2
   sleep 2
   exit 1
 fi
@@ -65,9 +64,9 @@ text="${result#*:}"      # 選択された本文（コロンを含んでも安�
 
 [ -n "$text" ] || exit 0
 
-printf '%s' "$text" | "${clip[@]}"
-
-# 大文字ヒントで選んだら開く（URL やパスを想定、tmux の upcase-command 相当）
-if [ "$upcase" = "true" ] && command -v open >/dev/null 2>&1; then
-  open "$text" >/dev/null 2>&1 || true
+if [ "$upcase" = "true" ]; then
+  # 大文字ヒントはコピーに加えて URL/パスを開く。
+  printf '%s' "$text" | "$clipboard_bin" --open
+else
+  printf '%s' "$text" | "$clipboard_bin"
 fi
