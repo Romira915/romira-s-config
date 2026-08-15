@@ -34,13 +34,13 @@ if [ ! -x "$thumbs_bin" ]; then
   exit 1
 fi
 
-# クリップボードコマンド（macOS: pbcopy / WSL: clip.exe）
+# クリップボードコマンド（macOS: pbcopy / WSL: clip）
 if command -v pbcopy >/dev/null 2>&1; then
   clip=(pbcopy)
-elif command -v clip.exe >/dev/null 2>&1; then
-  clip=(clip.exe)
+elif command -v clip >/dev/null 2>&1; then
+  clip=(clip)
 else
-  echo "クリップボードコマンド(pbcopy/clip.exe)が見つかりません" >&2
+  echo "クリップボードコマンド(pbcopy/clip)が見つかりません" >&2
   sleep 2
   exit 1
 fi
