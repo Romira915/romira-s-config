@@ -1,30 +1,35 @@
 ---
 name: pr
-description: 現在のブランチから PR を作成する。Jira チケットがある場合は issue key をタイトルの prefix にし、コミット群から Summary・Test Plan を生成して `gh pr create --assignee @me` を実行。QA 確認事項の文書化は pr-qa-doc を使う。
-allowed-tools: Read, Bash(git status:*), Bash(git log:*), Bash(git diff:*), Bash(git push:*), Bash(gh pr create:*), Bash(gh pr view:*), Bash(gh pr merge:*), Bash(gh repo view:*), Bash(git check-ignore:*)
+description: PR依頼時に必要なら作業ブランチを作成し、対象変更だけをコミットして `gh pr create --assignee @me` まで実行する。Jira チケットがある場合は issue key をタイトルの prefix にする。QA確認事項の文書化は pr-qa-doc を使う。
+allowed-tools: Read, Bash(git status:*), Bash(git log:*), Bash(git diff:*), Bash(git switch:*), Bash(git add:*), Bash(git commit:*), Bash(git push:*), Bash(gh pr create:*), Bash(gh pr view:*), Bash(gh pr merge:*), Bash(gh repo view:*), Bash(git check-ignore:*)
 ---
 
 # PR作成スキル
 
 ## 前提条件チェック
 
-1. **ブランチ確認**: 現在のブランチがデフォルトブランチ（main/master）でないことを確認
-   - デフォルトブランチにいる場合はエラーメッセージを出して終了（勝手にブランチを作らない）
-2. **未コミット変更の確認**: `git status` で未コミット変更があれば警告し、先にコミットするよう促して終了
-   - プロジェクトに `commit-session` スキルがあればそちらの利用を案内する
+1. **デフォルトブランチの確認**: `gh repo view --json defaultBranchRef -q .defaultBranchRef.name` で確認する。
+   - ユーザーがPR作成を明示的に依頼していて現在のブランチがデフォルトブランチ（main/master）の場合、変更内容から短い名前を作り `codex/<short-slug>` の作業ブランチを自動作成して `git switch -c` する。
+   - 同名ブランチが既に存在する場合は、`-2` などの連番を付ける。既存ブランチの削除・force push・rebaseは行わない。
+2. **変更範囲の確認**: `git status`、`git diff`、`git log origin/<default-branch>..HEAD` で、今回の依頼に含まれる変更と無関係な変更を分ける。
+   - ユーザーが明示的に含めていない未追跡ファイルはコミット対象から除外し、そのまま残す。
+   - 既存の無関係なstaged変更がある場合も、それを巻き込まず、対象パスだけを明示してコミットする。
+   - 今回の変更が未コミットであっても、対象パスを選別できるなら処理を継続する。選別できない場合だけ確認を求める。
+3. **検証**: 変更内容に応じたテスト・フォーマット・lintを実行し、結果をPR本文のTest Planへ反映する。
 
 ## PR作成手順
 
 1. `git log` と `git diff <default-branch>...HEAD` でブランチ上の全変更を分析
-2. リモートにpushされていなければ `git push -u origin <branch>` でpush
-3. 変更内容からPRタイトルと本文を生成し、`gh pr create` で作成
+2. 未コミットの対象変更があれば、対象パスだけをstageして `git diff --cached` で確認し、Whyが伝わるコミットメッセージでコミットする。無関係なstaged変更や未追跡ファイルは含めない。
+3. リモートにpushされていなければ `git push -u origin <branch>` でpush
+4. 変更内容からPRタイトルと本文を生成し、`gh pr create` で作成
+   - `--assignee @me` を必ず付与
    - 対象の Jira チケットがある場合、タイトルは `<jira_issue_key>: <変更の要約>` とする
    - 対象の Jira チケットがない場合、タイトルに prefix を付けず `<変更の要約>` とする
    - Jira issue key を特定できない場合は推測せず、prefix を付けない
    - Jira issue key を `[]` で囲まない。issue key の直後はコロンと半角スペースを1つ入れる
-   - `--assignee @me` を必ず付与
    - 対象の Jira チケットがある場合は、PR 本文の先頭に `## JIRA` とチケット URL を記載
-4. 作成後、PRのURLを表示
+5. 作成後、PRのURLを表示
 
 ## PR本文フォーマット
 
@@ -68,7 +73,7 @@ Title: <変更の要約を簡潔に>（Jira がない場合）
 
 - ベースブランチは `gh repo view --json defaultBranchRef -q .defaultBranchRef.name` で自動検出
 - `--fill` は使わない（全コミットを分析して適切なタイトル・本文を生成する）
-- リベースやforce pushは行わない（破壊的操作は別途ユーザーが指示すべき）
+- リベース、force push、マージ、ブランチ削除は行わない（ユーザーが明示的に依頼した場合を除く）
 - タイトル・本文はユーザーの言語に合わせる
 
 ## ハマりどころ
@@ -79,15 +84,10 @@ Title: <変更の要約を簡潔に>（Jira がない場合）
 - 親リポジトリでブランチを作っても対象ファイルに影響しない — `git check-ignore -v <path>` で対象ファイルがどちらのリポジトリに属するか事前確認する
 
 ### 別タスクの変更が混在するワークツリーからの切り出し
-- 別ブランチに staged 変更があり、今回のタスク分が unstaged にある場合:
-  1. `git stash --keep-index` で unstaged 変更だけ退避
-  2. `git checkout -b <新ブランチ> origin/<default-branch>` で clean な新ブランチ作成
-  3. staged がついてきた場合は `git reset HEAD -- . && git checkout -- .` でクリーンに戻す
-  4. `git checkout stash@{0} -- <対象ファイルのみ>` で該当ファイルだけ復元（stash には混在変更が入るのでファイル単位で選択）
-  5. コミット・push・PR 作成
-  6. 元ブランチに戻って `git stash pop` で退避分を復元
+- 変更対象をパス単位で特定し、`git add -- <対象パス>` と `git commit --only -- <対象パス>` を使って今回の変更だけをコミットする。
+- 無関係な変更を安全に切り分けられない場合は、対象パスと理由を示してユーザーに確認する。広範囲のreset、checkout、stash popでユーザーの変更を上書きしない。
 
 ### 「この変更だけでPR」と言われたが、作業中ブランチに無関係な既存コミットが乗っている場合
 - PR作成前に必ず `git log origin/<default-branch>..HEAD` で、今回のタスクと無関係なコミットが混入していないか確認する。
-- 混入していたら、そのブランチのままPRを作らない。`git checkout -b <新ブランチ> origin/<default-branch>` で `default-branch` から新規ブランチを切り、対象の変更だけを再適用（該当ファイルを再編集するか `git cherry-pick`/`git checkout <元ブランチ> -- <path>` 等で持ってくる）してからコミット・push・PR作成する。
-- 元の作業ブランチには触れない（切り離すだけで、既存コミットの削除やrebaseはしない）。
+- 混入していたら、そのブランチのままPRを作らない。デフォルトブランチから新規ブランチを切り、対象の変更だけを再適用してからコミット・push・PR作成する。
+- 既存ブランチのコミット削除やrebaseはしない。
