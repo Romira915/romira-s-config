@@ -7,3 +7,4 @@ pnpm = "latest"
 # ブロックポリシーに引っかかり動かないため、従来通りansibleの
 # community.general.npm(ホストのnpm経由)で管理する。
 "npm:difit" = "latest"
+terraform = "latest"
