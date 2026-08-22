@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""TOML設定ファイルからローカル生成状態を除いたクリーン版をstdoutへ出力する。
+"""TOML設定ファイルからローカル状態を除いたクリーン版をstdoutへ出力する。
 
-使い方: filter_toml.py <path-to-toml>
+使い方: filter_toml.py <path-to-toml> または filter_toml.py -（標準入力）
 
 tomlkit 等の依存を増やさず、コメント・書式をそのまま保つため、
 フルパースではなく行/テーブルヘッダ単位のテキストフィルタで実装している。
@@ -30,8 +30,14 @@ EXCLUDE_LINE_PATTERNS = [
 ]
 
 # どのテーブルにも属さないルートレベルで除外するキー
+# モデル選択や推論強度は環境ごとの運用で頻繁に変わるため、共有設定に残すと
+# 本来同期したい設定との差分を埋もれさせる。このルールを追加し、毎回の手動選別に頼らない。
 EXCLUDE_ROOT_KEY_PATTERNS = [
     r'^notify\s*=',
+    r'^model\s*=',
+    r'^model_reasoning_effort\s*=',
+    r'^plan_mode_reasoning_effort\s*=',
+    r'^service_tier\s*=',
 ]
 
 HEADER_RE = re.compile(r'^\[+[^\]]+\]+\s*$')
@@ -87,11 +93,14 @@ def filter_toml(lines):
 
 def main():
     if len(sys.argv) != 2:
-        print('usage: filter_toml.py <path-to-toml>', file=sys.stderr)
+        print('usage: filter_toml.py <path-to-toml> | -', file=sys.stderr)
         sys.exit(1)
 
-    with open(sys.argv[1], encoding='utf-8') as f:
-        lines = f.read().splitlines()
+    if sys.argv[1] == '-':
+        lines = sys.stdin.read().splitlines()
+    else:
+        with open(sys.argv[1], encoding='utf-8') as f:
+            lines = f.read().splitlines()
 
     cleaned = filter_toml(lines)
     sys.stdout.write('\n'.join(cleaned) + '\n')
