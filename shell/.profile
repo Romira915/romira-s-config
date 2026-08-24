@@ -54,6 +54,7 @@ unset _dir
 
 alias ls="eza"
 alias la="eza -la"
+alias rdr='sh "$HOME/.config/romira-s-config/shell/bin/revdiff-review"'
 
 if command -v mise >/dev/null 2>&1; then
     if [ -n "$BASH_VERSION" ]; then

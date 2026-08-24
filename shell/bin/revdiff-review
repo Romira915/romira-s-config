@@ -1,0 +1,15 @@
+#!/bin/sh
+
+default_branch=$(git symbolic-ref --quiet --short refs/remotes/origin/HEAD 2>/dev/null)
+if [ -z "$default_branch" ]; then
+    default_branch_name=$(git ls-remote --symref origin HEAD 2>/dev/null |
+        sed -n 's#^ref: refs/heads/\([^[:space:]]*\)[[:space:]]*HEAD$#\1#p')
+    if [ -z "$default_branch_name" ]; then
+        echo "rdr: origin のデフォルトブランチを取得できませんでした" >&2
+        exit 1
+    fi
+    default_branch="origin/$default_branch_name"
+fi
+
+revdiff "$default_branch" -o /tmp/revdiff-review.md &&
+    pbcopy < /tmp/revdiff-review.md
