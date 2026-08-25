@@ -2,6 +2,9 @@
 name: obsidian
 description: Obsidian Vault を操作する（obsidian CLI）。ノート・タスク・デイリーノート・検索・プロパティ・タグの読み書きに使う。Obsidian アプリ起動中が前提。
 allowed-tools:
+  - Read
+  - Edit
+  - Write
   - Bash(obsidian:*)
 ---
 
@@ -36,8 +39,10 @@ obsidian <command> [options] [vault="Vault名"]
 ## 実行方針
 
 - **出力フォーマット**: パース用途は `format=json`、表示用途は `text`/`tree`、エクスポートは `csv`/`tsv`
-- **原則 CLI を優先**: CLI は Obsidian のインデックス・リンク・メタデータ更新を正しく処理する
-- **CLI で扱いにくい場合はパスで直接編集してよい**: 長文ノートの新規作成や大量の Markdown 編集など `content=` 引数では壊れやすい/非効率なケースは、`obsidian vault` の `path` で得た Vault ルート配下のファイルを Read/Edit/Write で直接編集する（Obsidian が Vault 内のファイル変更を自動で再インデックスする）
+- **操作の性質で CLI と直接編集を選ぶ**:
+  - 検索、追記、プロパティ、タスク、リンク分析など Obsidian の意味的な操作は CLI を優先する
+  - 複数セクションを持つ長文ノートの新規作成・全面改稿、表・数式・コードブロックを多く含む Markdown は、`content=` へエスケープして渡さず直接ファイル編集を優先する
+- **直接編集の手順**: 最初に `obsidian vault` の `path` で Vault ルートを特定し、その配下だけを Read/Edit/Write する。編集後は `obsidian read path="..."` などで再インデックスと読み取りを確認する
 - **破壊的操作は実行前にユーザーへ確認**: `delete`, `history:restore`, `sync:restore`, `plugin:uninstall` など
 - **`eval` は任意の JS を実行する**ため、必要な場合のみ使用
 

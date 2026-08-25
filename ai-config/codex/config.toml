@@ -1,8 +1,5 @@
 # Project trust, generated state, cache paths, and application-specific absolute
 # paths are intentionally excluded because they are local to each environment.
-model = "gpt-5.6-sol"
-model_reasoning_effort = "high"
-service_tier = "default"
 approvals_reviewer = "user"
 
 [plugins."google-calendar@openai-curated"]
@@ -65,6 +62,15 @@ enabled = true
 [plugins."visualize@openai-bundled"]
 enabled = true
 
+[plugins."computer-use@openai-bundled"]
+enabled = true
+
+[plugins."chrome@openai-bundled"]
+enabled = true
+
+[plugins."codex-app-tools@openai-bundled"]
+enabled = true
+
 [tui]
 status_line = [
     "model-with-reasoning",
@@ -109,3 +115,6 @@ startup_timeout_sec = 30
 
 [shell_environment_policy]
 inherit = "core"
+
+[apps.connector_947e0d954944416db111db556030eea6]
+enabled = false
