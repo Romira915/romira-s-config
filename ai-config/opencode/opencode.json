@@ -37,6 +37,8 @@
       "type": "local",
       "command": [
         "npx",
+        "--prefix",
+        ".",
         "-y",
         "@playwright/mcp@latest"
       ],
