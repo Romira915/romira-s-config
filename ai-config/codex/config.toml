@@ -53,6 +53,12 @@ enabled = true
 [plugins."playwright@claude-plugins-official"]
 enabled = true
 
+[plugins."playwright@claude-plugins-official".mcp_servers.playwright.tools.browser_tabs]
+approval_mode = "approve"
+
+[plugins."playwright@claude-plugins-official".mcp_servers.playwright.tools.browser_navigate]
+approval_mode = "approve"
+
 [plugins."rust-analyzer-lsp@claude-plugins-official"]
 enabled = true
 
