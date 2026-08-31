@@ -47,6 +47,9 @@ enabled = true
 [plugins."chrome-devtools-mcp@claude-plugins-official"]
 enabled = true
 
+[plugins."chrome-devtools-mcp@claude-plugins-official".mcp_servers.chrome-devtools.tools.new_page]
+approval_mode = "approve"
+
 [plugins."context7@claude-plugins-official"]
 enabled = true
 
