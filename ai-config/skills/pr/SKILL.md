@@ -1,7 +1,7 @@
 ---
 name: pr
 description: PR依頼時に必要なら作業ブランチを作成し、対象変更だけをコミットして `gh pr create --assignee @me` まで実行する。Jira チケットがある場合は issue key をタイトルの prefix にする。QA確認事項の文書化は pr-qa-doc を使う。
-allowed-tools: Read, Bash(git status:*), Bash(git log:*), Bash(git diff:*), Bash(git switch:*), Bash(git add:*), Bash(git commit:*), Bash(git push:*), Bash(gh pr create:*), Bash(gh pr view:*), Bash(gh pr merge:*), Bash(gh repo view:*), Bash(git check-ignore:*)
+allowed-tools: Read, Bash(git status:*), Bash(git log:*), Bash(git diff:*), Bash(git switch:*), Bash(git add:*), Bash(git commit:*), Bash(git push:*), Bash(git pull:*), Bash(git branch:*), Bash(gh pr create:*), Bash(gh pr view:*), Bash(gh pr merge:*), Bash(gh repo view:*), Bash(git check-ignore:*)
 ---
 
 # PR作成スキル
@@ -58,7 +58,7 @@ Title: <変更の要約を簡潔に>（Jira がない場合）
 
 - ユーザーから明示的な依頼がない限り、マージやオートマージの設定は行わない
 - ユーザーからマージを明示的に依頼された場合は、PR のチェック結果とマージ可能状態を確認してから `gh pr merge` を実行する
-- マージ方式はリポジトリの既存運用に合わせる。ブランチ削除やオートマージは、それぞれ明示的に依頼された場合のみ行う
+- マージ方式はリポジトリの既存運用に合わせる。マージが完了したらデフォルトブランチへ戻り、`git pull --ff-only` で同期したうえで、作業ブランチをローカルとリモートの両方から削除する。ユーザーがブランチを残すよう指定した場合は除く
 - PR 作成後に STG/PROD の QA 確認事項を Markdown 化したい場合は `pr-qa-doc` スキルを案内する
 - Jira チケット起点で STG マニュアルテストを実際に設計・実行し、エビデンスと Jira コメント下書きまで作る場合は `stg-manual-test` を使う
 
@@ -73,7 +73,7 @@ Title: <変更の要約を簡潔に>（Jira がない場合）
 
 - ベースブランチは `gh repo view --json defaultBranchRef -q .defaultBranchRef.name` で自動検出
 - `--fill` は使わない（全コミットを分析して適切なタイトル・本文を生成する）
-- リベース、force push、マージ、ブランチ削除は行わない（ユーザーが明示的に依頼した場合を除く）
+- リベース、force push、ユーザーが明示的に依頼していないマージやブランチ削除は行わない
 - タイトル・本文はユーザーの言語に合わせる
 
 ## ハマりどころ
