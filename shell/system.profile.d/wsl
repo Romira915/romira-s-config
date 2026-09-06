@@ -23,3 +23,7 @@ export DefaultIMModule=fcitx5
 alias sclip='iconv -t sjis | clip'
 export CLAUDE_CODE_SKIP_WINDOWS_PROFILE=1
 export USERPROFILE="/mnt/c/Users/romira"
+
+# Route Codex through the ChatGPT Web bridge's isolated Codex home on WSL.
+alias codex='CODEX_HOME="$HOME/.codex-chatgpt-web/codex-home" "/home/linuxbrew/.linuxbrew/bin/codex"'
+alias codex-web-gpt='CODEX_HOME="$HOME/.codex-chatgpt-web/codex-home" "$HOME/.local/bin/codex-web-gpt"'
