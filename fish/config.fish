@@ -79,6 +79,32 @@ end
 __load_cached_posix_profile
 functions -e __load_cached_posix_profile
 
+# mise は Fish native activation を使う。MSYS2 では mise が出力する
+# Windows 形式の PATH を Fish に直接渡さず、cygpath で shims を変換する。
+if command -q mise
+    set -l _mise_os (uname -s)
+    if string match -q -r '^(MSYS|MINGW|CYGWIN)' -- $_mise_os
+        if command -q cygpath
+            set -l _mise_data_dir
+            if set -q MISE_DATA_DIR
+                set _mise_data_dir $MISE_DATA_DIR
+            else if set -q LOCALAPPDATA
+                set _mise_data_dir "$LOCALAPPDATA/mise"
+            else if set -q USERPROFILE
+                set _mise_data_dir "$USERPROFILE/AppData/Local/mise"
+            end
+            if set -q _mise_data_dir
+                set -l _mise_shims (cygpath -u -- "$_mise_data_dir/shims" 2>/dev/null)
+                if test -d "$_mise_shims"
+                    fish_add_path --global --move --path "$_mise_shims"
+                end
+            end
+        end
+    else
+        mise activate fish | source
+    end
+end
+
 # Syntax highlighting colors
 set -g fish_color_command blue
 

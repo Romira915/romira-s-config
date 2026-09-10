@@ -39,7 +39,6 @@ export PNPM_HOME="$HOME/.local/share/pnpm"
 for _dir in \
     "$PNPM_HOME" \
     "$HOME/bin" \
-    "$HOME/.local/share/mise/shims" \
     "$HOME/.local/bin" \
     "$HOME/.local/share/binaryen/bin" \
     "$GOPATH/bin" \
@@ -56,12 +55,42 @@ alias ls="eza"
 alias la="eza -la"
 alias rdr='sh "$HOME/.config/romira-s-config/shell/bin/revdiff-review"'
 
+# mise は Linux/macOS では shell activation、MSYS2 では Windows 側の
+# PATH をそのまま Bash/Zsh に渡さず、POSIX 形式に変換した shims を使う。
 if command -v mise >/dev/null 2>&1; then
-    if [ -n "$BASH_VERSION" ]; then
-        eval "$(mise activate bash)"
-    elif [ -n "$ZSH_VERSION" ]; then
-        eval "$(mise activate zsh)"
-    fi
+    _mise_os="$(uname -s 2>/dev/null)"
+    case "$_mise_os" in
+        MSYS*|MINGW*|CYGWIN*)
+            if command -v cygpath >/dev/null 2>&1; then
+                if [ -n "${MISE_DATA_DIR:-}" ]; then
+                    _mise_data_dir="$MISE_DATA_DIR"
+                elif [ -n "${LOCALAPPDATA:-}" ]; then
+                    _mise_data_dir="$LOCALAPPDATA/mise"
+                elif [ -n "${USERPROFILE:-}" ]; then
+                    _mise_data_dir="$USERPROFILE/AppData/Local/mise"
+                else
+                    _mise_data_dir=""
+                fi
+                if [ -n "$_mise_data_dir" ]; then
+                    _mise_shims="$(cygpath -u "$_mise_data_dir/shims" 2>/dev/null)"
+                    if [ -d "$_mise_shims" ]; then
+                        case ":${PATH:-}:" in
+                            *:"$_mise_shims":*) ;;
+                            *) PATH="$_mise_shims${PATH:+:$PATH}"; export PATH ;;
+                        esac
+                    fi
+                fi
+            fi
+            ;;
+        *)
+            if [ -n "${BASH_VERSION:-}" ]; then
+                eval "$(mise activate bash)"
+            elif [ -n "${ZSH_VERSION:-}" ]; then
+                eval "$(mise activate zsh)"
+            fi
+            ;;
+    esac
+    unset _mise_os _mise_data_dir _mise_shims
 fi
 
 true
