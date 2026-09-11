@@ -1,7 +1,7 @@
 ---
 name: pr-qa-doc
 description: PR の変更内容から STG/PROD などの QA 確認事項を Markdown で書き出す。PR 作成そのものは pr、Jira 起点の STG 実行・エビデンス作成は stg-manual-test を使う。
-allowed-tools: Bash(gh pr view:*), Bash(gh pr diff:*), Bash(gh api repos:*), Bash(git rev-parse:*), Bash(git remote:*), Bash(ls:*), Bash(mkdir:*), Bash(screencapture:*), Bash(osascript:*), Bash(sips:*), Read, Write, Edit, mcp__plugin_chrome-devtools-mcp_chrome-devtools__new_page, mcp__plugin_chrome-devtools-mcp_chrome-devtools__navigate_page, mcp__plugin_chrome-devtools-mcp_chrome-devtools__list_pages, mcp__plugin_chrome-devtools-mcp_chrome-devtools__take_snapshot, mcp__plugin_chrome-devtools-mcp_chrome-devtools__fill_form, mcp__plugin_chrome-devtools-mcp_chrome-devtools__fill, mcp__plugin_chrome-devtools-mcp_chrome-devtools__click, mcp__plugin_chrome-devtools-mcp_chrome-devtools__wait_for, mcp__plugin_chrome-devtools-mcp_chrome-devtools__select_page, mcp__plugin_chrome-devtools-mcp_chrome-devtools__close_page
+allowed-tools: Bash(gh pr view:*), Bash(gh pr diff:*), Bash(gh api repos:*), Bash(git rev-parse:*), Bash(git remote:*), Bash(ls:*), Bash(mkdir:*), Bash(screencapture:*), Bash(osascript:*), Bash(sips:*), Bash(op account list:*), Bash(op whoami:*), Bash(op signin:*), Bash(op item list:*), Bash(op item get:*), Bash(op read:*), Read, Write, Edit, mcp__plugin_chrome-devtools-mcp_chrome-devtools__new_page, mcp__plugin_chrome-devtools-mcp_chrome-devtools__navigate_page, mcp__plugin_chrome-devtools-mcp_chrome-devtools__list_pages, mcp__plugin_chrome-devtools-mcp_chrome-devtools__take_snapshot, mcp__plugin_chrome-devtools-mcp_chrome-devtools__fill_form, mcp__plugin_chrome-devtools-mcp_chrome-devtools__fill, mcp__plugin_chrome-devtools-mcp_chrome-devtools__click, mcp__plugin_chrome-devtools-mcp_chrome-devtools__wait_for, mcp__plugin_chrome-devtools-mcp_chrome-devtools__select_page, mcp__plugin_chrome-devtools-mcp_chrome-devtools__close_page
 ---
 
 # pr-qa-doc
@@ -19,6 +19,11 @@ PR の変更内容から QA 確認事項を設計し、フォーマット規約�
 
 - 画面を伴う QA で、正式名称の確認またはケースの分割・統合判断が必要な場合だけ `references/ui-inspection.md` を Read する
 - 取得済みスクリーンショットを QA 結果へ掲載する場合だけ `references/evidence-rendering.md` を Read する
+- QA の実行を指示された場合は、実行前に `~/.claude/personal.md` の `pr-qa-doc / STG QA アクセス` を Read する
+
+## Jiraへの共有を依頼された場合
+
+共通指示の「Jiraへの画像付きQA共有」に従い、`references/jira-comment-with-images.md` を読んで添付とコメント下書きを作成する。QA文書の作成・検証だけではJiraへ書き込まない。
 
 ## 引数
 
@@ -43,6 +48,7 @@ PR description（body）と diff から以下を抽出する:
 
 - Jira チケット番号（例: `<PROJ>-NNNN`）。description のリンクから検出
 - PR description・チケット・画面に記載された正式な機能名、画面名、操作名
+- `~/.claude/personal.md` の `pr-qa-doc / プロジェクト固有用語` に定義がある場合は、その正式なユーザー種別・配信先名
 - 変更されたファイルの種別（routing / config / VCL / terraform / view / helper など）
 - description に記された検証観点・Phase 戦略・前後 PR との関係
 
@@ -109,6 +115,8 @@ ls docs 2>/dev/null
 
 以下のフォーマット規約を厳守する。
 
+アクセス監査で確認した認証手段・アカウント状態・利用しなかったサービス等は実行可否を判断するための内部情報であり、下記テンプレートに対応する欄がない限り QA Markdown へ転記しない。
+
 #### フォーマット規約
 
 出力は Jira コメントの QA テンプレートにそのまま貼れる形にする。骨格は「ヘッダブロック → 💡 変更内容 → 🌐 影響範囲 → 🔍 テスト観点 → 📝 確認内容・確認結果（表）」。
@@ -118,6 +126,7 @@ ls docs 2>/dev/null
    - `**確認環境** ：<検証ホスト or サーバーパス>`（検証ホストの決定ルールは後述）
    - `**結果** ：（OK）` — 全項目 OK のとき。未検証なら空、NG が混じれば（NG）
    - `**確認ブラウザ** ：Mac/Chrome` — ブラウザ確認を伴わない場合は省略可
+   - ユーザーが明示的に求めない限り、`対象PR`、`対象ブランチ`、`確認コミット`、`実行アカウント`、`実行ツール`、`アクセス手段` 等のテンプレート外項目を追加しない
 2. **セクション見出しは絵文字付き `###`**。順番・文言を固定する:
    - `### 💡 変更内容（概要）` — PR の変更内容を 1〜数行で
    - `### 🌐 影響範囲` — 影響するサービス／バッチ等。リリース前後で挙動や確認条件が変わる場合のみ、その状態を書く
@@ -131,6 +140,7 @@ ls docs 2>/dev/null
    - 概要・影響範囲・テスト観点で同じ実装説明を言い換えて繰り返さない
    - テーブルで具体化する内容を、前段の各セクションで先回りして詳述しない
    - 機能名・画面名・操作名は PR description・チケット・画面上の正式名称をそのまま使い、実装内容から略称や別名を作らない。正式名称を特定できない場合はユーザーに確認する
+   - 1つの実装フラグ・バッチが複数のユーザー種別や配信先を処理する場合、代表する1種へまとめず、外部から個別に観測できる全対象を手順と期待結果へ列挙する。画面上の選択肢名を、メール受信者のユーザー種別名へ流用しない
 
 3. **確認内容・確認結果は 7 列の表**: `前提条件 | 画面/アクション | テスト対象 | 手順 | 期待結果 | 結果 | エビデンス`
    - 手順セルに複数行のコードブロックを含む場合は、パイプ表ではなく HTML の `<table>` / `<tr>` / `<th>` / `<td>` を使う
@@ -158,19 +168,26 @@ ls docs 2>/dev/null
 
 #### ドメイン移行系の特別ルール
 
-ドメイン移行系（旧ドメイン → 新ドメインの並走運用）の PR は、ホスト応答型の出力（`canonical` / `og:url` / `og:image` / `twitter:url` / `twitter:image` 等）について **「受け付けドメインに応じて自ドメインを返す」のが仕様**となるケースがある。これを「化け」「NG」と判定しないための判定規約は、所属プロジェクト固有のため `~/.claude/personal.md` の `pr-qa-doc / ドメイン移行ルール` セクションを Read して参照する（旧/新ドメイン名・対象ヘッダ・合格条件など）。
+ドメイン移行系では、旧ドメイン・移行先ドメイン等の恒久的な識別情報と、現在受け付けるドメイン・リダイレクト・QA の合格条件等の移行段階を分けて扱う。移行段階は随時変わるため、`~/.claude/personal.md`、過去の QA ドキュメント、過去時点の判定を現在の仕様として流用しない。
 
-該当する PR を扱う場合は、上記セクションを Read してから QA 項目を組む。
+該当する PR を扱う場合は、次の優先順で作業時点の移行段階を確定してから QA 項目を組む。
+
+1. ユーザーが指定した確認先・リダイレクト・リリース段階
+2. 対象チケット、PR description、リリース計画、運用上の正本に明記された現行情報
+3. 上記に明記がない、または情報が競合する場合はユーザーへの確認
+
+`~/.claude/personal.md` の `pr-qa-doc / ドメイン移行識別情報` は、旧・移行先ドメイン名や対象出力を識別するためだけに参照する。並走中、移行先のみ、旧ドメインからのリダイレクト等の現在状態や、「両方成立で合格」のような判定基準は個人設定から決めない。
 
 #### 検証ホストの決定（重要）
 
-QA コマンド内で使う STG ホスト（例: 共有 STG `stg-<domain>` か 個人 STG `<username>.stg-<domain>` か。具体値は `personal.md` の `STG 環境ドメイン` を参照）は **ユーザー指示を最優先する**。
+QA コマンド内で使う STG ホスト（例: 共有 STG `stg-<domain>` か 個人 STG `<username>.stg-<domain>` か）は **ユーザー指示を最優先する**。
 
-- **ユーザーが明示したホスト**（プロンプト・PR description・既存 QA ドキュメント内の記述）があればそれを使う。`personal.md` の `STG 環境ドメイン` で自動上書きしない
-- **指示がない場合**は QA ドキュメント書き出し前にユーザーに確認する。最低限以下を提示:
+- **ユーザーが明示した完全なホスト**があればそれを使う。`personal.md` の命名テンプレートや過去の QA ドキュメントで自動上書きしない
+- 「マルチSTG」等の環境種別だけが指定され、完全なホストが不明な場合は、`personal.md` の `STG 環境ドメイン` からユーザー固有のサブドメインと命名パターンだけを参照する。利用可能な TLD やリダイレクトはドメイン移行系の特別ルールに従って都度確定し、PR ブランチ名や release-check PR からサブドメインを推測しない
+- **指示がない場合**は QA ドキュメント書き出し前にユーザーに確認する。最低限以下を提示する:
   - 共有 STG（無印・`stg-<domain>`）
   - 個人 STG（`<username>.stg-<domain>` / personal.md の値）
-- `personal.md` の `STG 環境ドメイン` は **個人 STG のテンプレートとしての参照値**であり、QA の検証先デフォルトではない。共有 STG での確認が目的のドメイン移行系 QA では、無印を選ぶのが基本
+- `personal.md` の `STG 環境ドメイン` は **ホスト命名のテンプレート**であり、現在利用可能な検証先や TLD のデフォルトではない
 - PR のホスト判定ロジックが触られている場合（例: ALB host header / Fastly host 制約 / routing host 制約）、検証ホストの命名（`<username>.` プレフィックスの有無）が結果に影響することがある。確認なく個人 STG に置き換えない
 
 #### テンプレート
@@ -230,11 +247,24 @@ command ...</code></pre>
 
 ### 5. 書き出し
 
+書き出す前に、ヘッダのラベルと順序、セクションの文言と順序、確認結果表の7列を「テンプレート」と照合し、テンプレート外の項目が0件であることを確認する。
+
 `Write` ツールで Markdown を保存し、保存パスをユーザーに報告する。`<Jira-no>` が取れていればファイル名に含める。
 
 ### 6. 検証（このスキルの基本範囲外。ユーザーが「実行」を指示したときのみ実施）
 
 curl・ブラウザ確認などの実行は基本このスキルでは行わない。検証は書き出されたチェックリストに沿って別途実施し、出力ブロック内に結果を貼り、判定 `⬜️` を `✅` / `❌` に更新する運用。
+
+#### 実行前のアクセス監査
+
+ユーザーが QA の実行を指示した場合は、テストデータの作成や画面操作より先に次を確認する。
+
+1. `~/.claude/personal.md` の `pr-qa-doc / STG QA アクセス` を読み、対象画面・確認先・認証手段・既存テストデータを列挙する
+2. 指定された認証手段が利用可能かを、秘密値を表示せず確認する。`op` を使う場合は CLI の存在・アカウント状態・必要項目の存在まで確認する
+3. 外部サービスの用途を、URL・サービス名・別スキルに保存されたリンクだけから推測しない。BaseMachina は QA 手順に明示された既存アクションを実行する場合だけ利用し、DB 操作手段とは扱わない
+4. 検証用データが既に用意されている場合はそれを使う。未確認のドメインを作ったり、既存データの存在を確認せず DB の追加・削除手順を QA へ書いたりしない
+5. `op` から取得した秘密値は標準出力・QA Markdown・スクリーンショットへ残さず、秘密値を展開したブラウザ操作引数もユーザー向けログへ出さない
+6. 必要なアクセス手段を確認できない場合は、未確認事項と止まっている箇所を報告して中断する。ユーザー確認なしにブラウザ操作や別の外部サービスへ切り替えない
 
 ただしユーザーが明示的に「実行して」と指示した場合は、書き出した QA に沿って検証し、エビデンスと判定を埋める。その際のスクショ規約:
 
