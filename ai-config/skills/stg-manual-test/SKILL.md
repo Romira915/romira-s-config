@@ -29,7 +29,7 @@ Jira チケットの仕様からテストケースを設計し、STG 環境の�
 
 ## 参照ファイル
 
-- **画像付きQAをJiraへ共有する依頼**: 共通指示の「Jiraへの画像付きQA共有」と `../pr-qa-doc/references/jira-comment-with-images.md` に従ってコメント下書きを作成する。
+- **画像付きQAをJiraへ共有する依頼**: `../pr-qa-doc/references/jira-comment-with-images.md` の共有範囲・完了条件と手順に従ってコメント下書きを作成する。
 
 
 - **Jira 貼付用 QA Markdown のフォーマット・テーブル記載ルール・スクショ命名規則**: 同ディレクトリの `TEMPLATE.md` を Read
