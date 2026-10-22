@@ -32,6 +32,31 @@ class FilterTomlTest(unittest.TestCase):
 
         self.assertEqual(filter_toml(head_lines), filter_toml(current_lines))
 
+    def test_app_written_local_state_is_excluded_but_table_settings_remain(self):
+        lines = [
+            '[tui]\n',
+            'session_picker_view = "dense"\n',
+            'screen_reader_detection_done = true\n',
+            '\n',
+            '[[skills.config]]\n',
+            'path = "/Users/example/.codex/skills/sample/SKILL.md"\n',
+            'enabled = false\n',
+            '\n',
+            '[plugins."code-review@openai-bundled"]\n',
+            'enabled = true\n',
+        ]
+
+        self.assertEqual(
+            filter_toml(lines),
+            [
+                '[tui]\n',
+                'session_picker_view = "dense"\n',
+                '\n',
+                '[plugins."code-review@openai-bundled"]\n',
+                'enabled = true\n',
+            ],
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

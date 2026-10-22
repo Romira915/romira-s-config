@@ -67,8 +67,8 @@ allowed-tools: Bash(git status:*), Bash(git diff:*), Bash(git show:*), Bash(git 
 ## ノイズ除外ルール（config.toml, `filter_toml.py` にハードコード）
 
 - ルートレベルキー: `notify`, `model`, `model_reasoning_effort`, `plan_mode_reasoning_effort`, `service_tier`
-- テーブル全体除外: `tui.model_availability_nux`, `marketplaces.openai-bundled`, `marketplaces.openai-primary-runtime`, `mcp_servers.node_repl`（子テーブル含む）, `mcp_servers.computer-use`, `shell_environment_policy.set`, `hooks.state`（子テーブル含む）, `desktop`, `projects.*`
-- 行単位除外（残すテーブル内でも）: `last_updated`, `last_revision`
+- テーブル全体除外: `tui.model_availability_nux`, `marketplaces.openai-bundled`, `marketplaces.openai-primary-runtime`, `mcp_servers.node_repl`（子テーブル含む）, `mcp_servers.computer-use`, `shell_environment_policy.set`, `hooks.state`（子テーブル含む）, `desktop`, `projects.*`, `[[skills.config]]`（スキルの有効・無効。環境ごとの絶対パスで記録される）
+- 行単位除外（残すテーブル内でも）: `last_updated`, `last_revision`, `screen_reader_detection_done`
 
 このルールは `config.toml` 冒頭のコメントと、モデル選択等の実行時設定を共有管理しない運用方針をコード化したもの。ユーザーから「この差分は管理不要／ローカル状態」と指摘された場合は、その場のステージングだけで終わらせず、`filter_toml.py` の `EXCLUDE_*` とこの一覧を更新し、同じ差分を再現する回帰チェックを追加する。新しいノイズキー・テーブルが増えた場合も同じ手順で更新する。
 

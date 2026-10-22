@@ -21,12 +21,15 @@ EXCLUDE_TABLE_PATTERNS = [
     r'^\[hooks\.state(\..+)?\]$',
     r'^\[desktop\]$',
     r'^\[projects\..+\]$',
+    # スキルの有効・無効は環境ごとの絶対パスで記録され、他の環境では一致しない
+    r'^\[\[skills\.config\]\]$',
 ]
 
 # 残すテーブル内でも行単位で除外するキー
 EXCLUDE_LINE_PATTERNS = [
     r'^last_updated\s*=',
     r'^last_revision\s*=',
+    r'^screen_reader_detection_done\s*=',
 ]
 
 # どのテーブルにも属さないルートレベルで除外するキー
