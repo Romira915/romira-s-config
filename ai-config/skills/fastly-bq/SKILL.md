@@ -1,12 +1,12 @@
 ---
 name: fastly-bq
-description: Fastly access logs の BigQuery テーブル（テーブル FQN は personal.md から取得）のカラム定義・サンプル SQL を即座に提示する。Fastly ログを SQL で調査したいときに使う。
+description: Fastly access logs の BigQuery テーブル（テーブル FQN は personal.md から取得）のカラム定義・サンプル SQL を提示し、BigQuery MCP 等があれば dry run でスキャン量を確認したうえで実行する。Fastly ログを SQL で調査したいときに使う。
 allowed-tools: Read
 ---
 
 # fastly-bq
 
-Fastly アクセスログの BigQuery テーブル情報を提示し、ユーザーが素早く SQL を書けるようにする。
+Fastly アクセスログの BigQuery テーブル情報を提示し、SQL を素早く組み立てる。実行手段があれば、スキャン量の条件を満たす範囲で実行まで行う。
 
 ## テーブル情報
 
@@ -16,6 +16,7 @@ BigQuery プロジェクト・データセット・テーブル名は個人/所�
 - `<dataset>`
 - `<table>`
 - `<table_fqn>` = `` `<project_id>.<dataset>.<table>` ``
+- `<user_id_mapping>`: `user_type` ごとに `user_id` がどの DB テーブル・列の値か
 
 以降サンプル SQL では `<table_fqn>` プレースホルダで参照する。
 
@@ -56,7 +57,7 @@ BigQuery プロジェクト・データセット・テーブル名は個人/所�
 | `x_cache` | STRING | キャッシュ状態 (HIT / MISS 等) |
 | `geo_proxy_description` | STRING | Proxy 情報 |
 | `user_type` | STRING | ユーザ種別 |
-| `user_id` | STRING | ユーザ ID |
+| `user_id` | STRING | ユーザ ID。対応する DB の列は `user_type` ごとに異なる（`<user_id_mapping>` 参照） |
 | `client_class_bot` | BOOLEAN | bot 判定 |
 | `tls_ja4` | STRING | JA4 フィンガープリント |
 
@@ -71,7 +72,35 @@ BigQuery プロジェクト・データセット・テーブル名は個人/所�
 5. **タイムゾーンは JST 固定**: 条件指定も SELECT での表示も `Asia/Tokyo` を使う
 6. **LIMIT**: 調査用クエリは `LIMIT 1000` など上限を付ける
 
-実行環境（`bq` CLI の有無・認証状況）はユーザー環境依存のため、スキル側では SQL を提示するだけで実行はしない（ユーザーが `bq query` や BigQuery コンソールで実行する）。
+### 実行手段
+
+下記「スキャン量確認」の条件を満たせば、MCP 経由での実行を事前確認なしで行ってよい。実行手段と認証状況はツール・ユーザー環境によって異なるため、その場で使えるものを確認して選ぶ。
+
+| 実行手段 | 例 | 使い方 |
+| --- | --- | --- |
+| BigQuery MCP（Claude Code） | Google 公式 BigQuery MCP のコネクタ（`mcp__<コネクタ名>__execute_sql_readonly`） | dry run は `dryRun: true` |
+| BigQuery MCP（Codex） | Google 公式 BigQuery MCP を Codex のアプリとして追加したもの（`<アプリ名>.execute_sql_readonly`） | dry run は `dryRun: true` |
+| BigQuery コネクタ（Codex 標準） | `bigquery.execute_sql_readonly` | dry run は `dryRun: true`。`maximumBytesBilled` も指定できる |
+| `bq` CLI | `bq query --use_legacy_sql=false` | dry run は `--dry_run`。上限は `--maximum_bytes_billed`。認証（`gcloud auth login`）が必要 |
+
+- ツール名は環境によって違う。固定の名前を前提にせず、利用可能なツールの一覧・定義から「SQL を実行でき、dry run 機能を持つ読み取り専用ツール」（名前が `execute_sql_readonly` で終わるもの等）を選ぶ
+- 同じ環境に複数あるときは、対象プロジェクトに認証済みで dry run が使えるものを選ぶ。どれでも同じ条件で dry run と承認判断を行う
+- **課金上限を指定できる手段では本実行時に指定する**: `maximumBytesBilled`（`bq` は `--maximum_bytes_billed`）があれば、dry run の値の 1.2 倍程度を上限に設定する。ただし承認なしで実行するクエリは 100GB を、承認済みのクエリは承認した量を超える値にしない。上限を超えるクエリは BigQuery 側で失敗し、課金されない。指定できない手段では dry run の確認だけで判断する
+- 書き込み可能な実行ツールしかない場合は、SELECT 文だけを実行する
+- **dry run 機能を持たない実行手段では本実行しない**。dry run できる別の手段（`bq --dry_run` 等）でスキャン量を確認できた場合だけ実行する
+- MCP が未接続・再認証が必要・権限不足の場合は、その旨を報告して再接続を依頼する。勝手に別の手段（ブラウザ操作等）へ切り替えない
+- 実行手段がなければ SQL を提示するだけにし、ユーザーが `bq query` や BigQuery コンソールで実行する
+
+### 実行する場合のスキャン量確認（必須）
+
+BigQuery はクエリが読む列 × パーティションのデータ量で課金されるため、実行前に必ずスキャン量を確認する。
+
+1. **毎回 dry run する**: 本実行の前に、上記の実行手段の dry run 機能で `totalBytesProcessed` を取得する。SQL を変えたら dry run もやり直す
+2. **100GB 以上は実行前に承認を得る**: dry run の結果が 100GB 以上なら実行せず、スキャン量・確認したい内容・軽い代替案（期間を短くする、読む列を減らす）をユーザーに示して承認を求める。100GB 未満ならスキャン量を報告したうえで実行してよい
+3. **分割で基準をすり抜けない**: 同じ目的のクエリを期間などで分割して 1 本ずつ 100GB 未満にしても、合計が 100GB 以上なら承認を求める
+4. **スキャン量を下げる手段を先に検討する**: スキャン量を減らせるのは `timestamp` の期間と SELECT・WHERE・GROUP BY で参照する列だけ。`LIMIT` や、`client_ip`・`user_id` などパーティション以外の列での絞り込みではスキャン量は減らない。`url` や `request_user_agent` のような長い文字列列は特に重い
+5. **承認後も dry run と大きく違えば再確認する**: 承認時に示した量から SQL を変えてスキャン量が大きく増えた場合は、改めて承認を求める
+6. **報告する**: 結果と一緒に、実行したクエリの課金スキャン量（`totalBytesBilled`）を報告する
 
 ## サンプル SQL テンプレート（JST 指定・JST 表示）
 
@@ -213,6 +242,8 @@ ORDER BY hour_jst;
 
 - **タイムゾーンは JST 固定**: 条件指定は `TIMESTAMP("...", "Asia/Tokyo")` / `TIMESTAMP_TRUNC(..., "Asia/Tokyo")`、表示は `DATETIME(timestamp, "Asia/Tokyo")`。UTC のまま書かない
 - **必ず timestamp で期間を絞る**: パーティションキーを使わないとフルスキャンでコストが跳ねる
+- **実行前に dry run し、100GB 以上は承認を得る**: 詳細は「実行する場合のスキャン量確認」
 - **LIMIT を忘れない**: 調査クエリには原則 `LIMIT` を付ける
+- **`user_id` を DB と突き合わせる前に対応列を確認する**: `user_id` は列名が同じでも、DB の主キーや同名の `user_id` 列の値とは限らない。`<user_id_mapping>` に記載された列で突き合わせる。記載のない `user_type` は、ID の値が一致することだけを根拠に対応列と断定せず、コード上の設定箇所やユーザーへの確認で対応列を確かめてから使う
 - **PII の扱い**: `client_ip`, `user_id`, `request_cookie` などは個人情報を含む可能性があるため、出力・共有には注意する
 - **日付は今日のものを使う**: CLAUDE.md の `currentDate` をデフォルトの調査対象日として使うと良い（ユーザー指定があればそれを優先）
