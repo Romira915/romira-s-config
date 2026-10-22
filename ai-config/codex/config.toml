@@ -23,9 +23,6 @@ enabled = true
 [plugins."slack@openai-curated"]
 enabled = true
 
-[plugins."sites@openai-bundled"]
-enabled = true
-
 [plugins."browser@openai-bundled"]
 enabled = true
 
@@ -83,6 +80,9 @@ enabled = true
 [plugins."unified-computer-use@openai-bundled"]
 enabled = true
 
+[plugins."code-review@openai-bundled"]
+enabled = true
+
 [tui]
 status_line = [
     "model-with-reasoning",
@@ -134,4 +134,7 @@ inherit = "core"
 enabled = true
 
 [apps.connector_947e0d954944416db111db556030eea6.tools."google_calendar.create_event"]
+approval_mode = "approve"
+
+[apps.asdk_app_69c18c28f1188191bf5b8445c4ab0a2e.tools."notion.notion-update-page"]
 approval_mode = "approve"
