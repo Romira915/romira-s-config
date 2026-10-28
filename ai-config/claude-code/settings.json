@@ -1,5 +1,4 @@
 {
-  "agentPushNotifEnabled": true,
   "attribution": {
     "commit": "",
     "pr": ""
@@ -23,12 +22,12 @@
       {
         "hooks": [
           {
-            "command": "bash '~/.claude/hooks/herdr-agent-state.sh' session",
+            "command": "bash '/Users/romira/.claude/hooks/herdr-agent-state.sh' session",
             "timeout": 10,
             "type": "command"
           }
         ],
-        "matcher": "*"
+        "matcher": "^(startup|resume|clear|compact|fork)$"
       }
     ]
   },
