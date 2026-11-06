@@ -31,7 +31,7 @@ argument-hint: [親エピック key] [summary] — 引数なしで起動して�
 
 | 項目 | 必須 | 内容 |
 |---|---|---|
-| 親エピック key | ✅ | 例: `XXXX-NNNN` |
+| 親エピック key | 任意 | 指定または適切な親がある場合に設定する。親がなければ省略する |
 | summary | ✅ | チケットタイトル。1 行で「何のチケットか」がわかる粒度 |
 | 概要 | ✅ | 1〜2 文で「何をするか」 |
 | ゴール | ✅ | 箇条書き 2〜5 個の達成条件。STG/PROD など環境別の合格条件も含めて具体に |
@@ -45,6 +45,7 @@ argument-hint: [親エピック key] [summary] — 引数なしで起動して�
 
 - **本文は customfield (personal.md の値) に ADF JSON で書く**。標準 `description` は空 ADF doc で潰す
 - **参考リンクに Jira UI で見える情報を書かない**（親エピック、関連 PR、関連子チケット等は Jira UI 右ペインや development integration で自動表示される）→ 代わりに `createIssueLink` で連結
+- **タイトルの接頭辞は変更対象で判断する**。ユーザーまたは対象プロジェクトが指定した分類に従い、バックエンドのリポジトリ変更、管理画面Actionのみの変更、両方の変更を区別する。取得方式が未確定なら、SQLのみと断定する接頭辞を付けない。固有の接頭辞・リポジトリ対応は作業時の指示やプロジェクト規約から取得する。
 - **背景は Why ベース**（事実だけ列挙しない）
 - **煽り強調マーカー禁止**（`【最重要】` `最大ポイント` `深刻化` 等）
 - **編集者主張禁止**（根拠ない断定）
@@ -68,7 +69,7 @@ argument-hint: [親エピック key] [summary] — 引数なしで起動して�
 cloudId: <cloudId>
 projectKey: <projectKey>
 issueTypeName: <開発タスクの issueTypeName>
-parent: <親エピック key>
+parent: <親エピック key>  # 親がある場合のみ指定
 summary: <summary>
 contentFormat: "adf"
 additional_fields:

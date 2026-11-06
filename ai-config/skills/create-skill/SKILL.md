@@ -1,6 +1,6 @@
 ---
 name: create-skill
-description: 新しい Claude Code スキルを作成して `~/.claude/skills/` に登録する。新規スキル作成の依頼に使う。既存スキル（romira-s-config配下）への追記・編集時も固有情報ルールは同じく適用されるため、必ずこのスキルを先に参照する。
+description: 新しいスキルを作成して Claude Code・Codex・opencode・Gemini CLI のスキルディレクトリに登録する。新規スキル作成の依頼に使う。既存スキル（romira-s-config配下）への追記・編集時も固有情報ルールは同じく適用されるため、必ずこのスキルを先に参照する。
 allowed-tools: Bash(mkdir:*), Bash(ln:*), Bash(ls:*), Bash(grep:*)
 ---
 
@@ -18,8 +18,13 @@ allowed-tools: Bash(mkdir:*), Bash(ln:*), Bash(ls:*), Bash(grep:*)
 2. **固有情報の切り出し**: スキル本文に出てくる値のうち、下記「直書き禁止」に該当するものを特定し、personal.md 参照方式に分離する（後述）
 3. **SKILL.md 作成**: `~/.config/romira-s-config/ai-config/skills/<skill-name>/SKILL.md` に書き出す
 4. **personal.md 追記文面の提示**: 固有値を出す場合、personal.md の `## スキル別デフォルト値` 配下に追加する文面をユーザーに提示（直接編集はせず、ユーザーに貼り付けてもらう）
-5. **シンボリックリンク作成**: `ln -s ~/.config/romira-s-config/ai-config/skills/<skill-name> ~/.claude/skills/<skill-name>`
-6. **登録確認**: `ls -la ~/.claude/skills/<skill-name>` でリンクの向き先を確認
+5. **シンボリックリンク作成**: 次の4か所すべてに張る
+   ```sh
+   for d in ~/.claude/skills ~/.codex/skills ~/.config/opencode/skills ~/.gemini/skills; do
+     ln -s ~/.config/romira-s-config/ai-config/skills/<skill-name> "$d/<skill-name>"
+   done
+   ```
+6. **登録確認**: 4か所それぞれで `ls -la <dir>/<skill-name>` を実行し、リンクの向き先を確認
 7. **固有情報の最終チェック**: 後述の grep で残骸が無いことを確認
 
 ## 固有情報の扱い（必読）
@@ -111,7 +116,8 @@ grep -iE "<対象の固有語をパイプ区切りで列挙>" ai-config/skills/<
 ## 注意事項
 
 - スキルの実体は必ず `~/.config/romira-s-config/ai-config/skills/` に置く
-- `~/.claude/skills/` には実体を置かず、シンボリックリンクのみ
+- `~/.claude/skills/`・`~/.codex/skills/`・`~/.config/opencode/skills/`・`~/.gemini/skills/` には実体を置かず、シンボリックリンクのみ
+- SKILL.md 内でスキル同梱のファイルを指すときは `~/.claude/skills/...` のように特定ツールのパスを書かず、SKILL.md のあるディレクトリを基準にする
 - プロジェクトの `.claude/skills/` にはスキルを置かない（グローバル管理）
 - **クロスプラットフォーム対応**: スキルは macOS / Linux / Windows で動作するように設計する
   - OS 固有のパス（`/opt/homebrew/bin/` 等）をハードコードしない
