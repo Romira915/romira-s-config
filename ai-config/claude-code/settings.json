@@ -30,6 +30,17 @@
         ],
         "matcher": "*"
       }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$HOME/.claude/hooks/herdr-tab-title.py\" claude",
+            "timeout": 30
+          }
+        ]
+      }
     ]
   },
   "model": "sonnet",
