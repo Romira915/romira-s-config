@@ -10,6 +10,17 @@
           }
         ]
       }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "command": "cmd /d /c py -3 \"%USERPROFILE%\\.codex\\hooks\\herdr-tab-title.py\" codex",
+            "timeout": 30,
+            "type": "command"
+          }
+        ]
+      }
     ]
   }
 }
